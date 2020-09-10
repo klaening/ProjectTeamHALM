@@ -14,22 +14,71 @@
                               MinWidth="300"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"
-                           MaxHeight="50"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0"/>
-        <TextBlock Text="Orders" FontSize="40"/>
-        <ListBox x:Name="OrderListBox" MinHeight="500" HorizontalAlignment="Left" MaxWidth="400">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Test1"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+      <StackPanel Grid.Column="0">
+        <TextBlock Text="List of Orders" FontSize="40"/>
+        <ListBox x:Name="OrderListBox" MinHeight="500" HorizontalAlignment="Left" MaxWidth="500">
+                <TextBlock Text="Binding order 1" FontSize="25"/>
+                <TextBlock Text="Binding order 2" FontSize="25"/>
+                <TextBlock Text="Binding order 3" FontSize="25"/>
+                <TextBlock Text="Binding order 4" FontSize="25"/>
+            </ListBox>
+            <Button x:Name="GoBack_Btn" Content="Go Back" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1"  HorizontalAlignment="Left">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Order ID" FontSize="40"/>
+            
+            <TextBlock Grid.Row="1" Text="Adress:" FontSize="20"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="BINDING"/>
+            
+            <TextBlock Grid.Row="2" Text="Operatör:" FontSize="20"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="BINDING"/>
+            
+            <TextBlock Grid.Row="3" Text="Tid:" FontSize="20"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="BINDING"/>
+            
+            <TextBlock Grid.Row="4" Text="Arbetsuppgift:" FontSize="20"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="BINDING"/>
+                
+            <TextBlock Grid.Row="5" Text="Kontaktuppgift:" FontSize="20"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="BINDING"/>
+
+            <TextBlock Grid.Row="6" Text="" FontSize="20"/>
+
+            <TextBlock Grid.Row="7" Text="Status:" FontSize="20"/>
+            <TextBlock Grid.Row="7" Grid.Column="1" Text="BINDING"/>
+
+            <TextBlock Grid.Row="8" Text="" FontSize="20"/>
+
+            <Button Grid.Row="9" Grid.Column="0" x:Name="Edit_btn" Content='Edit' Width="60"/>
+                <Button Grid.Row="9" Grid.Column="1" x:Name="Delete_btn" Content="Delete" Width="60"/>
+            </Grid>
+
+        </StackPanel>
+
+
+
+    <Button Grid.Column="1" x:Name="CreateOrder" Content="New Order" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Width="100" Height="50"/>
     </Grid>
 </Page>

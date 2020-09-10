@@ -26,5 +26,10 @@ namespace ToDo_Desktop.Views
         {
             this.InitializeComponent();
         }
+
+        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

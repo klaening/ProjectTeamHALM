@@ -133,6 +133,7 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\Paths.cs" />
     <Compile Include="Services\Requests.cs" />
+    <Compile Include="ViewModels\AdminMainPage_VM.cs" />
     <Compile Include="Views\AdminMainPage.xaml.cs">
       <DependentUpon>AdminMainPage.xaml</DependentUpon>
     </Compile>
