@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebAPI_TeamHALM_Domain
+namespace WebAPI_TeamHALM_Domain.Models
 {
-    public class Staff
+    public class Departments
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public int DepartmentsID { get; set; }
     }
 }
