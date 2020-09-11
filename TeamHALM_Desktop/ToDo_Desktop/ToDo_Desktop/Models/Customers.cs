@@ -9,8 +9,8 @@ namespace ToDo_Desktop.Models
     public class Customers
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string Adress { get; set; }
-        public string PhoneNo { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerAdress { get; set; }
+        public string CustomerPhoneNo { get; set; }
     }
 }

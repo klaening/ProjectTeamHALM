@@ -23,7 +23,7 @@
                 <TextBlock Text="Binding order 3" FontSize="25"/>
                 <TextBlock Text="Binding order 4" FontSize="25"/>
             </ListBox>
-            <Button x:Name="GoBack_Btn" Content="Go Back" />
+            <Button x:Name="GoBack_Btn" Content="Go Back" Click="GoBack_Btn_Click" />
         </StackPanel>
 
         <StackPanel Grid.Column="1"  HorizontalAlignment="Left">
@@ -79,6 +79,6 @@
 
     <Button Grid.Column="1" x:Name="CreateOrder" Content="New Order" 
                     HorizontalAlignment="Center" VerticalAlignment="Center" 
-                    Width="100" Height="50"/>
+                    Width="100" Height="50" Click="CreateOrder_Click"/>
     </Grid>
 </Page>

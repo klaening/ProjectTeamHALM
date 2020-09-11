@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="ToDo_Desktop.Views.CreateOrder_DepartmentChoice"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ToDo_Desktop.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="Elektriker_Btn" Content="Elektriker" 
+                Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
+                 Width="400" Height="200" FontSize="40" Click="Elektriker_Btn_Click"/>
+        <Button x:Name="Snickare_Btn" Content="Snickare" 
+                Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"
+                 Width="400" Height="200" FontSize="40" Click="Snickare_Btn_Click"/>
+        <Button x:Name="VvS_Btn" Content="VVS" 
+                Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"
+                 Width="400" Height="200" FontSize="40" Click="VvS_Btn_Click"/>
+        <Button x:Name="Return_Btn" Content="Return" Grid.Row="0" Grid.Column="0"
+                Width="100" Height="50" VerticalAlignment="Top" Click="Return_Btn_Click"/>
+    </Grid>
+</Page>

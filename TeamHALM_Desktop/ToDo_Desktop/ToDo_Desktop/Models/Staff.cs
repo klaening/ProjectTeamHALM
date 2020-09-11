@@ -9,7 +9,7 @@ namespace ToDo_Desktop.Models
     public class Staff
     {
         public int ID { get; set; }
-        public string Name { get; set; }
+        public string StaffName { get; set; }
         public int DepartmentsID { get; set; }
     }
 }

@@ -134,8 +134,16 @@
     <Compile Include="Services\Paths.cs" />
     <Compile Include="Services\Requests.cs" />
     <Compile Include="ViewModels\AdminMainPage_VM.cs" />
+    <Compile Include="ViewModels\CreateOrder_DepartmentChoice_VM.cs" />
+    <Compile Include="ViewModels\CreateOrder_InfoInput_VM.cs" />
     <Compile Include="Views\AdminMainPage.xaml.cs">
       <DependentUpon>AdminMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateOrder_DepartmentChoice.xaml.cs">
+      <DependentUpon>CreateOrder_DepartmentChoice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateOrder_InfoInput.xaml.cs">
+      <DependentUpon>CreateOrder_InfoInput.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +171,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AdminMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateOrder_DepartmentChoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateOrder_InfoInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

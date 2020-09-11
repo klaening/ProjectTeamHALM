@@ -13,7 +13,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ToDo_Desktop.ViewModels;
-using ToDo_Desktop.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,24 +21,19 @@ namespace ToDo_Desktop.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AdminMainPage : Page
+    public sealed partial class CreateOrder_InfoInput : Page
     {
-        private readonly AdminMainPage_VM _viewModel;
-        public AdminMainPage()
+        public readonly CreateOrder_InfoInput_VM _viewModel;
+        public CreateOrder_InfoInput()
         {
             this.InitializeComponent();
-            _viewModel = new AdminMainPage_VM();
+            _viewModel = new CreateOrder_InfoInput_VM();
             DataContext = _viewModel;
         }
 
-        private void GoBack_Btn_Click(object sender, RoutedEventArgs e)
+        private void Return_Btn_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void CreateOrder_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(CreateOrder_DepartmentChoice));
+            Frame.GoBack();
         }
     }
 }
