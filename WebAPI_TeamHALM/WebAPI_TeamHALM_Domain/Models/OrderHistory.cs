@@ -7,7 +7,7 @@ namespace WebAPI_TeamHALM_Domain.Models
     public class OrderHistory
     {
         public int ID { get; set; }
-        public string Description { get; set; }
+        public string OrderDescription { get; set; }
         public DateTime StartingDate { get; set; }
         public string Commentary { get; set; }
         public decimal HoursSpent { get; set; }
