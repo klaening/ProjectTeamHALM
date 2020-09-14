@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ToDo_Desktop.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local1="using:ToDo_Desktop.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -17,16 +17,20 @@
 
       <StackPanel Grid.Column="0">
         <TextBlock Text="List of Orders" FontSize="40"/>
-        <ListBox x:Name="OrderListBox" MinHeight="500" HorizontalAlignment="Left" MaxWidth="500">
-                <TextBlock Text="Binding order 1" FontSize="25"/>
-                <TextBlock Text="Binding order 2" FontSize="25"/>
-                <TextBlock Text="Binding order 3" FontSize="25"/>
-                <TextBlock Text="Binding order 4" FontSize="25"/>
-            </ListBox>
+        <ListView x:Name="OrderListBox" ItemsSource="{Binding OrderCollection}"
+                 SelectedItem="{Binding SelectedOrder, Mode=TwoWay}" 
+                  MinHeight="500" HorizontalAlignment="Left" MaxWidth="500">
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding OrderID}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+        </ListView>
             <Button x:Name="GoBack_Btn" Content="Go Back" Click="GoBack_Btn_Click" />
         </StackPanel>
 
-        <StackPanel Grid.Column="1"  HorizontalAlignment="Left">
+        <StackPanel Grid.Column="1" DataContext="{Binding SelectedOrder, Mode=TwoWay}" >
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -45,35 +49,38 @@
                     <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="0" Text="Order ID" FontSize="40"/>
-            
-            <TextBlock Grid.Row="1" Text="Adress:" FontSize="20"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="BINDING"/>
-            
-            <TextBlock Grid.Row="2" Text="Operatör:" FontSize="20"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="BINDING"/>
-            
-            <TextBlock Grid.Row="3" Text="Tid:" FontSize="20"/>
-            <TextBlock Grid.Row="3" Grid.Column="1" Text="BINDING"/>
-            
-            <TextBlock Grid.Row="4" Text="Arbetsuppgift:" FontSize="20"/>
-            <TextBlock Grid.Row="4" Grid.Column="1" Text="BINDING"/>
+                <TextBlock Grid.Row="0" Text="Order ID" FontSize="40"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="40" Text="{Binding OrderID}"/>
                 
-            <TextBlock Grid.Row="5" Text="Kontaktuppgift:" FontSize="20"/>
-            <TextBlock Grid.Row="5" Grid.Column="1" Text="BINDING"/>
+                <TextBlock Grid.Row="1" Text="Adress:" FontSize="20"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Adress}"/>
+                
+                <TextBlock Grid.Row="2" Text="Operatör:" FontSize="20"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Operator}"/>
+                
+                <TextBlock Grid.Row="3" Text="Tid:" FontSize="20"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Time}"/>
+                
+                <TextBlock Grid.Row="4" Text="Arbetsuppgift:" FontSize="20"/>
+                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding WorkTask}"/>
+                
+                <TextBlock Grid.Row="5" Text="Kontaktuppgift:" FontSize="20"/>
+                <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding ContactDetails}"/>
+                
+                <TextBlock Grid.Row="6" Text="" FontSize="20"/>
+                
+                <TextBlock Grid.Row="7" Text="Status:" FontSize="20"/>
+                <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding Status}"/>
+                
+                <TextBlock Grid.Row="8" Text="" FontSize="20"/>
 
-            <TextBlock Grid.Row="6" Text="" FontSize="20"/>
-
-            <TextBlock Grid.Row="7" Text="Status:" FontSize="20"/>
-            <TextBlock Grid.Row="7" Grid.Column="1" Text="BINDING"/>
-
-            <TextBlock Grid.Row="8" Text="" FontSize="20"/>
-
-            <Button Grid.Row="9" Grid.Column="0" x:Name="Edit_btn" Content='Edit' Width="60"/>
+                <Button Grid.Row="9" Grid.Column="0" x:Name="Edit_btn" Content='Edit' Width="60"/>
                 <Button Grid.Row="9" Grid.Column="1" x:Name="Delete_btn" Content="Delete" Width="60"/>
+
             </Grid>
 
         </StackPanel>
+
 
 
 

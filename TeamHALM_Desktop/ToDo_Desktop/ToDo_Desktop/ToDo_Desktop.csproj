@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\Departments.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderHistory.cs" />
     <Compile Include="Models\OrderStatuses.cs" />
     <Compile Include="Models\Staff.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Services\Paths.cs" />
     <Compile Include="Services\Requests.cs" />
     <Compile Include="ViewModels\AdminMainPage_VM.cs" />
+    <Compile Include="ViewModels\BindableBase.cs" />
     <Compile Include="ViewModels\CreateOrder_DepartmentChoice_VM.cs" />
     <Compile Include="ViewModels\CreateOrder_InfoInput_VM.cs" />
     <Compile Include="Views\AdminMainPage.xaml.cs">
