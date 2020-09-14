@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoMobile.View.OrderInformationPage">
+    <ScrollView>
+        <Grid>
+            <!--HEADER-->
+            <StackLayout Padding="5" Margin="5">
+                <Grid>
+                    <Label Text="Order Information" 
+                       FontSize="35" 
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" 
+                       Margin="5"/>
+                </Grid>
+            </StackLayout>
+
+            <!--ORDER INFORMATION -->
+            <StackLayout Spacing="10" Padding="20" Margin="5,50,5,0">
+                <Grid>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Operatör:" FontSize="Medium"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="Lorin Mahmoudsson" FontSize="Medium"/>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Plats:" FontSize="Medium"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="Norra Guldbräcke 66" FontSize="Medium"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Tid och datum:" FontSize="Medium"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="10:30 2020-10-22 " FontSize="Medium"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Arbetsuppgift:" FontSize="Medium"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="Lagning av diskmaskin" FontSize="Medium"/>
+                    <Label Grid.Row="5" Grid.Column="0" Text="Kund:" FontSize="Medium"/>
+                    <Label Grid.Row="5" Grid.Column="1" Text="Barbros Sötsaker AB" FontSize="Medium"/>
+                    <Label Grid.Row="6" Grid.Column="0" Text="Kontaktuppgifter:" FontSize="Medium"/>
+                    <Label Grid.Row="6" Grid.Column="1" Text="(+46)759 44 57 88" FontSize="Medium"/>
+                </Grid>
+                <!--<Button Text="Accept"></Button>-->
+
+            </StackLayout>
+
+            <StackLayout Spacing="20" Padding="20" Margin="5,300,5,0" IsVisible="True">
+                <Grid>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Extra kostnader:" FontSize="Medium"/>
+                    <Entry Grid.Row="1" Grid.Column="1" FontSize="Medium"/>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Restid:" FontSize="Medium"/>
+                    <Entry Grid.Row="2" Grid.Column="1" FontSize="Medium"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Arbetstid:" FontSize="Medium"/>
+                    <Entry Grid.Row="3" Grid.Column="1" FontSize="Medium"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Kommentar:" FontSize="Medium"/>
+                    <Entry Grid.Row="4" Grid.Column="1" FontSize="Medium"/>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
