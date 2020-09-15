@@ -87,7 +87,7 @@ namespace WebAPI_TeamHALM_Domain
 
         public async Task<bool> UpdateWorkOrder(WorkOrders workOrder)
         {
-            using (var c = new SqlConnection())
+            using (var c = new SqlConnection(_connectionString))
             {
                 try
                 {

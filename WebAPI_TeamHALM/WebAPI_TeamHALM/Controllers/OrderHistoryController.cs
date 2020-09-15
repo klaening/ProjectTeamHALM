@@ -19,11 +19,13 @@ namespace WebAPI_TeamHALM.Controllers
             _orderHistoryService = orderHistoryService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
             return Ok(await _orderHistoryService.GetOrderHistory());
         }
 
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             return Ok(await _orderHistoryService.GetOrderHistory(id));
