@@ -1,4 +1,6 @@
 ﻿using System;
+using ToDoMobile.Services;
+using ToDoMobile.Utility;
 using ToDoMobile.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,8 +12,8 @@ namespace ToDoMobile
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new OrderPagePending());
+            //APIServices.GetRequest(ApiPaths.WorkOrders);
+            MainPage = new NavigationPage(new OrderPage());
         }
 
         protected override void OnStart()

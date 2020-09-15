@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoMobile.View.AcceptOrderPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid BindingContext="{Binding SelectedOrder}">
+                <Label Grid.Row="1" Grid.Column="0" Text="Type of order:" FontSize="Medium"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding description}" FontSize="Medium"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Commentary" FontSize="Medium"/>
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding commentary}" FontSize="Medium"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Start date:" FontSize="Medium"/>
+                <Label Grid.Row="3" Grid.Column="1" Text="{Binding startingDate}" FontSize="Medium"/>
+            </Grid>
+            <Button x:Name="AcceptOrderButton"
+                        Command="{Binding AcceptCommand}"
+                        Text="{Binding ButtonText}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -11,17 +11,18 @@ using Xamarin.Forms.Xaml;
 namespace ToDoMobile.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OrderPageActive : ContentPage
+    public partial class AcceptOrderPage : ContentPage
     {
-        public OrderPageActive()
+        AcceptOrderPageVM _viewModel;
+        public AcceptOrderPage(WorkOrders order)
         {
             InitializeComponent();
-            BindingContext = new OrderPageVM(); 
+            _viewModel = new AcceptOrderPageVM();
+
+            BindingContext = _viewModel;
+            _viewModel.SelectedOrder = order;
+            _viewModel.Navigation = Navigation;
         }
 
-        private async void ActivePage_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            await Navigation.PushAsync(new AcceptOrderPage(e.SelectedItem as WorkOrders));
-        }
     }
 }

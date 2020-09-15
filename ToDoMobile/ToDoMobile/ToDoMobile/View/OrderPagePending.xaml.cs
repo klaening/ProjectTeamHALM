@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDoMobile.Model;
 using ToDoMobile.Services;
-
+using ToDoMobile.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,13 +17,13 @@ namespace ToDoMobile.View
         public OrderPagePending()
         {
             InitializeComponent();
-            APIServices.GetRequest("WorkOrders/");
+            BindingContext = new OrderPageVM();
         }
 
 
-        private void PendingPage_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void PendingPage_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-
+            await Navigation.PushAsync(new AcceptOrderPage(e.SelectedItem as WorkOrders));
         }
     }
 }

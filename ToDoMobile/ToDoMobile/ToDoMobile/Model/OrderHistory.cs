@@ -7,8 +7,8 @@ namespace ToDoMobile.Model
     public class OrderHistory
     {
         public int ID { get; set; }
-        public string Description { get; set; }
-        public DateTime WorkDate { get; set; }
+        public string OrderDescription { get; set; }
+        public DateTime StartingDate { get; set; }
         public string Commentary { get; set; }
         public decimal HoursSpent { get; set; }
         public decimal TravelTime { get; set; }

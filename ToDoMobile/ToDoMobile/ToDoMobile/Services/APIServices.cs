@@ -9,7 +9,7 @@ namespace ToDoMobile.Services
 {
     class APIServices
     {
-        private const string HOST = "http://localhost:51889/api/";
+        private const string HOST = "https://webapihalm.azurewebsites.net/api/";
         public static async Task PostRequestAsync(string path, Object objectclass)
         {
             var client = new HttpClient();
@@ -53,6 +53,11 @@ namespace ToDoMobile.Services
                 return e.Message;
             }
            
+        }
+
+        internal static object GetRequest(object apiPaths)
+        {
+            throw new NotImplementedException();
         }
 
         public static async Task PutRequestAsync(string path, Object objectclass)

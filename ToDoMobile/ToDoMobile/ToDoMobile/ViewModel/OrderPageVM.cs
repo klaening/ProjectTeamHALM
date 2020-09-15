@@ -6,6 +6,7 @@ using System.Dynamic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using ToDoMobile.Model;
+using ToDoMobile.Services;
 using ToDoMobile.Utility;
 
 namespace ToDoMobile.ViewModel
@@ -15,35 +16,55 @@ namespace ToDoMobile.ViewModel
         private ObservableCollection<WorkOrders> _pendingList;
         public ObservableCollection<WorkOrders> PendingList
         {
-            get { return CreateMockData(); }
+            get => _pendingList;
             set
             {
                 _pendingList = value;
-                
+                OnPropertyChanged("PendingList");
             }
         }
 
-        public ObservableCollection<WorkOrders> CreateMockData()
+        private ObservableCollection<WorkOrders> _activeList;
+        public ObservableCollection<WorkOrders> ActiveList
         {
-            var TestList = new ObservableCollection<WorkOrders>();
-            var OrderOne = new WorkOrders { ID = 1, Description = "Broken Dishwasher", OrderStatusesID = 1 };
-            var OrderTwo = new WorkOrders { ID = 2, Description = "Broken elevator", OrderStatusesID = 2 };
+            get => _activeList;
+            set
+            {
+                _activeList = value;
+                OnPropertyChanged("ActiveList");
 
-            TestList.Add(OrderOne);
-            TestList.Add(OrderTwo);
-            return TestList;
+            }
         }
 
-        //public OrderPageVM()
+        //public ObservableCollection<WorkOrders> CreateMockData()
         //{
-        //    PendingList = new ObservableCollection<WorkOrders>();
+        //    var TestList = new ObservableCollection<WorkOrders>();
+        //    var OrderOne = new WorkOrders { ID = 1, Description = "Broken Dishwasher", OrderStatusesID = 1 };
+        //    var OrderTwo = new WorkOrders { ID = 2, Description = "Broken elevator", OrderStatusesID = 2 };
 
-        //    foreach (var order in PendingList)
-        //    {
-        //       order.OrderStatusesID == (int)StatusNameEnum.Pending
-        //            PendingList.Add(order);
-        //    }
-
+        //    TestList.Add(OrderOne);
+        //    TestList.Add(OrderTwo);
+        //    return TestList;
         //}
+
+        public OrderPageVM()
+        {
+            PendingList = new ObservableCollection<WorkOrders>();
+            ActiveList = new ObservableCollection<WorkOrders>();
+            var response = APIServices.GetRequest(ApiPaths.WorkOrders);
+
+            var tempList = JsonConvert.DeserializeObject<ObservableCollection<WorkOrders>>(response);
+
+
+            foreach (var order in tempList)
+            {
+                
+                if(order.OrderStatusesID == (int)StatusNameEnum.Pending)
+                    PendingList.Add(order);
+                if (order.OrderStatusesID == (int)StatusNameEnum.Accepted || order.OrderStatusesID == (int)StatusNameEnum.Completed)
+                    ActiveList.Add(order);
+            }
+
+        }
     }
 }
