@@ -13,8 +13,8 @@ namespace ToDoMobile.ViewModel
 {
     public class OrderPageVM : BaseViewModel
     {
-        private ObservableCollection<WorkOrders> _pendingList;
-        public ObservableCollection<WorkOrders> PendingList
+        private ObservableCollection<FullOrderDetails> _pendingList;
+        public ObservableCollection<FullOrderDetails> PendingList
         {
             get => _pendingList;
             set
@@ -24,8 +24,8 @@ namespace ToDoMobile.ViewModel
             }
         }
 
-        private ObservableCollection<WorkOrders> _activeList;
-        public ObservableCollection<WorkOrders> ActiveList
+        private ObservableCollection<FullOrderDetails> _activeList;
+        public ObservableCollection<FullOrderDetails> ActiveList
         {
             get => _activeList;
             set
@@ -36,11 +36,11 @@ namespace ToDoMobile.ViewModel
             }
         }
 
-        //public ObservableCollection<WorkOrders> CreateMockData()
+        //public ObservableCollection<FullOrderDetails> CreateMockData()
         //{
-        //    var TestList = new ObservableCollection<WorkOrders>();
-        //    var OrderOne = new WorkOrders { ID = 1, Description = "Broken Dishwasher", OrderStatusesID = 1 };
-        //    var OrderTwo = new WorkOrders { ID = 2, Description = "Broken elevator", OrderStatusesID = 2 };
+        //    var TestList = new ObservableCollection<FullOrderDetails>();
+        //    var OrderOne = new FullOrderDetails { ID = 1, Description = "Broken Dishwasher", OrderStatusesID = 1 };
+        //    var OrderTwo = new FullOrderDetails { ID = 2, Description = "Broken elevator", OrderStatusesID = 2 };
 
         //    TestList.Add(OrderOne);
         //    TestList.Add(OrderTwo);
@@ -49,19 +49,19 @@ namespace ToDoMobile.ViewModel
 
         public OrderPageVM()
         {
-            PendingList = new ObservableCollection<WorkOrders>();
-            ActiveList = new ObservableCollection<WorkOrders>();
-            var response = APIServices.GetRequest(ApiPaths.WorkOrders);
+            PendingList = new ObservableCollection<FullOrderDetails>();
+            ActiveList = new ObservableCollection<FullOrderDetails>();
+            var response = APIServices.GetRequest(ApiPaths.FullOrderDetails);
 
-            var tempList = JsonConvert.DeserializeObject<ObservableCollection<WorkOrders>>(response);
+            var tempList = JsonConvert.DeserializeObject<ObservableCollection<FullOrderDetails>>(response);
 
 
             foreach (var order in tempList)
             {
                 
-                if(order.OrderStatusesID == (int)StatusNameEnum.Pending)
+                if(order.StatusName == StatusNameEnum.Pending.ToString())
                     PendingList.Add(order);
-                if (order.OrderStatusesID == (int)StatusNameEnum.Accepted || order.OrderStatusesID == (int)StatusNameEnum.Completed)
+                if (order.StatusName == StatusNameEnum.Accepted.ToString() || order.StatusName == StatusNameEnum.Completed.ToString())
                     ActiveList.Add(order);
             }
 

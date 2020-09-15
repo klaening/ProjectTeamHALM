@@ -25,7 +25,7 @@ namespace ToDoMobile.ViewModel
             {
                 if (SelectedOrder != null)
                 {
-                    if(SelectedOrder.OrderStatusesID == (int)StatusNameEnum.Accepted || SelectedOrder.OrderStatusesID == (int)StatusNameEnum.Completed)
+                    if(SelectedOrder.StatusName == StatusNameEnum.Accepted.ToString() || SelectedOrder.StatusName == StatusNameEnum.Completed.ToString())
                     {
                         return "Done";
                     }
@@ -41,8 +41,8 @@ namespace ToDoMobile.ViewModel
             }
         }
 
-        private WorkOrders _selectedOrder;
-        public WorkOrders SelectedOrder
+        private FullOrderDetails _selectedOrder;
+        public FullOrderDetails SelectedOrder
         {
             get { return _selectedOrder; }
             set
@@ -67,10 +67,10 @@ namespace ToDoMobile.ViewModel
             var order = GetOrderFromID();
             UpdateOrder(order);
 
-            SelectedOrder.OrderStatusesID = order.OrderStatusesID;
+            SelectedOrder.StatusName = order.StatusName;
             OnPropertyChanged("ButtonText");
 
-            if(order.OrderStatusesID == (int)StatusNameEnum.Accepted || order.OrderStatusesID == (int)StatusNameEnum.Completed)
+            if(order.StatusName == StatusNameEnum.Accepted.ToString() || order.StatusName == StatusNameEnum.Completed.ToString())
             {
                 Navigation.PushAsync(new OrderPage());
             }
@@ -80,18 +80,18 @@ namespace ToDoMobile.ViewModel
             }
         }
 
-        public WorkOrders GetOrderFromID()
+        public FullOrderDetails GetOrderFromID()
         {
-            string source = SelectedOrder.OrderStatusesID.ToString();
-            var response = APIServices.GetRequest(ApiPaths.WorkOrders, source);
-            var order = JsonConvert.DeserializeObject<WorkOrders>(response);
+            string source = SelectedOrder.ID.ToString();
+            var response = APIServices.GetRequest(ApiPaths.FullOrderDetails, source);
+            var order = JsonConvert.DeserializeObject<FullOrderDetails>(response);
             return order;
         }
 
-        public async void UpdateOrder(WorkOrders order)
+        public async void UpdateOrder(FullOrderDetails order)
         {
-            order.OrderStatusesID += 1;
-            await APIServices.PutRequestAsync(ApiPaths.WorkOrders, order);
+            order.StatusName += 1;
+            await APIServices.PutRequestAsync(ApiPaths.FullOrderDetails, order);
         }
     }
 }

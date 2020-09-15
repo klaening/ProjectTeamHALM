@@ -21,7 +21,7 @@ namespace ToDoMobile.View
 
         private async void ActivePage_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushAsync(new AcceptOrderPage(e.SelectedItem as WorkOrders));
+            await Navigation.PushAsync(new AcceptOrderPage(e.SelectedItem as FullOrderDetails));
         }
     }
 }

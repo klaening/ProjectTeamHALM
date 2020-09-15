@@ -12,8 +12,8 @@ namespace ToDoMobile
         public App()
         {
             InitializeComponent();
-            //APIServices.GetRequest(ApiPaths.WorkOrders);
-            MainPage = new NavigationPage(new OrderPage());
+            //APIServices.GetRequest(ApiPaths.FullOrderDetails);
+            MainPage = new NavigationPage(new OrderInformationPage());
         }
 
         protected override void OnStart()

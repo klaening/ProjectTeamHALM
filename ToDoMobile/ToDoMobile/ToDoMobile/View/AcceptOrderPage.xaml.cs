@@ -14,7 +14,7 @@ namespace ToDoMobile.View
     public partial class AcceptOrderPage : ContentPage
     {
         AcceptOrderPageVM _viewModel;
-        public AcceptOrderPage(WorkOrders order)
+        public AcceptOrderPage(FullOrderDetails order)
         {
             InitializeComponent();
             _viewModel = new AcceptOrderPageVM();

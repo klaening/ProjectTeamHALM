@@ -4,9 +4,10 @@ using System.Text;
 
 namespace ToDoMobile.Utility
 {
-    public class ApiPaths
+    public static class ApiPaths
     {
-        public static string WorkOrders = "WorkOrders/";
-        public static string OrderStatuses = "OrderStatuses/";
+        public const string WorkOrders = "WorkOrders/";
+        public const string OrderStatuses = "OrderStatuses/";
+        public const string FullOrderDetails = "FullOrderDetails/";
     }
 }
