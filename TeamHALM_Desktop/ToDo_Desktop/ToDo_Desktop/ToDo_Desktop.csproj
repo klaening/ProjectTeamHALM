@@ -124,8 +124,8 @@
     </Compile>
     <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\Departments.cs" />
-    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderHistory.cs" />
+    <Compile Include="Models\OrderInfo.cs" />
     <Compile Include="Models\OrderStatuses.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\WorkOrders.cs" />

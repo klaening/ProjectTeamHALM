@@ -17,22 +17,25 @@
 
       <StackPanel Grid.Column="0">
         <TextBlock Text="List of Orders" FontSize="40"/>
-        <ListView x:Name="OrderListBox" ItemsSource="{Binding OrderCollection}"
-                 SelectedItem="{Binding SelectedOrder, Mode=TwoWay}" 
+        <ListView x:Name="OrderListBox" ItemsSource="{Binding OrderInfo}"
+                 SelectedItem="{Binding SelectedOrderInfo, Mode=TwoWay}" 
                   MinHeight="500" HorizontalAlignment="Left" MaxWidth="500">
                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding OrderID}"/>
+                        <TextBlock Text="{Binding ID}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
         </ListView>
             <Button x:Name="GoBack_Btn" Content="Go Back" Click="GoBack_Btn_Click" />
         </StackPanel>
 
-        <StackPanel Grid.Column="1" DataContext="{Binding SelectedOrder, Mode=TwoWay}" >
+        <StackPanel Grid.Column="1" DataContext="{Binding SelectedOrderInfo, Mode=TwoWay}" >
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -46,36 +49,47 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition MinWidth="200"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Row="0" Text="Order ID" FontSize="40"/>
-                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="40" Text="{Binding OrderID}"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="40" Text="{Binding ID}"/>
                 
                 <TextBlock Grid.Row="1" Text="Adress:" FontSize="20"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Adress}"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CustomerAddress}"/>
                 
                 <TextBlock Grid.Row="2" Text="Operatör:" FontSize="20"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Operator}"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CustomerName}"/>
                 
                 <TextBlock Grid.Row="3" Text="Tid:" FontSize="20"/>
-                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Time}"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding StartingDate}"/>
                 
                 <TextBlock Grid.Row="4" Text="Arbetsuppgift:" FontSize="20"/>
-                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding WorkTask}"/>
+                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding OrderDescription}"/>
                 
-                <TextBlock Grid.Row="5" Text="Kontaktuppgift:" FontSize="20"/>
-                <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding ContactDetails}"/>
-                
-                <TextBlock Grid.Row="6" Text="" FontSize="20"/>
-                
-                <TextBlock Grid.Row="7" Text="Status:" FontSize="20"/>
-                <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding Status}"/>
-                
-                <TextBlock Grid.Row="8" Text="" FontSize="20"/>
+                <TextBlock Grid.Row="5" Text="Kommentar:" FontSize="20"/>
+                <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Commentary}"/>
 
-                <Button Grid.Row="9" Grid.Column="0" x:Name="Edit_btn" Content='Edit' Width="60"/>
-                <Button Grid.Row="9" Grid.Column="1" x:Name="Delete_btn" Content="Delete" Width="60"/>
+                <TextBlock Grid.Row="6" Text="Telefon:" FontSize="20"/>
+                <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding CustomerPhoneNo}"/>
+
+                <TextBlock Grid.Row="7" Text="" FontSize="20"/>
+                
+                <TextBlock Grid.Row="8" Text="Tilldelad Avdelning:" FontSize="20"/>
+                <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding DepartmentName}"/>
+
+                <TextBlock Grid.Row="9" Text="Tilldelad Person:" FontSize="20"/>
+                <TextBlock Grid.Row="9" Grid.Column="1" Text="{Binding StaffName}"/>
+
+      
+                
+                <TextBlock Grid.Row="10" Text="Status:" FontSize="20"/>
+                <TextBlock Grid.Row="10" Grid.Column="1" Text="{Binding StatusName}"/>
+                
+                <TextBlock Grid.Row="11" Text="" FontSize="20"/>
+
+                <Button Grid.Row="12" Grid.Column="0" x:Name="Edit_btn" Content='Edit' Width="60"/>
+                <Button Grid.Row="12" Grid.Column="1" x:Name="Delete_btn" Content="Delete" Width="60"/>
 
             </Grid>
 

@@ -14,5 +14,7 @@ namespace ToDo_Desktop.Services
         public const string OrderHistory = "orderHistory/";
         public const string Departments = "departments/";
         public const string OrderStatuses = "orderStatuses/";
+        public const string FullOrderDetails = "fullOrderDetails/";
+
     }
 }

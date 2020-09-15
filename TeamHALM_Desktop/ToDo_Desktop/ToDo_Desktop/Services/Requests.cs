@@ -10,9 +10,9 @@ namespace ToDo_Desktop.Services
 {
     public class Requests
     {
-        // public const string HOST = "http://localhost:59893/api/";
+        // public const string HOST = "https://webapihalm.azurewebsites.net/api/";
 
-        public const string HOST = "hostpath";
+        public const string HOST = "https://webapihalm.azurewebsites.net/api/";
 
         public static async Task<HttpResponseMessage> PostRequestAsync(string path, Object objectclass)
         {
