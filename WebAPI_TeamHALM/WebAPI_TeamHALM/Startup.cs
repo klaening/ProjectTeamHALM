@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using WebAPI_TeamHALM_Domain;
 using Microsoft.EntityFrameworkCore;
 using WebAPI_TeamHALM.Data;
+using WebAPI_TeamHALM_Domain.Models;
 
 namespace WebAPI_TeamHALM
 {
@@ -44,6 +45,9 @@ namespace WebAPI_TeamHALM
 
             services.AddSingleton<IWorkOrdersService, WorkOrdersService>();
             services.AddSingleton<IWorkOrdersRepository>(c => new WorkOrdersRepository(Configuration["ConnectionString"]));
+
+            services.AddSingleton<IFullOrderDetailsService, FullOrderDetailsService>();
+            services.AddSingleton<IFullOrderDetailsRepository>(c => new FullOrderDetailsRepository(Configuration["ConnectionString"]));
 
             services.AddControllers();
 
