@@ -31,11 +31,12 @@
                     <Label Grid.Row="6" Grid.Column="0" Text="Kontaktuppgifter:" FontSize="Medium"/>
                     <Label Grid.Row="6" Grid.Column="1" Text="(+46)759 44 57 88" FontSize="Medium"/>
                 </Grid>
-                <!--<Button Text="Accept"></Button>-->
-
+                <Button x:Name="AcceptButton" Text="Accept" Clicked="AcceptButton_Clicked"></Button>
+                <Button x:Name="DoneButton" Text="Done" Clicked="DoneButton_Clicked"></Button>
+                <Button x:Name="BackButton" Text="Back" Clicked="BackButton_Clicked"></Button>
             </StackLayout>
 
-        <StackLayout Spacing="20" Padding="20" Margin="5, 50,5,0" IsVisible="True">
+        <StackLayout x:Name="AdditionalInformation" Spacing="20" Padding="20" Margin="5, 50,5,0" IsVisible="False">
             <Grid>
                 <Label Grid.Row="1" Grid.Column="0" Text="Extra kostnader:" FontSize="Medium"/>
                 <Entry Grid.Row="1" Grid.Column="1" FontSize="Medium"/>
@@ -46,7 +47,8 @@
                 <Label Grid.Row="4" Grid.Column="0" Text="Kommentar:" FontSize="Medium"/>
                 <Entry Grid.Row="4" Grid.Column="1" FontSize="Medium"/>
             </Grid>
-        </StackLayout>
+                <Button x:Name="SendButton" Text="Send" Clicked="SendButton_Clicked"></Button>
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

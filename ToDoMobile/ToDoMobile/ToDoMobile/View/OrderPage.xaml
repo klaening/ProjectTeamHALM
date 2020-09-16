@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:ToDoMobile.View"
              x:Class="ToDoMobile.View.OrderPage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="false">
 
     <!--Pages can be added as references or inline-->
 
