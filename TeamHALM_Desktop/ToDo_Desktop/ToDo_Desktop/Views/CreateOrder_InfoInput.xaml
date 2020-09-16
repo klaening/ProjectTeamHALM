@@ -5,43 +5,52 @@
     xmlns:local="using:ToDo_Desktop.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ToDo_Desktop.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
      
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"
-                              MinWidth="300"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition MinHeight="200"/>
-            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0">
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="4">
             <TextBlock Text="Ny Order" FontSize="50"/>
-            <TextBlock x:Name="Department" Text="Binding Snickare" FontSize="45"/>
+            <TextBlock Text="{Binding SelectedDepartment}" FontSize="45"/>
         </StackPanel>
 
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
+           <!--<AutoSuggestBox x:Name="asb" QueryIcon="Find" SuggestionChosen="AutoSuggestBox_SuggestionChosen"
+                            ItemsSource="{Binding CustomerList}"
+                            DisplayMemberPath="CustomerName"
+                            TextMemberPath="CustomerName"
+                        Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"
+                        MinWidth="300" MinHeight="50"/>-->
+
+            <ComboBox ItemsSource="{Binding CustomerList}"
+                      DisplayMemberPath="CustomerName"
+                      PlaceholderText="Välj kund"
+                      SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"/>
+
+            <ComboBox ItemsSource="{Binding StaffList}"
+                      DisplayMemberPath="StaffName"
+                      PlaceholderText="Välj operatör"
+                      SelectedItem="{Binding SelectedStaff, Mode=TwoWay}"/>
+
+            <DatePicker SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Grid.Column="0" Grid.Row="4"/>
+
+        </StackPanel>
 
         <Button x:Name="Return_Btn" Content="Go Back" VerticalAlignment="Bottom" 
                 Click="Return_Btn_Click" Grid.Row="5"/>
-
-        <TextBlock x:Name="OrderCreator" Text="Binding Name" FontSize="35"
-                   Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <AutoSuggestBox x:Name="ExistingClients" PlaceholderText="Kund"
-                        Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"
-                        MinWidth="300" MinHeight="50"/>
-        <ComboBox x:Name="Employee" PlaceholderText="Anställd" MinWidth="300" MinHeight="50"
-                  Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-
-        <DatePicker x:Name="DatePicker" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="4">
             <Grid>
@@ -52,48 +61,39 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Text="Order ID" FontSize="40"/>
+                <TextBlock Grid.Row="0" Text="Order detaljer" FontSize="40" Grid.ColumnSpan="2"/>
+
+                <!-- Bindas till vald order -->
                 
+                <TextBlock Grid.Row="1" Text="Adress:"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" 
+                           Text="{Binding SelectedCustomer.CustomerAddress}"/>
 
-                <TextBlock Grid.Row="1" Text="Adress:" FontSize="20"/>
-                <TextBox x:Name="Adress" PlaceholderText="ex Govägen 1A, Göteborg"
-                         Grid.Row="1" Grid.Column="1"/>
+                <!-- Bindas till Kundens adress -->
+                
+                <TextBlock Grid.Row="2" Text="Operatör"/>
+                <TextBlock Text="{Binding SelectedStaff.StaffName}"
+                           Grid.Row="2" Grid.Column="1"/>
 
-                <TextBlock Grid.Row="2" Text="Operatör:" FontSize="20"/>
-                <TextBox x:Name="Operator" PlaceholderText="ex Bosses Bil"
-                         Grid.Row="2" Grid.Column="1"/>
+                <!--<TextBlock Grid.Row="3" Text="Tid:"/>
+                <TimePicker Grid.Row="3" Grid.Column="1"/>-->
 
-                <TextBlock Grid.Row="3" Text="Tid:" FontSize="20"/>
-                <TextBox x:Name="Time" PlaceholderText="ex 10h 40m"
+                <TextBlock Grid.Row="3" Text="Arbetsbeskrivning"/>
+                <TextBox x:Name="ArbetsBeskrivning" PlaceholderText="Ex cut trees"
                          Grid.Row="3" Grid.Column="1"/>
 
-                <TextBlock Grid.Row="4" Text="Arbetsuppgift:" FontSize="20"/>
-                <TextBox x:Name="Task" PlaceholderText="Ex cut trees"
+                <TextBlock Grid.Row="4" Text="Kontaktuppgift:"/>
+                <TextBlock Text="{Binding SelectedCustomer.CustomerPhoneNo}"
                          Grid.Row="4" Grid.Column="1"/>
 
-                <TextBlock Grid.Row="5" Text="Kontaktuppgift:" FontSize="20"/>
-                <TextBox x:Name="Contact" PlaceholderText="ex +46760123456"
-                         Grid.Row="5" Grid.Column="1"/>
-
-                <TextBlock Grid.Row="6" Text="" FontSize="20"/>
-
-                <TextBlock Grid.Row="7" Text="Status:" FontSize="20"/>
-                <ComboBox x:Name="Status" Grid.Row="7" Grid.Column="1"/>
-
-                <TextBlock Grid.Row="8" Text="" FontSize="20"/>
-
-                <Button Grid.Row="9" Grid.Column="0" x:Name="Edit_btn" Content='Edit' Width="60"/>
-                <Button Grid.Row="9" Grid.Column="1" x:Name="Delete_btn" Content="Delete" Width="60"/>
+                <Button Grid.Row="5" Grid.Column="0" x:Name="Reset_btn" Content='Reset' Width="60"/>
+                <Button Grid.Row="5" Grid.Column="1" x:Name="Spara_btn" Content="Spara" Width="60" Click="Spara_btn_Click"/>
             </Grid>
 
         </StackPanel>

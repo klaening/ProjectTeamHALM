@@ -33,17 +33,18 @@ namespace ToDo_Desktop.Views
 
         private void Elektriker_Btn_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(CreateOrder_InfoInput));
+            Frame.Navigate(typeof(CreateOrder_InfoInput), Elektriker_Btn.Content.ToString());
         }
 
         private void Snickare_Btn_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(CreateOrder_InfoInput));
+            Frame.Navigate(typeof(CreateOrder_InfoInput), Snickare_Btn.Content.ToString());
         }
 
-        private void VvS_Btn_Click(object sender, RoutedEventArgs e)
+        private void Mekaniker_Btn_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(CreateOrder_InfoInput));
+
+            Frame.Navigate(typeof(CreateOrder_InfoInput), Mekaniker_Btn.Content.ToString());
         }
 
         private void Return_Btn_Click(object sender, RoutedEventArgs e)

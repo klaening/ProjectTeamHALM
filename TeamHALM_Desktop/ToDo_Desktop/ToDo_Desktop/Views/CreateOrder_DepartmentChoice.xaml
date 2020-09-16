@@ -20,15 +20,15 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="Elektriker_Btn" Content="Elektriker" 
+        <Button x:Name="Elektriker_Btn" Content="Elektronik" 
                 Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
                  Width="400" Height="200" FontSize="40" Click="Elektriker_Btn_Click"/>
-        <Button x:Name="Snickare_Btn" Content="Snickare" 
+        <Button x:Name="Snickare_Btn" Content="Snickeri" 
                 Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"
                  Width="400" Height="200" FontSize="40" Click="Snickare_Btn_Click"/>
-        <Button x:Name="VvS_Btn" Content="VVS" 
+        <Button x:Name="Mekaniker_Btn" Content="Mekanik" 
                 Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"
-                 Width="400" Height="200" FontSize="40" Click="VvS_Btn_Click"/>
+                 Width="400" Height="200" FontSize="40" Click="Mekaniker_Btn_Click"/>
         <Button x:Name="Return_Btn" Content="Return" Grid.Row="0" Grid.Column="0"
                 Width="100" Height="50" VerticalAlignment="Top" Click="Return_Btn_Click"/>
     </Grid>
