@@ -135,7 +135,6 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\Paths.cs" />
     <Compile Include="Services\Requests.cs" />
-    <Compile Include="Converters\StringToBoolConverter.cs" />
     <Compile Include="ViewModels\AdminMainPage_VM.cs" />
     <Compile Include="ViewModels\BindableBase.cs" />
     <Compile Include="ViewModels\CreateOrder_DepartmentChoice_VM.cs" />

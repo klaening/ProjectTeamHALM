@@ -6,14 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:ToDo_Desktop.ViewModels"
-    xmlns:converter="using:ToDo_Desktop.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.Resources>
-        <converter:StringToBoolConverter x:Key="StringToBoolConverter"/>
-    </Page.Resources>
-    
     <Grid>
      
         <Grid.ColumnDefinitions>
@@ -78,8 +73,6 @@
                 <TextBlock Text="Orderdetaljer"
                            Grid.Row="0" Grid.ColumnSpan="2"/>
 
-                <!-- Bindas till vald order -->
-
                 <TextBlock Text="KUNDUPPGIFTER" 
                            Grid.Row="1" Grid.Column="0"/>
 
@@ -96,8 +89,7 @@
                 <TextBlock Text="Kontakt"
                            Grid.Row="4"/>
                 <TextBlock Text="{Binding SelectedCustomer.CustomerPhoneNo}"
-                         Grid.Row="4" Grid.Column="1"/>                
-                <!-- Bindas till Kundens adress -->
+                         Grid.Row="4" Grid.Column="1"/>
 
                 <TextBlock Grid.Row="5" Text="Operatör"/>
                 <TextBlock Text="{Binding SelectedStaff.StaffName}"
@@ -111,10 +103,15 @@
                          Text="{Binding SelectedOrderDescription, Mode=TwoWay}"
                          Grid.Row="7" Grid.Column="1"/>
 
+                <!--<Button Content="Spara"
+                        Command="{Binding SaveCommand}"
+                        Grid.Row="8" Grid.Column="1"
+                        IsEnabled="{Binding SelectedOrderDescription, Converter={StaticResource StringToBoolConverter}}"/>-->
+
                 <Button Content="Spara"
                         Command="{Binding SaveCommand}"
                         Grid.Row="8" Grid.Column="1"
-                        IsEnabled="{Binding SelectedOrderDescription, Converter={StaticResource StringToBoolConverter}}"/>
+                        IsEnabled="{Binding MultiCheck}"/>
 
                 <!--<Button Content="Spara"
                         Command="{Binding SaveCommand}"
