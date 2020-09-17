@@ -61,41 +61,54 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Text="Order detaljer" FontSize="40" Grid.ColumnSpan="2"/>
+                <TextBlock Text="Orderdetaljer"
+                           Grid.Row="0" Grid.ColumnSpan="2"/>
 
                 <!-- Bindas till vald order -->
-                
-                <TextBlock Grid.Row="1" Text="Adress:"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" 
-                           Text="{Binding SelectedCustomer.CustomerAddress}"/>
 
-                <!-- Bindas till Kundens adress -->
-                
-                <TextBlock Grid.Row="2" Text="Operatör"/>
-                <TextBlock Text="{Binding SelectedStaff.StaffName}"
+                <TextBlock Text="KUNDUPPGIFTER" 
+                           Grid.Row="1" Grid.Column="0"/>
+
+                <TextBlock Text="Företagsnamn" 
+                           Grid.Row="2"/>
+                <TextBlock Text="{Binding SelectedCustomer.CustomerName}"
                            Grid.Row="2" Grid.Column="1"/>
 
-                <!--<TextBlock Grid.Row="3" Text="Tid:"/>
-                <TimePicker Grid.Row="3" Grid.Column="1"/>-->
+                <TextBlock Text="Adress"
+                           Grid.Row="3"/>
+                <TextBlock Text="{Binding SelectedCustomer.CustomerAddress}"
+                           Grid.Row="3" Grid.Column="1"/>
 
-                <TextBlock Grid.Row="3" Text="Arbetsbeskrivning"/>
-                <TextBox x:Name="ArbetsBeskrivning" PlaceholderText="Ex cut trees"
-                         Grid.Row="3" Grid.Column="1"/>
-
-                <TextBlock Grid.Row="4" Text="Kontaktuppgift:"/>
+                <TextBlock Text="Kontakt"
+                           Grid.Row="4"/>
                 <TextBlock Text="{Binding SelectedCustomer.CustomerPhoneNo}"
-                         Grid.Row="4" Grid.Column="1"/>
+                         Grid.Row="4" Grid.Column="1"/>                
+                <!-- Bindas till Kundens adress -->
 
-                <Button Grid.Row="5" Grid.Column="0" x:Name="Reset_btn" Content='Reset' Width="60"/>
-                <Button Grid.Row="5" Grid.Column="1" x:Name="Spara_btn" Content="Spara" Width="60" Click="Spara_btn_Click"/>
+                <TextBlock Grid.Row="5" Text="Operatör"/>
+                <TextBlock Text="{Binding SelectedStaff.StaffName}"
+                           Grid.Row="5" Grid.Column="1"/>
+
+                <TextBlock Grid.Row="6"/>
+
+                <TextBlock Grid.Row="7" Text="Arbetsbeskrivning"/>
+                <TextBox PlaceholderText="Ex cut trees"
+                         Text="{Binding SelectedOrderDescription, Mode=TwoWay}"
+                         Grid.Row="7" Grid.Column="1"/>
+
+                <Button Content="Spara" Command="{Binding SaveCommand}"
+                        Grid.Row="8" Grid.Column="1"/>
+
             </Grid>
-
         </StackPanel>
     </Grid>
 </Page>

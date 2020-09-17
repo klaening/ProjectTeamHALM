@@ -44,44 +44,5 @@ namespace ToDo_Desktop.Views
         {
             Frame.GoBack();
         }
-
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private async void Spara_btn_Click(object sender, RoutedEventArgs e)
-        {
-            WorkOrders workOrder = new WorkOrders
-            {
-                Description = ArbetsBeskrivning.Text,
-                StartingDate = _viewModel.SelectedDate.UtcDateTime,
-                StaffID = _viewModel.SelectedStaff.ID,
-                OrderStatusesID = 1,
-                CustomersID = _viewModel.SelectedCustomer.ID
-            };
-
-            try
-            {
-                var response = await Requests.PostRequestAsync(Paths.WorkOrders, workOrder);
-                var statusCode = response.StatusCode;
-
-                if (statusCode == HttpStatusCode.OK)
-                {
-                    var dialog = new MessageDialog("Work order successfully saved", "Success");
-                    await dialog.ShowAsync();
-
-                    //Fixa NavigationService?
-                    var frame = (Frame)Window.Current.Content;
-                    frame.GoBack();
-                    //
-                }
-            }
-            catch (Exception)
-            {
-                var dialog = new MessageDialog("Something went wrong", "Error");
-                await dialog.ShowAsync();
-            }
-        }
     }
 }
