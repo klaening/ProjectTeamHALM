@@ -87,6 +87,8 @@ namespace ToDo_Desktop.ViewModels
 
         public CreateOrder_InfoInput_VM()
         {
+            _navigationService = new NavigationService();
+
             SelectedDate = DateTimeOffset.Now;
 
             var result = Requests.GetRequest(Paths.Customers);
@@ -111,11 +113,12 @@ namespace ToDo_Desktop.ViewModels
         {
             WorkOrders workOrder = new WorkOrders
             {
-                Description = SelectedOrderDescription,
+                OrderDescription = SelectedOrderDescription,
                 StartingDate = SelectedDate.UtcDateTime,
                 StaffID = SelectedStaff.ID,
                 OrderStatusesID = 1,
-                CustomersID = SelectedCustomer.ID
+                CustomersID = SelectedCustomer.ID,
+                HoursSpent = 1
             };
 
             try
