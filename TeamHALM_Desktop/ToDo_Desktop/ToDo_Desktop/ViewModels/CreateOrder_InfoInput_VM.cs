@@ -22,12 +22,23 @@ namespace ToDo_Desktop.ViewModels
         public ObservableCollection<Staff> StaffList { get; set; }
         public ObservableCollection<Departments> DepartmentList { get; set; }
 
+        private int _btnID;
+        public int BtnID 
+        { 
+            get => _btnID;
+            set 
+            {
+                SetProperty(ref _btnID, value);
+                SelectedDepartment = DepartmentList.FirstOrDefault(x => x.ID == _btnID);
+            } 
+        }
+
         //Gör om till Department
-        private string _selectedDepartment;
-        public string SelectedDepartment
+        private Departments _selectedDepartment;
+        public Departments SelectedDepartment
         {
-            get { return _selectedDepartment; }
-            set { SetProperty(ref _selectedDepartment, value); }
+            get => _selectedDepartment;
+            set => SetProperty(ref _selectedDepartment, value); 
         }
 
         private Customers _selectedCustomer;
@@ -78,6 +89,7 @@ namespace ToDo_Desktop.ViewModels
             var departments = JsonConvert.DeserializeObject<ObservableCollection<Departments>>(result);
 
             DepartmentList = departments;
+
             SaveCommand = new RelayCommand(SaveWorkOrder, () => true);
         }
 

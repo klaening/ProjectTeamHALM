@@ -24,7 +24,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="4">
             <TextBlock Text="Ny Order" FontSize="50"/>
-            <TextBlock Text="{Binding SelectedDepartment}" FontSize="45"/>
+            <TextBlock Text="{Binding SelectedDepartment.DepartmentName, Mode=TwoWay}" FontSize="45"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">

@@ -31,20 +31,12 @@ namespace ToDo_Desktop.Views
             DataContext = _viewModel;
         }
 
-        private void Elektriker_Btn_Click(object sender, RoutedEventArgs e)
+        private void Navigation_Btn_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(CreateOrder_InfoInput), Elektriker_Btn.Content.ToString());
-        }
+            var button = (Button)sender;
 
-        private void Snickare_Btn_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(CreateOrder_InfoInput), Snickare_Btn.Content.ToString());
-        }
-
-        private void Mekaniker_Btn_Click(object sender, RoutedEventArgs e)
-        {
-
-            Frame.Navigate(typeof(CreateOrder_InfoInput), Mekaniker_Btn.Content.ToString());
+            int tag = int.Parse(button.Tag.ToString());
+            Frame.Navigate(typeof(CreateOrder_InfoInput), tag);
         }
 
         private void Return_Btn_Click(object sender, RoutedEventArgs e)

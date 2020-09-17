@@ -37,7 +37,7 @@ namespace ToDo_Desktop.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _viewModel.SelectedDepartment = (string)e.Parameter;
+            _viewModel.BtnID = (int)e.Parameter;
         }
 
         private void Return_Btn_Click(object sender, RoutedEventArgs e)
