@@ -10,9 +10,9 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"
-                              MinWidth="300"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
       <StackPanel Grid.Column="0">
@@ -49,7 +49,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
-                    <ColumnDefinition MinWidth="200"/>
+                    <ColumnDefinition Width="400"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Row="0" Text="Order ID" FontSize="40"/>
@@ -95,10 +95,39 @@
 
         </StackPanel>
 
+        <StackPanel Grid.Column="2"
+                   Visibility="{Binding IsVisible, Mode=TwoWay}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="400"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Arbetade_Timmar" FontSize="20"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedOrderInfo.HoursSpent}"/>
+
+                <TextBlock Grid.Row="1" Text="Restid:" FontSize="20"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedOrderInfo.TravelTime}"/>
+
+                <TextBlock Grid.Row="2" Text="Extrakostnader:" FontSize="20"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding SelectedOrderInfo.ExtraCosts}"/>
+
+                <TextBlock Grid.Row="3" Text=""/>
+
+                <Button x:Name="Accept_Btn" Width="60" Grid.Row="5" Content="Acceptera"/>
+            </Grid>
+
+        </StackPanel>
 
 
-
-    <Button Grid.Column="1" x:Name="CreateOrder" Content="New Order" 
+        <Button Grid.Column="1" x:Name="CreateOrder" Content="New Order" 
                     HorizontalAlignment="Center" VerticalAlignment="Center" 
                     Width="100" Height="50" Click="CreateOrder_Click"/>
     </Grid>
