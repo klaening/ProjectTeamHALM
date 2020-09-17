@@ -37,10 +37,8 @@ namespace ToDo_Desktop.ViewModels
         public AdminMainPage_VM()
         {
             navigationService = new NavigationService();
-            var result = Requests.GetRequest(Paths.FullOrderDetails);
-            var orderInfo = JsonConvert.DeserializeObject<ObservableCollection<OrderInfo>>(result);
 
-            OrderInfo = orderInfo;
+            UpdateOrderList();
 
             DeleteCommand = new RelayCommand(DeleteWorkOrder, () => true);
         }
@@ -70,8 +68,7 @@ namespace ToDo_Desktop.ViewModels
                         await dialog.ShowAsync();
                     }
 
-                    var result = Requests.GetRequest(Paths.FullOrderDetails);
-                    OrderInfo = JsonConvert.DeserializeObject<ObservableCollection<OrderInfo>>(result);
+                    UpdateOrderList();
                 }
                 catch (Exception)
                 {
@@ -79,6 +76,12 @@ namespace ToDo_Desktop.ViewModels
                     await dialog.ShowAsync();
                 }
             }
+        }
+
+        private void UpdateOrderList()
+        {
+            var result = Requests.GetRequest(Paths.FullOrderDetails);
+            OrderInfo = JsonConvert.DeserializeObject<ObservableCollection<OrderInfo>>(result);
         }
     }
 }
