@@ -117,8 +117,7 @@ namespace ToDo_Desktop.ViewModels
                 StartingDate = SelectedDate.UtcDateTime,
                 StaffID = SelectedStaff.ID,
                 OrderStatusesID = 1,
-                CustomersID = SelectedCustomer.ID,
-                HoursSpent = 1
+                CustomersID = SelectedCustomer.ID
             };
 
             try
