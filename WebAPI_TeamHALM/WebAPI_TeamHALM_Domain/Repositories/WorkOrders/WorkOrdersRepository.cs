@@ -105,5 +105,22 @@ namespace WebAPI_TeamHALM_Domain
                 }
             }
         }
+
+        public async Task<object> UpdateWorkOrder(int statusId, int id)
+        {
+            using (var c = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    await c.ExecuteAsync("UPDATE WorkOrders SET OrderStatusesID = @statusId WHERE ID = @id", new { statusId, id });
+
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
