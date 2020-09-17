@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ToDo_Desktop.ExtensionMethods;
 using ToDo_Desktop.Models;
 using ToDo_Desktop.Services;
 using Windows.UI.Popups;
@@ -47,8 +48,10 @@ namespace ToDo_Desktop.ViewModels
             {
                 SetProperty(ref _selectedDepartment, value);
 
-                var filteredStaff = StaffList.Where(x => x.DepartmentsID == SelectedDepartment.ID);
-                StaffList = new ObservableCollection<Staff>(filteredStaff);
+                StaffList = StaffList.Where(x => x.DepartmentsID == _selectedDepartment.ID).MakeObservable();
+
+                //var filteredStaff = StaffList.Where(x => x.DepartmentsID == SelectedDepartment.ID);
+                //StaffList = new ObservableCollection<Staff>(filteredStaff);
             } 
         }
 
