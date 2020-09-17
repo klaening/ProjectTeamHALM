@@ -69,6 +69,9 @@ namespace ToDo_Desktop.ViewModels
                         dialog = new MessageDialog("Work order successfully deleted", "Success");
                         await dialog.ShowAsync();
                     }
+
+                    var result = Requests.GetRequest(Paths.FullOrderDetails);
+                    OrderInfo = JsonConvert.DeserializeObject<ObservableCollection<OrderInfo>>(result);
                 }
                 catch (Exception)
                 {
