@@ -40,7 +40,7 @@
                       PlaceholderText="Välj kund"
                       SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"/>
 
-            <ComboBox ItemsSource="{Binding StaffList}"
+            <ComboBox ItemsSource="{Binding StaffList, Mode=TwoWay}"
                       DisplayMemberPath="StaffName"
                       PlaceholderText="Välj operatör"
                       SelectedItem="{Binding SelectedStaff, Mode=TwoWay}"/>

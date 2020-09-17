@@ -19,7 +19,12 @@ namespace ToDo_Desktop.ViewModels
     {
         public NavigationService _navigationService { get; set; }
         public ObservableCollection<Customers> CustomerList { get; set; }
-        public ObservableCollection<Staff> StaffList { get; set; }
+        private ObservableCollection<Staff> _staffList;
+        public ObservableCollection<Staff> StaffList 
+        {
+            get => _staffList;
+            set => SetProperty(ref _staffList, value);
+        }
         public ObservableCollection<Departments> DepartmentList { get; set; }
 
         private int _btnID;
@@ -30,7 +35,7 @@ namespace ToDo_Desktop.ViewModels
             {
                 SetProperty(ref _btnID, value);
                 SelectedDepartment = DepartmentList.FirstOrDefault(x => x.ID == _btnID);
-            } 
+            }
         }
 
         //Gör om till Department
@@ -38,7 +43,13 @@ namespace ToDo_Desktop.ViewModels
         public Departments SelectedDepartment
         {
             get => _selectedDepartment;
-            set => SetProperty(ref _selectedDepartment, value); 
+            set
+            {
+                SetProperty(ref _selectedDepartment, value);
+
+                var filteredStaff = StaffList.Where(x => x.DepartmentsID == SelectedDepartment.ID);
+                StaffList = new ObservableCollection<Staff>(filteredStaff);
+            } 
         }
 
         private Customers _selectedCustomer;
@@ -78,16 +89,16 @@ namespace ToDo_Desktop.ViewModels
             var result = Requests.GetRequest(Paths.Customers);
             var customers = JsonConvert.DeserializeObject<ObservableCollection<Customers>>(result);
 
-            CustomerList = customers;
-
             result = Requests.GetRequest(Paths.Staff);
             var staff = JsonConvert.DeserializeObject<ObservableCollection<Staff>>(result);
-
-            StaffList = staff;
 
             result = Requests.GetRequest(Paths.Departments);
             var departments = JsonConvert.DeserializeObject<ObservableCollection<Departments>>(result);
 
+            CustomerList = customers;
+            
+            StaffList = staff;
+            
             DepartmentList = departments;
 
             SaveCommand = new RelayCommand(SaveWorkOrder, () => true);
