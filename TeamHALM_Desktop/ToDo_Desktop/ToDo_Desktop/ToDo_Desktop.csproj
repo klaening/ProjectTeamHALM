@@ -135,6 +135,7 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\Paths.cs" />
     <Compile Include="Services\Requests.cs" />
+    <Compile Include="Converters\StringToBoolConverter.cs" />
     <Compile Include="ViewModels\AdminMainPage_VM.cs" />
     <Compile Include="ViewModels\BindableBase.cs" />
     <Compile Include="ViewModels\CreateOrder_DepartmentChoice_VM.cs" />
@@ -197,6 +198,7 @@
       <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

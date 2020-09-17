@@ -6,9 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:ToDo_Desktop.ViewModels"
+    xmlns:converter="using:ToDo_Desktop.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <converter:StringToBoolConverter x:Key="StringToBoolConverter"/>
+    </Page.Resources>
+    
     <Grid>
      
         <Grid.ColumnDefinitions>
@@ -101,12 +106,20 @@
                 <TextBlock Grid.Row="6"/>
 
                 <TextBlock Grid.Row="7" Text="Arbetsbeskrivning"/>
-                <TextBox PlaceholderText="Ex cut trees"
+                <TextBox x:Name="OrderDescBox"
+                         PlaceholderText="Ex cut trees"
                          Text="{Binding SelectedOrderDescription, Mode=TwoWay}"
                          Grid.Row="7" Grid.Column="1"/>
 
-                <Button Content="Spara" Command="{Binding SaveCommand}"
-                        Grid.Row="8" Grid.Column="1"/>
+                <Button Content="Spara"
+                        Command="{Binding SaveCommand}"
+                        Grid.Row="8" Grid.Column="1"
+                        IsEnabled="{Binding SelectedOrderDescription, Converter={StaticResource StringToBoolConverter}}"/>
+
+                <!--<Button Content="Spara"
+                        Command="{Binding SaveCommand}"
+                        Grid.Row="8" Grid.Column="1"
+                        IsEnabled="{Binding ElementName=OrderDescBox, Path=Text.Length, Mode=TwoWay}"/>-->
 
             </Grid>
         </StackPanel>

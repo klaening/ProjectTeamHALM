@@ -20,6 +20,7 @@ namespace ToDo_Desktop.ViewModels
     {
         public NavigationService _navigationService { get; set; }
         public ObservableCollection<Customers> CustomerList { get; set; }
+
         private ObservableCollection<Staff> _staffList;
         public ObservableCollection<Staff> StaffList 
         {
