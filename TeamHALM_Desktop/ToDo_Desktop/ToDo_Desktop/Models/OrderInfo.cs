@@ -8,8 +8,6 @@ namespace ToDo_Desktop.Models
 {
     public class OrderInfo
     {
-        
-         
         public int ID { get; set; }
         public string OrderDescription { get; set; }
         public DateTime StartingDate { get; set; }
@@ -27,7 +25,5 @@ namespace ToDo_Desktop.Models
         public string CustomerName { get; set; }
         public string CustomerAddress { get; set; }
         public string CustomerPhoneNo { get; set; }
-    
-
     }
 }

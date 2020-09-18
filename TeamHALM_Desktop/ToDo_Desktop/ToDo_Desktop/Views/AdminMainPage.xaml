@@ -88,8 +88,12 @@
                 
                 <TextBlock Grid.Row="11" Text="" FontSize="20"/>
 
-                <Button Grid.Row="12" Grid.Column="0" x:Name="Edit_btn" Content='Edit' Width="60"/>
-                <Button Grid.Row="12" Grid.Column="1" x:Name="Delete_btn" Content="Delete" Width="60"/>
+                <Button Grid.Row="12" Grid.Column="0" Content='Edit'
+                        Click="EditBtn_Click"/>
+                
+                <Button DataContext="{x:Bind _viewModel}"
+                        Grid.Row="12" Grid.Column="1" Content="Delete"
+                        Command="{Binding DeleteCommand}"/>
 
             </Grid>
 

@@ -64,13 +64,39 @@ namespace ToDo_Desktop.ViewModels
         public AdminMainPage_VM()
         {
             navigationService = new NavigationService();
-            var result = Requests.GetRequest(Paths.FullOrderDetails);
-            var orderInfo = JsonConvert.DeserializeObject<ObservableCollection<OrderInfo>>(result);
 
-            OrderInfo = orderInfo;
+            UpdateOrderList();
+
+            DeleteCommand = new RelayCommand(DeleteWorkOrder, () => true);
 
             AcceptCommand = new RelayCommand(AcceptOrderAsync, () => true);
         }
+
+        public ICommand DeleteCommand { get; set; }
+        private async void DeleteWorkOrder()
+        {
+            var dialog = new MessageDialog("Are you sure you want to delete?", "Warning");
+            dialog.Commands.Add(new UICommand("Yes", null));
+            dialog.Commands.Add(new UICommand("Cancel", null));
+
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+
+            var command = await dialog.ShowAsync();
+
+            if (command.Label == "Yes")
+            {
+                try
+                {
+                    var response = await Requests.DeleteRequestAsync(Paths.WorkOrders, SelectedOrderInfo.ID);
+                    var statusCode = response.StatusCode;
+
+
+                    if (statusCode == HttpStatusCode.OK)
+                    {
+                        dialog = new MessageDialog("Work order successfully deleted", "Success");
+                        await dialog.ShowAsync();
+                    }
 
         public ICommand AcceptCommand { get; set; }
 
@@ -101,6 +127,7 @@ namespace ToDo_Desktop.ViewModels
                     var dialog = new MessageDialog("Work order successfully updated", "Success");
                     await dialog.ShowAsync();
                 }
+                UpdateOrderList();
             }
             catch (Exception)
             {
@@ -109,5 +136,10 @@ namespace ToDo_Desktop.ViewModels
             }
         }
 
+        private void UpdateOrderList()
+        {
+            var result = Requests.GetRequest(Paths.FullOrderDetails);
+            OrderInfo = JsonConvert.DeserializeObject<ObservableCollection<OrderInfo>>(result);
+        }
     }
 }

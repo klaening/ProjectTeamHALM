@@ -42,5 +42,9 @@ namespace ToDo_Desktop.Views
             Frame.Navigate(typeof(CreateOrder_DepartmentChoice));
         }
 
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(EditOrderPage), _viewModel.SelectedOrderInfo);
+        }
     }
 }

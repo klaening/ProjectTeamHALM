@@ -135,10 +135,12 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\Paths.cs" />
     <Compile Include="Services\Requests.cs" />
+    <Compile Include="Services\Statuses.cs" />
     <Compile Include="ViewModels\AdminMainPage_VM.cs" />
     <Compile Include="ViewModels\BindableBase.cs" />
     <Compile Include="ViewModels\CreateOrder_DepartmentChoice_VM.cs" />
     <Compile Include="ViewModels\CreateOrder_InfoInput_VM.cs" />
+    <Compile Include="ViewModels\EditOrderPage_VM.cs" />
     <Compile Include="Views\AdminMainPage.xaml.cs">
       <DependentUpon>AdminMainPage.xaml</DependentUpon>
     </Compile>
@@ -147,6 +149,9 @@
     </Compile>
     <Compile Include="Views\CreateOrder_InfoInput.xaml.cs">
       <DependentUpon>CreateOrder_InfoInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditOrderPage.xaml.cs">
+      <DependentUpon>EditOrderPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +190,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\EditOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
@@ -197,6 +206,7 @@
       <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

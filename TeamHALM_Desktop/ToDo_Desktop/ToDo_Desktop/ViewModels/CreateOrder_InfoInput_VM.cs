@@ -20,6 +20,7 @@ namespace ToDo_Desktop.ViewModels
     {
         public NavigationService _navigationService { get; set; }
         public ObservableCollection<Customers> CustomerList { get; set; }
+
         private ObservableCollection<Staff> _staffList;
         public ObservableCollection<Staff> StaffList 
         {
@@ -47,11 +48,7 @@ namespace ToDo_Desktop.ViewModels
             set
             {
                 SetProperty(ref _selectedDepartment, value);
-
                 StaffList = StaffList.Where(x => x.DepartmentsID == _selectedDepartment.ID).MakeObservable();
-
-                //var filteredStaff = StaffList.Where(x => x.DepartmentsID == SelectedDepartment.ID);
-                //StaffList = new ObservableCollection<Staff>(filteredStaff);
             } 
         }
 
@@ -59,28 +56,57 @@ namespace ToDo_Desktop.ViewModels
         public Customers SelectedCustomer
         {
             get => _selectedCustomer;
-            set => SetProperty(ref _selectedCustomer, value);
+            set
+            {
+                SetProperty(ref _selectedCustomer, value);
+                MultiCheck = true;
+            }
         }
 
         private Staff _selectedStaff;
         public Staff SelectedStaff
         {
             get => _selectedStaff;
-            set => SetProperty(ref _selectedStaff, value);
+            set
+            {
+                SetProperty(ref _selectedStaff, value);
+                MultiCheck = true;
+            }
         }
 
         private DateTimeOffset _selectedDate;
         public DateTimeOffset SelectedDate
         {
             get => _selectedDate;
-            set => SetProperty(ref _selectedDate, value);
+            set
+            {
+                SetProperty(ref _selectedDate, value);
+                MultiCheck = true;
+            }
         }
 
         private string _selectedOrderDescription;
         public string SelectedOrderDescription
         {
             get => _selectedOrderDescription;
-            set => SetProperty(ref _selectedOrderDescription, value);
+            set 
+            {
+                SetProperty(ref _selectedOrderDescription, value);
+                MultiCheck = true;
+            } 
+        }
+
+        private bool _multiCheck;
+        public bool MultiCheck
+        {
+            get => _multiCheck;
+            set
+            {
+                if (_selectedCustomer == null || _selectedStaff == null || _selectedDate == null || string.IsNullOrWhiteSpace(_selectedOrderDescription))
+                    SetProperty(ref _multiCheck, false);
+                else
+                    SetProperty(ref _multiCheck, value);
+            }
         }
 
         public ICommand SaveCommand { get; set; }
