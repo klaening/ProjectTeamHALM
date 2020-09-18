@@ -35,9 +35,9 @@ namespace WebAPI_TeamHALM_Domain
             return await _workOrdersRepository.GetWorkOrder(id);
         }
 
-        public async Task<object> UpdateWorkOrder(int statusId, int id)
+        public async Task<object> UpdateWorkOrder(FullOrderDetails order, int statusId)
         {
-            return await _workOrdersRepository.UpdateWorkOrder(statusId, id);
+            return await _workOrdersRepository.UpdateWorkOrder(order, statusId);
         }
 
         public async Task<bool> UpdateWorkOrder(WorkOrders workOrder)

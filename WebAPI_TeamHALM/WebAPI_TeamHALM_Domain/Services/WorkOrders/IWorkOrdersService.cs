@@ -12,7 +12,7 @@ namespace WebAPI_TeamHALM_Domain
         Task<IEnumerable<WorkOrders>> GetWorkOrders();
         Task<WorkOrders> GetWorkOrder(int id);
         Task<bool> UpdateWorkOrder(WorkOrders workOrder);
-        Task<object> UpdateWorkOrder(int statusId, int id);
+        Task<object> UpdateWorkOrder(FullOrderDetails order, int statusId);
         Task<bool> DeleteWorkOrder(int id);
     }
 }
