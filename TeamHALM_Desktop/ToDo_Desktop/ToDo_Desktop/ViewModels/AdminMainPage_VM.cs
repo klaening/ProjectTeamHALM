@@ -60,26 +60,35 @@ namespace ToDo_Desktop.ViewModels
             }
         }
 
-        //Gör om SelectedOrder till en order.
+
+        public AdminMainPage_VM()
+        {
+            navigationService = new NavigationService();
+            var result = Requests.GetRequest(Paths.FullOrderDetails);
+            var orderInfo = JsonConvert.DeserializeObject<ObservableCollection<OrderInfo>>(result);
+
+            OrderInfo = orderInfo;
+
+            AcceptCommand = new RelayCommand(AcceptOrderAsync, () => true);
+        }
 
         public ICommand AcceptCommand { get; set; }
 
-        private async void AcceptOrderAsync() // ska vara async eftersom put requesten är await
+        private async void AcceptOrderAsync()
         {
-            // put request med id från selectedorder
-            // sätter id i url
+
             WorkOrders updatedOrder = new WorkOrders
             {
-               ID = SelectedOrderInfo.ID,
-               OrderDescription = SelectedOrderInfo.OrderDescription,
-               StartingDate = SelectedOrderInfo.StartingDate,
-               Commentary = SelectedOrderInfo.Commentary,
-               HoursSpent = SelectedOrderInfo.HoursSpent,
-               TravelTime = SelectedOrderInfo.TravelTime,
-               ExtraCosts = SelectedOrderInfo.ExtraCosts,
-               StaffID = SelectedOrderInfo.StaffID,
-               OrderStatusesID = SelectedOrderInfo.OrderStatusesID + 1,
-               CustomersID = SelectedOrderInfo.CustomersID
+                ID = SelectedOrderInfo.ID,
+                OrderDescription = SelectedOrderInfo.OrderDescription,
+                StartingDate = SelectedOrderInfo.StartingDate,
+                Commentary = SelectedOrderInfo.Commentary,
+                HoursSpent = SelectedOrderInfo.HoursSpent,
+                TravelTime = SelectedOrderInfo.TravelTime,
+                ExtraCosts = SelectedOrderInfo.ExtraCosts,
+                StaffID = SelectedOrderInfo.StaffID,
+                OrderStatusesID = SelectedOrderInfo.OrderStatusesID + 1,
+                CustomersID = SelectedOrderInfo.CustomersID
             };
 
             try
@@ -99,18 +108,6 @@ namespace ToDo_Desktop.ViewModels
                 await dialog.ShowAsync();
             }
         }
-
-        public AdminMainPage_VM()
-        {
-            navigationService = new NavigationService();
-            var result = Requests.GetRequest(Paths.FullOrderDetails);
-            var orderInfo = JsonConvert.DeserializeObject<ObservableCollection<OrderInfo>>(result);
-
-            OrderInfo = orderInfo;
-
-            AcceptCommand = new RelayCommand(AcceptOrderAsync, () => true);
-        }
-
 
     }
 }

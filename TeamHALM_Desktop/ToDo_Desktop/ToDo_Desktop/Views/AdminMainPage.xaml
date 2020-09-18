@@ -121,7 +121,7 @@
 
                 <TextBlock Grid.Row="3" Text=""/>
 
-                <Button x:Name="Accept_Btn" Width="60" Grid.Row="5" Content="Acceptera"/>
+                <Button x:Name="Accept_Btn" Width="60" Grid.Row="5" Content="Acceptera" Command="{Binding AcceptCommand}"/>
             </Grid>
 
         </StackPanel>
