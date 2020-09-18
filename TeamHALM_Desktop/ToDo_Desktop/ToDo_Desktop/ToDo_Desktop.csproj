@@ -140,6 +140,7 @@
     <Compile Include="ViewModels\BindableBase.cs" />
     <Compile Include="ViewModels\CreateOrder_DepartmentChoice_VM.cs" />
     <Compile Include="ViewModels\CreateOrder_InfoInput_VM.cs" />
+    <Compile Include="ViewModels\EditOrderPage_VM.cs" />
     <Compile Include="Views\AdminMainPage.xaml.cs">
       <DependentUpon>AdminMainPage.xaml</DependentUpon>
     </Compile>
@@ -148,6 +149,9 @@
     </Compile>
     <Compile Include="Views\CreateOrder_InfoInput.xaml.cs">
       <DependentUpon>CreateOrder_InfoInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditOrderPage.xaml.cs">
+      <DependentUpon>EditOrderPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CreateOrder_InfoInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditOrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
