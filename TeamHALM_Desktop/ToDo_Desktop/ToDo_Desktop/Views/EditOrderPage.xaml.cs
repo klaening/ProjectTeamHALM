@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using ToDo_Desktop.ExtensionMethods;
 using ToDo_Desktop.Models;
 using ToDo_Desktop.ViewModels;
 using Windows.Foundation;
@@ -35,9 +36,34 @@ namespace ToDo_Desktop.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             _viewModel.SelectedOrder = (OrderInfo)e.Parameter;
+            //_viewModel.OriginalOrder = CopyOrder(_viewModel.SelectedOrder);
             _viewModel.SelectedCustomer = _viewModel.CustomerList.FirstOrDefault(x => x.ID == _viewModel.SelectedOrder.CustomersID);
             _viewModel.SelectedStaff = _viewModel.StaffList.FirstOrDefault(x => x.ID == _viewModel.SelectedOrder.StaffID);
             _viewModel.SelectedStatus = _viewModel.StatusList.FirstOrDefault(x => x.ID == _viewModel.SelectedOrder.OrderStatusesID);
         }
+
+        //private OrderInfo CopyOrder(OrderInfo orderInfo)
+        //{
+        //    return _viewModel.OriginalOrder = new OrderInfo
+        //    {
+        //        ID = orderInfo.ID,
+        //        OrderDescription = orderInfo.OrderDescription,
+        //        StartingDate = orderInfo.StartingDate,
+        //        Commentary = orderInfo.Commentary,
+        //        HoursSpent = orderInfo.HoursSpent,
+        //        TravelTime = orderInfo.TravelTime,
+        //        ExtraCosts = orderInfo.ExtraCosts,
+        //        StaffID = orderInfo.StaffID,
+        //        StaffName = orderInfo.StaffName,
+        //        DepartmentsID = orderInfo.DepartmentsID,
+        //        DepartmentName = orderInfo.DepartmentName,
+        //        OrderStatusesID = orderInfo.OrderStatusesID,
+        //        StatusName = orderInfo.StatusName,
+        //        CustomersID = orderInfo.CustomersID,
+        //        CustomerName = orderInfo.CustomerName,
+        //        CustomerAddress = orderInfo.CustomerAddress,
+        //        CustomerPhoneNo = orderInfo.CustomerPhoneNo
+        //    };
+        //}
     }
 }

@@ -48,11 +48,7 @@ namespace ToDo_Desktop.ViewModels
             set
             {
                 SetProperty(ref _selectedDepartment, value);
-
                 StaffList = StaffList.Where(x => x.DepartmentsID == _selectedDepartment.ID).MakeObservable();
-
-                //var filteredStaff = StaffList.Where(x => x.DepartmentsID == SelectedDepartment.ID);
-                //StaffList = new ObservableCollection<Staff>(filteredStaff);
             } 
         }
 

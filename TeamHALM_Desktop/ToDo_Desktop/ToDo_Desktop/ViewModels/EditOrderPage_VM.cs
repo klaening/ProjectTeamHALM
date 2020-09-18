@@ -21,19 +21,29 @@ namespace ToDo_Desktop.ViewModels
         public ObservableCollection<Staff> StaffList { get; set; }
         public ObservableCollection<Customers> CustomerList { get; set; }
         public ObservableCollection<OrderStatuses> StatusList { get; set; }
+        public OrderInfo OriginalOrder { get; set; }
 
         private OrderInfo _selectedOrder;
         public OrderInfo SelectedOrder
         {
             get => _selectedOrder;
-            set => SetProperty(ref _selectedOrder, value);
+            set
+            {
+                SetProperty(ref _selectedOrder, value);
+                //ChangesMade = true;
+            }
         }
 
         private Staff _selectedStaff;
         public Staff SelectedStaff
         {
             get => _selectedStaff;
-            set => SetProperty(ref _selectedStaff, value);
+            set
+            {
+                //SelectedOrder.StaffID måste sättas till _selectedStaff
+                SetProperty(ref _selectedStaff, value);
+                //ChangesMade = true;
+            }
         }
 
         private Customers _selectedCustomer;
@@ -43,6 +53,7 @@ namespace ToDo_Desktop.ViewModels
             set
             {
                 SetProperty(ref _selectedCustomer, value);
+                //ChangesMade = true;
                 //SelectedOrder.CustomerName = _selectedCustomer.CustomerName;
                 //SelectedOrder.CustomerAddress = _selectedCustomer.CustomerAddress;
                 //SelectedOrder.CustomerPhoneNo = _selectedCustomer.CustomerPhoneNo;
@@ -53,8 +64,39 @@ namespace ToDo_Desktop.ViewModels
         public OrderStatuses SelectedStatus
         {
             get => _selectedStatus;
-            set => SetProperty(ref _selectedStatus, value);
+            set
+            {
+                SetProperty(ref _selectedStatus, value);
+                //ChangesMade = true;
+            }
         }
+
+
+        //private bool _changesMade;
+        //public bool ChangesMade 
+        //{
+        //    get => _changesMade;
+        //    set 
+        //    {
+        //        if (CheckChanges())
+        //            SetProperty(ref _changesMade, value);
+        //        else
+        //            SetProperty(ref _changesMade, false);
+        //    }
+        //}
+
+        //private bool CheckChanges()
+        //{
+        //    //Kolla alla Selected ifall det har blivit ändringar 
+        //    //Skapa en kopia på originalOrdern?
+        //    //Isf kan vi ha en Resetknapp
+        //    //Jämför den nya med originalet
+
+        //    if (!_selectedOrder.Equals(OriginalOrder))
+        //        return true;
+        //    else
+        //        return false;
+        //}
 
         public ICommand SaveCommand { get; set; }
 
