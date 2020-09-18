@@ -2,21 +2,61 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ToDoMobile.View.AcceptOrderPage">
-    <ContentPage.Content>
+    <ScrollView>
         <StackLayout>
-            <Grid BindingContext="{Binding SelectedOrder}">
-                <Label Grid.Row="1" Grid.Column="0" Text="Type of order:" FontSize="Medium"/>
-                <Label Grid.Row="1" Grid.Column="1" Text="{Binding description}" FontSize="Medium"/>
+            <!--HEADER-->
+            <StackLayout Padding="5" Margin="5">
+                <Grid>
+                    <Label Text="Order Information" 
+                       FontSize="35" 
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" 
+                       Margin="5"/>
+                </Grid>
+            </StackLayout>
+            <!--ORDER INFORMATION -->
+            <StackLayout Spacing="10" Padding="20" Margin="5,50,5,0">
+                <Grid BindingContext="{Binding SelectedOrder}">
+                    <Label Grid.Row="1" Grid.Column="0" Text="Operatör:" FontSize="Medium"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding StaffName}" FontSize="Medium"/>
 
-                <Label Grid.Row="2" Grid.Column="0" Text="Commentary" FontSize="Medium"/>
-                <Label Grid.Row="2" Grid.Column="1" Text="{Binding commentary}" FontSize="Medium"/>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Plats:" FontSize="Medium"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding CustomerAdress}" FontSize="Medium"/>
 
-                <Label Grid.Row="3" Grid.Column="0" Text="Start date:" FontSize="Medium"/>
-                <Label Grid.Row="3" Grid.Column="1" Text="{Binding startingDate}" FontSize="Medium"/>
-            </Grid>
-            <Button x:Name="AcceptOrderButton"
+                    <Label Grid.Row="3" Grid.Column="0" Text="När::" FontSize="Medium"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding StartingDate}" FontSize="Medium"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="Arbetsuppgift:" FontSize="Medium"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding OrderDescription}" FontSize="Medium"/>
+
+                    <Label Grid.Row="5" Grid.Column="0" Text="Kund:" FontSize="Medium"/>
+                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding CustomerName}" FontSize="Medium"/>
+
+                    <Label Grid.Row="6" Grid.Column="0" Text="KundAdress:" FontSize="Medium"/>
+                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding CustomerAdress}" FontSize="Medium"/>
+
+                    <Label Grid.Row="7" Grid.Column="0" Text="KundTelefon:" FontSize="Medium"/>
+                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding CustomerPhone}" FontSize="Medium"/>
+                </Grid>
+                <Button x:Name="AcceptOrderButton"
+                        Clicked="AcceptOrderButton_Clicked"
                         Command="{Binding AcceptCommand}"
                         Text="{Binding ButtonText}"/>
+            </StackLayout>
+            
+            <StackLayout x:Name="AdditionalInformation" Spacing="20" Padding="20" Margin="5, 50,5,0" IsVisible="False">
+                <Grid>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Extra kostnader:" FontSize="Medium"/>
+                    <Entry Grid.Row="1" Grid.Column="1" FontSize="Medium"/>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Restid:" FontSize="Medium"/>
+                    <Entry Grid.Row="2" Grid.Column="1" FontSize="Medium"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Arbetstid:" FontSize="Medium"/>
+                    <Entry Grid.Row="3" Grid.Column="1" FontSize="Medium"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Kommentar:" FontSize="Medium"/>
+                    <Entry Grid.Row="4" Grid.Column="1" FontSize="Medium"/>
+                </Grid>
+                <!--<Button x:Name="SendButton" Text="Send" Clicked="SendButton_Clicked"></Button>-->
+            </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

@@ -25,14 +25,23 @@ namespace ToDoMobile.ViewModel
             {
                 if (SelectedOrder != null)
                 {
-                    if(SelectedOrder.StatusName == StatusNameEnum.Accepted.ToString() || SelectedOrder.StatusName == StatusNameEnum.Completed.ToString())
+                    if (SelectedOrder.StatusName == StatusNameEnum.Pending.ToString())
+                    {
+                        return "Accept";
+                    }
+                    if(SelectedOrder.StatusName == StatusNameEnum.Accepted.ToString())
                     {
                         return "Done";
                     }
-                    return "Accept";
+                    if (SelectedOrder.StatusName == StatusNameEnum.Review.ToString())
+                    {
+                       
+                        return "send";
+                    }
                 }
-                return "";
+                return _buttonText;
             }
+
             set
             {
                 _buttonText = value;
@@ -70,7 +79,7 @@ namespace ToDoMobile.ViewModel
             SelectedOrder.StatusName = order.StatusName;
             OnPropertyChanged("ButtonText");
 
-            if(order.StatusName == StatusNameEnum.Accepted.ToString() || order.StatusName == StatusNameEnum.Completed.ToString())
+            if(order.StatusName == StatusNameEnum.Pending.ToString() || order.StatusName == StatusNameEnum.Completed.ToString())
             {
                 Navigation.PushAsync(new OrderPage());
             }
@@ -90,7 +99,15 @@ namespace ToDoMobile.ViewModel
 
         public async void UpdateOrder(FullOrderDetails order)
         {
-            order.StatusName += 1;
+            if(order.StatusName == StatusNameEnum.Pending.ToString())
+            {
+                order.StatusName = StatusNameEnum.Accepted.ToString(); 
+            }
+            else if (order.StatusName == StatusNameEnum.Accepted.ToString())
+            {
+                order.StatusName = StatusNameEnum.Review.ToString();
+            }
+            //order.StatusName += 1;
             await APIServices.PutRequestAsync(ApiPaths.FullOrderDetails, order);
         }
     }

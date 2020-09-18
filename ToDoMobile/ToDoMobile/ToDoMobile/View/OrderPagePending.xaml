@@ -13,15 +13,15 @@
                 <DataTemplate>
                     <ViewCell>
                         <Grid>
-                            <Label Text="{Binding ID}"
+                            <Label Text="{Binding OrderDescription}"
                                    Grid.Column="0"
                                    Grid.Row="0"/>
-                            <Label Text="{Binding description}"
-                                   Grid.Column="1"
-                                   Grid.Row="0"/>
-                            <Label Text="2020-05-27 14:21"
+                            <Label Text="{Binding StartingDate}"
                                    Grid.Column="0"
                                    Grid.Row="1"/>
+                            <Label Text="{Binding CustomerName}"
+                                   Grid.Column="0"
+                                   Grid.Row="2"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

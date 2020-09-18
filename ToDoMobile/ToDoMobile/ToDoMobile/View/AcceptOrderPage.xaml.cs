@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoMobile.Model;
+using ToDoMobile.Utility;
 using ToDoMobile.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -24,5 +25,10 @@ namespace ToDoMobile.View
             _viewModel.Navigation = Navigation;
         }
 
+        private void AcceptOrderButton_Clicked(object sender, EventArgs e)
+        {
+                AdditionalInformation.IsVisible = true;
+            
+        }
     }
 }

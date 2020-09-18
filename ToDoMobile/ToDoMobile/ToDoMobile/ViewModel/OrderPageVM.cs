@@ -36,17 +36,6 @@ namespace ToDoMobile.ViewModel
             }
         }
 
-        //public ObservableCollection<FullOrderDetails> CreateMockData()
-        //{
-        //    var TestList = new ObservableCollection<FullOrderDetails>();
-        //    var OrderOne = new FullOrderDetails { ID = 1, Description = "Broken Dishwasher", OrderStatusesID = 1 };
-        //    var OrderTwo = new FullOrderDetails { ID = 2, Description = "Broken elevator", OrderStatusesID = 2 };
-
-        //    TestList.Add(OrderOne);
-        //    TestList.Add(OrderTwo);
-        //    return TestList;
-        //}
-
         public OrderPageVM()
         {
             PendingList = new ObservableCollection<FullOrderDetails>();

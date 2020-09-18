@@ -10,7 +10,7 @@ namespace ToDoMobile.Services
     class APIServices
     {
         private const string HOST = "https://webapihalm.azurewebsites.net/api/";
-        public static async Task PostRequestAsync(string path, Object objectclass)
+        public static async Task<HttpResponseMessage> PostRequestAsync(string path, Object objectclass)
         {
             var client = new HttpClient();
             var json = JsonConvert.SerializeObject(objectclass, new JsonSerializerSettings
@@ -21,6 +21,7 @@ namespace ToDoMobile.Services
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await client.PostAsync(HOST + path, content);
+            return response;
         }
 
         public static string GetRequest(string path, string source)
@@ -60,7 +61,7 @@ namespace ToDoMobile.Services
             throw new NotImplementedException();
         }
 
-        public static async Task PutRequestAsync(string path, Object objectclass)
+        public async static Task<HttpResponseMessage> PutRequestAsync(string path, Object objectclass)
         {
             var client = new HttpClient();
             var json = JsonConvert.SerializeObject(objectclass, new JsonSerializerSettings
@@ -71,6 +72,7 @@ namespace ToDoMobile.Services
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await client.PutAsync(HOST + path, content);
+            return response;
         }
     }
 }
