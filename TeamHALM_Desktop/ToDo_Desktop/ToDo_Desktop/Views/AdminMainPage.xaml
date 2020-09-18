@@ -46,6 +46,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
@@ -95,6 +96,10 @@
                         Grid.Row="12" Grid.Column="1" Content="Delete"
                         Command="{Binding DeleteCommand}"/>
 
+                <Button Grid.Row="13" Grid.Column="1" x:Name="CreateOrder" Content="New Order" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Width="100" Height="50" Click="CreateOrder_Click"/>
+
             </Grid>
 
         </StackPanel>
@@ -130,9 +135,5 @@
 
         </StackPanel>
 
-
-        <Button Grid.Column="1" x:Name="CreateOrder" Content="New Order" 
-                    HorizontalAlignment="Center" VerticalAlignment="Center" 
-                    Width="100" Height="50" Click="CreateOrder_Click"/>
     </Grid>
 </Page>

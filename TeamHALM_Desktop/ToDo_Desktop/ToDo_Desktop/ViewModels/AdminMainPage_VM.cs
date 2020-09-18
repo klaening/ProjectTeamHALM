@@ -97,6 +97,15 @@ namespace ToDo_Desktop.ViewModels
                         dialog = new MessageDialog("Work order successfully deleted", "Success");
                         await dialog.ShowAsync();
                     }
+                    UpdateOrderList();
+                }
+                catch (Exception)
+                {
+                    dialog = new MessageDialog("Something went wrong", "Error");
+                    await dialog.ShowAsync();
+                }
+            }
+        }
 
         public ICommand AcceptCommand { get; set; }
 
@@ -127,7 +136,6 @@ namespace ToDo_Desktop.ViewModels
                     var dialog = new MessageDialog("Work order successfully updated", "Success");
                     await dialog.ShowAsync();
                 }
-                UpdateOrderList();
             }
             catch (Exception)
             {
