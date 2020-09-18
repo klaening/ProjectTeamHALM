@@ -4,11 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ToDo_Desktop.Models;
 using ToDo_Desktop.Services;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 
 namespace ToDo_Desktop.ViewModels
@@ -62,10 +64,40 @@ namespace ToDo_Desktop.ViewModels
 
         public ICommand AcceptCommand { get; set; }
 
-        private void AcceptOrder() // ska vara async eftersom put requesten är await
+        private async void AcceptOrderAsync() // ska vara async eftersom put requesten är await
         {
             // put request med id från selectedorder
-     
+            // sätter id i url
+            WorkOrders updatedOrder = new WorkOrders
+            {
+               ID = SelectedOrderInfo.ID,
+               OrderDescription = SelectedOrderInfo.OrderDescription,
+               StartingDate = SelectedOrderInfo.StartingDate,
+               Commentary = SelectedOrderInfo.Commentary,
+               HoursSpent = SelectedOrderInfo.HoursSpent,
+               TravelTime = SelectedOrderInfo.TravelTime,
+               ExtraCosts = SelectedOrderInfo.ExtraCosts,
+               StaffID = SelectedOrderInfo.StaffID,
+               OrderStatusesID = SelectedOrderInfo.OrderStatusesID + 1,
+               CustomersID = SelectedOrderInfo.CustomersID
+            };
+
+            try
+            {
+                var response = await Requests.PutRequestAsync(Paths.WorkOrders, updatedOrder);
+                var statusCode = response.StatusCode;
+
+                if (statusCode == HttpStatusCode.OK)
+                {
+                    var dialog = new MessageDialog("Work order successfully updated", "Success");
+                    await dialog.ShowAsync();
+                }
+            }
+            catch (Exception)
+            {
+                var dialog = new MessageDialog("Something went wrong", "Error");
+                await dialog.ShowAsync();
+            }
         }
 
         public AdminMainPage_VM()
@@ -76,7 +108,7 @@ namespace ToDo_Desktop.ViewModels
 
             OrderInfo = orderInfo;
 
-            AcceptCommand = new RelayCommand(AcceptOrder, () => true);
+            AcceptCommand = new RelayCommand(AcceptOrderAsync, () => true);
         }
 
 
