@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoMobile.Model;
@@ -15,6 +16,8 @@ namespace ToDoMobile.View
     public partial class AcceptOrderPage : ContentPage
     {
         AcceptOrderPageVM _viewModel;
+
+
         public AcceptOrderPage(FullOrderDetails order)
         {
             InitializeComponent();
@@ -23,7 +26,22 @@ namespace ToDoMobile.View
             BindingContext = _viewModel;
             _viewModel.SelectedOrder = order;
             _viewModel.Navigation = Navigation;
+            
+
+            if (order.OrderStatusesID == 2)
+            {
+                DeclineOrderButton.IsVisible = false;
+                UndoAcceptedOrderButton.IsVisible = true;
+            }
+            else
+            {
+                DeclineOrderButton.IsVisible = true;
+                UndoAcceptedOrderButton.IsVisible = false;
+            }
+        
         }
+
+  
 
         private void AcceptOrderButton_Clicked(object sender, EventArgs e)
         {
@@ -35,5 +53,11 @@ namespace ToDoMobile.View
         {
 
         }
+
+        private void UndoAcceptedOrderButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

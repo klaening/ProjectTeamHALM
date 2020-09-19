@@ -38,6 +38,8 @@
                     <Label Grid.Row="7" Grid.Column="0" Text="KundTelefon:" FontSize="Medium"/>
                     <Label Grid.Row="7" Grid.Column="1" Text="{Binding CustomerPhone}" FontSize="Medium"/>
                 </Grid>
+                
+                <StackLayout>
                 <Button x:Name="AcceptOrderButton"
                         Clicked="AcceptOrderButton_Clicked"
                         Command="{Binding AcceptCommand}"
@@ -45,7 +47,15 @@
                 <Button x:Name="DeclineOrderButton"
                         Clicked="DeclineOrderButton_Clicked"
                         Text="Decline Order"
-                        Command="{Binding DeclineCommand}"/>
+                        Command="{Binding DeclineCommand}"
+                        IsVisible="True"/>
+                <Button x:Name="UndoAcceptedOrderButton"
+                        Clicked="UndoAcceptedOrderButton_Clicked"
+                        Text="Undo Accepted Order"
+                        Command="{Binding UndoCommand}"
+                        IsVisible="True"/>
+                </StackLayout>
+                
             </StackLayout>
             
             <StackLayout x:Name="AdditionalInformation" Spacing="20" Padding="20" Margin="5, 50,5,0" IsVisible="False">

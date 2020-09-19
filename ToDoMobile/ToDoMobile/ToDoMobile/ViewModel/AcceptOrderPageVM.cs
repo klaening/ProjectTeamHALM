@@ -17,6 +17,7 @@ namespace ToDoMobile.ViewModel
     {
         public ICommand AcceptCommand { get; }
         public ICommand DeclineCommand { get; }
+        public ICommand UndoCommand { get; }
         public INavigation Navigation { get; set; }
 
         public ObservableCollection<OrderStatuses> Statuses { get; set; }
@@ -52,6 +53,7 @@ namespace ToDoMobile.ViewModel
             }
         }
 
+
         private FullOrderDetails _selectedOrder;
         public FullOrderDetails SelectedOrder
         {
@@ -69,6 +71,7 @@ namespace ToDoMobile.ViewModel
         {
             DeclineCommand = new Command(DeclinePressedCommand);
             AcceptCommand = new Command(AcceptPressedCommand);
+            UndoCommand = new Command(UndoOrderPressedCommand);
 
             var response = APIServices.GetRequest(ApiPaths.OrderStatuses);
             Statuses = JsonConvert.DeserializeObject<ObservableCollection<OrderStatuses>>(response);
@@ -97,6 +100,14 @@ namespace ToDoMobile.ViewModel
             var order = GetOrderFromID();
             DeclineOrder(order);
             Application.Current.MainPage.DisplayAlert("Declined", "Order status has been updated!", "ok");
+            Navigation.PushAsync(new OrderPage());
+        }
+
+        public void UndoOrderPressedCommand()
+        {
+            var order = GetOrderFromID();
+            UndoAcceptedOrder(order);
+            Application.Current.MainPage.DisplayAlert("Undo Accepted Order", "Your order is now set back to Pending", "ok");
             Navigation.PushAsync(new OrderPage());
         }
 
@@ -160,6 +171,21 @@ namespace ToDoMobile.ViewModel
 
             };
             await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
+        }
+        public async void UndoAcceptedOrder(FullOrderDetails order)
+        {
+            WorkOrders workOrders = new WorkOrders
+            {
+                ID = order.ID,
+                StaffID = order.StaffID,
+                StartingDate = order.StartingDate,
+                CustomersID = order.CustomersID,
+                OrderDescription = order.OrderDescription,
+                OrderStatusesID = 1
+
+            };
+            await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
+
         }
     }
 }
