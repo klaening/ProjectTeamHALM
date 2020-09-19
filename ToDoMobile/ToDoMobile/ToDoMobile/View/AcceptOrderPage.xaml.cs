@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoMobile.Model;
+using ToDoMobile.Services;
 using ToDoMobile.Utility;
 using ToDoMobile.ViewModel;
 using Xamarin.Forms;
@@ -27,17 +28,6 @@ namespace ToDoMobile.View
             _viewModel.SelectedOrder = order;
             _viewModel.Navigation = Navigation;
             
-
-            if (order.OrderStatusesID == 2)
-            {
-                DeclineOrderButton.IsVisible = false;
-                UndoAcceptedOrderButton.IsVisible = true;
-            }
-            else
-            {
-                DeclineOrderButton.IsVisible = true;
-                UndoAcceptedOrderButton.IsVisible = false;
-            }
         
         }
 
@@ -58,6 +48,10 @@ namespace ToDoMobile.View
         {
 
         }
-        
+
+        private void CompleteOrderButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

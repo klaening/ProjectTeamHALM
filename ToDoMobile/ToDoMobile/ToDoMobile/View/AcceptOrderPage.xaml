@@ -15,7 +15,7 @@
                 </Grid>
             </StackLayout>
             <!--ORDER INFORMATION -->
-            <StackLayout Spacing="10" Padding="20" Margin="5,50,5,0">
+            <StackLayout x:Name="OrderInfoStackLayout" Spacing="10" Padding="20" Margin="5,50,5,0" IsVisible="false">
                 <Grid BindingContext="{Binding SelectedOrder}">
                     <Label Grid.Row="1" Grid.Column="0" Text="Operatör:" FontSize="Medium"/>
                     <Label Grid.Row="1" Grid.Column="1" Text="{Binding StaffName}" FontSize="Medium"/>
@@ -57,7 +57,34 @@
                 </StackLayout>
                 
             </StackLayout>
+
+            <StackLayout x:Name="RegisterAdditionalInformation" Spacing="10" Padding="20" Margin="5,50,5,0" IsVisible="true">
+                <Label Text="Extra kostnader:" FontSize="Medium"/>
+                <Entry x:Name="ExtraCostEntry" 
+                       Keyboard="Numeric"
+                       Placeholder="0"
+                       Text="{Binding ExtraCostText, Mode=TwoWay}"/>
+                <Label Text="Restid:" />
+                <Entry x:Name="TravelTimeEntry"
+                       Keyboard="Numeric"
+                       Text="{Binding TravelTimeText, Mode=TwoWay}"/>
+                <Label Text="Arbetstid:"/>
+                <Entry x:Name="WorkHoursEntry"
+                       Keyboard="Numeric"
+                       Text="{Binding HoursSpentText, Mode=TwoWay}"/>
+                <Label Text="Kommentar:" />
+                <Entry x:Name="CommentsEntry"
+                       Text="{Binding CommentaryText, Mode=TwoWay}"/>
+
+                <Button x:Name="CompleteOrderButton"
+                        Clicked="CompleteOrderButton_Clicked"
+                        Command="{Binding CompleteCommand}"
+                        Text="Complete order"/>
+
+            </StackLayout>
             
+            
+    
             <StackLayout x:Name="AdditionalInformation" Spacing="20" Padding="20" Margin="5, 50,5,0" IsVisible="False">
                 <Grid>
                     <Label Grid.Row="1" Grid.Column="0" Text="Extra kostnader:" FontSize="Medium"/>

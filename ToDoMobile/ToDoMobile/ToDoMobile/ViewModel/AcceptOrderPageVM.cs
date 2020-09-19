@@ -18,6 +18,7 @@ namespace ToDoMobile.ViewModel
         public ICommand AcceptCommand { get; }
         public ICommand DeclineCommand { get; }
         public ICommand UndoCommand { get; }
+        public ICommand CompleteCommand { get; }
         public INavigation Navigation { get; set; }
 
         public ObservableCollection<OrderStatuses> Statuses { get; set; }
@@ -53,6 +54,47 @@ namespace ToDoMobile.ViewModel
             }
         }
 
+        private decimal extraCostText;
+        public decimal ExtraCostText
+        {
+            get { return extraCostText; }
+            set { 
+                
+                extraCostText = value;
+                OnPropertyChanged("ExtraCostText");
+
+                }
+        }
+
+        private decimal travelTimeText;
+        public decimal TravelTimeText
+        {
+            get { return travelTimeText; }
+            set { travelTimeText = value;
+                OnPropertyChanged("TravelTimeText");
+            }
+        }
+
+        private decimal hoursSpentText;
+        public decimal HoursSpentText
+        {
+            get { return hoursSpentText; }
+            set { hoursSpentText = value;
+                OnPropertyChanged("HoursSpentText");
+            }
+        }
+
+        private string commentaryText;
+        public string CommentaryText
+        {
+            get { return commentaryText; }
+            set { commentaryText = value;
+                OnPropertyChanged("CommentaryText");
+            }
+        }
+
+
+
 
         private FullOrderDetails _selectedOrder;
         public FullOrderDetails SelectedOrder
@@ -72,6 +114,7 @@ namespace ToDoMobile.ViewModel
             DeclineCommand = new Command(DeclinePressedCommand);
             AcceptCommand = new Command(AcceptPressedCommand);
             UndoCommand = new Command(UndoOrderPressedCommand);
+            CompleteCommand = new Command(CompleteOrderPressedCommand);
 
             var response = APIServices.GetRequest(ApiPaths.OrderStatuses);
             Statuses = JsonConvert.DeserializeObject<ObservableCollection<OrderStatuses>>(response);
@@ -109,6 +152,12 @@ namespace ToDoMobile.ViewModel
             UndoAcceptedOrder(order);
             Application.Current.MainPage.DisplayAlert("Undo Accepted Order", "Your order is now set back to Pending", "ok");
             Navigation.PushAsync(new OrderPage());
+        }
+        public void CompleteOrderPressedCommand()
+        {
+            var order = GetOrderFromID();
+            CompleteAcceptedOrder(order);
+
         }
 
         public FullOrderDetails GetOrderFromID()
@@ -186,6 +235,24 @@ namespace ToDoMobile.ViewModel
             };
             await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
 
+        }
+        public async void CompleteAcceptedOrder(FullOrderDetails order)
+        {
+            WorkOrders workOrders = new WorkOrders
+            {
+                ID = order.ID,
+                StaffID = order.StaffID,
+                StartingDate = order.StartingDate,
+                CustomersID = order.CustomersID,
+                OrderDescription = order.OrderDescription,
+                OrderStatusesID = 1,
+                Commentary = CommentaryText,
+                HoursSpent = HoursSpentText,
+                ExtraCosts = ExtraCostText,
+                TravelTime = travelTimeText
+               
+            };
+            await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
         }
     }
 }
