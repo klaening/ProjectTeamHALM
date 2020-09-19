@@ -40,6 +40,7 @@ namespace ToDo_Desktop.Views
             _viewModel.SelectedCustomer = _viewModel.CustomerList.FirstOrDefault(x => x.ID == _viewModel.SelectedOrder.CustomersID);
             _viewModel.SelectedStaff = _viewModel.StaffList.FirstOrDefault(x => x.ID == _viewModel.SelectedOrder.StaffID);
             _viewModel.SelectedStatus = _viewModel.StatusList.FirstOrDefault(x => x.ID == _viewModel.SelectedOrder.OrderStatusesID);
+            _viewModel.SelectedDate = _viewModel.SelectedOrder.StartingDate;
         }
 
         //private OrderInfo CopyOrder(OrderInfo orderInfo)

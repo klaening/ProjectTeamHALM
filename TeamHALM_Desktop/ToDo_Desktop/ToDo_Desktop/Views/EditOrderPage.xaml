@@ -17,12 +17,12 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         
-        <StackPanel Grid.Row="0" DataContext="{Binding SelectedOrder}">
+        <StackPanel Grid.Row="0" DataContext="{Binding SelectedOrder, Mode=TwoWay}">
 
             <TextBlock Text="Update Work Order"/>
 
             <TextBox Header="Work description" Text="{Binding OrderDescription, Mode=TwoWay}"/>
-            <TextBox Header="Starting date" Text="{Binding StartingDate, Mode=TwoWay}"/>
+            <DatePicker Header="Starting date" Date="{x:Bind _viewModel.SelectedDate, Mode=TwoWay}"/>
             <TextBox Header="Commentary" Text="{Binding Commentary, Mode=TwoWay}"/>
             <TextBox Header="Hours spent" Text="{Binding HoursSpent, Mode=TwoWay}"/>
             <TextBox Header="Travel time" Text="{Binding TravelTime, Mode=TwoWay}"/>

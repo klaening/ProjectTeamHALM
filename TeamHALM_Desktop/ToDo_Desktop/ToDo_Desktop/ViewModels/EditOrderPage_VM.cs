@@ -21,7 +21,7 @@ namespace ToDo_Desktop.ViewModels
         public ObservableCollection<Staff> StaffList { get; set; }
         public ObservableCollection<Customers> CustomerList { get; set; }
         public ObservableCollection<OrderStatuses> StatusList { get; set; }
-        public OrderInfo OriginalOrder { get; set; }
+        //public OrderInfo OriginalOrder { get; set; }
 
         private OrderInfo _selectedOrder;
         public OrderInfo SelectedOrder
@@ -58,6 +58,13 @@ namespace ToDo_Desktop.ViewModels
                 //SelectedOrder.CustomerAddress = _selectedCustomer.CustomerAddress;
                 //SelectedOrder.CustomerPhoneNo = _selectedCustomer.CustomerPhoneNo;
             }
+        }
+
+        private DateTimeOffset _selectedDate;
+        public DateTimeOffset SelectedDate
+        {
+            get => _selectedDate;
+            set => SetProperty(ref _selectedDate, value);
         }
 
         private OrderStatuses _selectedStatus;
@@ -122,7 +129,7 @@ namespace ToDo_Desktop.ViewModels
             {
                 ID = SelectedOrder.ID,
                 OrderDescription = SelectedOrder.OrderDescription,
-                StartingDate = SelectedOrder.StartingDate,
+                StartingDate = SelectedDate.UtcDateTime,
                 Commentary = SelectedOrder.Commentary,
                 HoursSpent = SelectedOrder.HoursSpent,
                 TravelTime = SelectedOrder.TravelTime,
