@@ -17,7 +17,7 @@ namespace ToDoMobile.Model
         //Foreign keys
         public int StaffID { get; set; }
         public int OrderStatusesID { get; set; }
-        public int CustomerID { get; set; }
+        public int CustomersID { get; set; }
 
     }
 }

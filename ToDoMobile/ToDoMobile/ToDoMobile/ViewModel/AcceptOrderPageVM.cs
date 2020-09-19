@@ -9,6 +9,7 @@ using ToDoMobile.Utility;
 using Xamarin.Forms;
 using ToDoMobile.Services;
 using ToDoMobile.View;
+using System.Net;
 
 namespace ToDoMobile.ViewModel
 {
@@ -99,16 +100,45 @@ namespace ToDoMobile.ViewModel
 
         public async void UpdateOrder(FullOrderDetails order)
         {
-            if(order.StatusName == StatusNameEnum.Pending.ToString())
+            if (order.OrderStatusesID == 1)
             {
-                order.StatusName = StatusNameEnum.Accepted.ToString(); 
+               
+
+                WorkOrders workOrders = new WorkOrders
+                {
+                    ID = order.ID,
+                    StaffID = order.StaffID,
+                    StartingDate = order.StartingDate,
+                    CustomersID = order.CustomersID,
+                    OrderDescription = order.OrderDescription,
+                    OrderStatusesID = 2
+
+                };
+                await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
             }
-            else if (order.StatusName == StatusNameEnum.Accepted.ToString())
+
+            else if (order.OrderStatusesID == 2)
             {
-                order.StatusName = StatusNameEnum.Review.ToString();
+                WorkOrders workOrders = new WorkOrders
+                {
+                    ID = order.ID,
+                    StaffID = order.StaffID,
+                    StartingDate = order.StartingDate,
+                    CustomersID = order.CustomersID,
+                    OrderDescription = order.OrderDescription,
+                    OrderStatusesID = 3
+
+                };
+                await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
+
             }
-            //order.StatusName += 1;
-            await APIServices.PutRequestAsync(ApiPaths.FullOrderDetails, order);
-        }
+            else
+            {
+
+            }
+
+    
+           
+        }   
     }
 }
