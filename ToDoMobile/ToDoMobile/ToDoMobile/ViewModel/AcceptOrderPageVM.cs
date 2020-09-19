@@ -16,6 +16,7 @@ namespace ToDoMobile.ViewModel
     class AcceptOrderPageVM : BaseViewModel
     {
         public ICommand AcceptCommand { get; }
+        public ICommand DeclineCommand { get; }
         public INavigation Navigation { get; set; }
 
         public ObservableCollection<OrderStatuses> Statuses { get; set; }
@@ -66,6 +67,7 @@ namespace ToDoMobile.ViewModel
 
         public AcceptOrderPageVM()
         {
+            DeclineCommand = new Command(DeclinePressedCommand);
             AcceptCommand = new Command(AcceptPressedCommand);
 
             var response = APIServices.GetRequest(ApiPaths.OrderStatuses);
@@ -88,6 +90,14 @@ namespace ToDoMobile.ViewModel
             {
                 Application.Current.MainPage.DisplayAlert("Accepted","Order status have been updated!","Ok");
             }
+        }
+
+        public void DeclinePressedCommand()
+        {
+            var order = GetOrderFromID();
+            DeclineOrder(order);
+            Application.Current.MainPage.DisplayAlert("Declined", "Order status has been updated!", "ok");
+            Navigation.PushAsync(new OrderPage());
         }
 
         public FullOrderDetails GetOrderFromID()
@@ -126,7 +136,7 @@ namespace ToDoMobile.ViewModel
                     StartingDate = order.StartingDate,
                     CustomersID = order.CustomersID,
                     OrderDescription = order.OrderDescription,
-                    OrderStatusesID = 3
+                    OrderStatusesID = 4
 
                 };
                 await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
@@ -136,9 +146,20 @@ namespace ToDoMobile.ViewModel
             {
 
             }
-
-    
-           
         }   
+        public async void DeclineOrder(FullOrderDetails order)
+        {
+            WorkOrders workOrders = new WorkOrders
+            {
+                ID = order.ID,
+                StaffID = order.StaffID,
+                StartingDate = order.StartingDate,
+                CustomersID = order.CustomersID,
+                OrderDescription = order.OrderDescription,
+                OrderStatusesID = 3
+
+            };
+            await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
+        }
     }
 }

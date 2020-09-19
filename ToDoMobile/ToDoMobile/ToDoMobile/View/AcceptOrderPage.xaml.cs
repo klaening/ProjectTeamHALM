@@ -30,5 +30,10 @@ namespace ToDoMobile.View
                 AdditionalInformation.IsVisible = true;
             
         }
+
+        private void DeclineOrderButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

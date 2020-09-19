@@ -42,6 +42,10 @@
                         Clicked="AcceptOrderButton_Clicked"
                         Command="{Binding AcceptCommand}"
                         Text="{Binding ButtonText}"/>
+                <Button x:Name="DeclineOrderButton"
+                        Clicked="DeclineOrderButton_Clicked"
+                        Text="Decline Order"
+                        Command="{Binding DeclineCommand}"/>
             </StackLayout>
             
             <StackLayout x:Name="AdditionalInformation" Spacing="20" Padding="20" Margin="5, 50,5,0" IsVisible="False">
