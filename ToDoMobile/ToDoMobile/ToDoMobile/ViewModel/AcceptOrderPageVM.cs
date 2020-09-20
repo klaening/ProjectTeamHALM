@@ -40,7 +40,7 @@ namespace ToDoMobile.ViewModel
                     if (SelectedOrder.StatusName == StatusNameEnum.Review.ToString())
                     {
                        
-                        return "send";
+                        return "Send";
                     }
                 }
                 return _buttonText;
@@ -132,10 +132,10 @@ namespace ToDoMobile.ViewModel
             {
                 Navigation.PushAsync(new OrderPage());
             }
-            else
-            {
-                Application.Current.MainPage.DisplayAlert("Accepted","Order status have been updated!","Ok");
-            }
+            //else
+            //{
+            //    Application.Current.MainPage.DisplayAlert("Accepted","Order status have been updated!","Ok");
+            //}
         }
 
         public void DeclinePressedCommand()
@@ -189,17 +189,7 @@ namespace ToDoMobile.ViewModel
 
             else if (order.OrderStatusesID == 2)
             {
-                WorkOrders workOrders = new WorkOrders
-                {
-                    ID = order.ID,
-                    StaffID = order.StaffID,
-                    StartingDate = order.StartingDate,
-                    CustomersID = order.CustomersID,
-                    OrderDescription = order.OrderDescription,
-                    OrderStatusesID = 4
-
-                };
-                await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
+              await Application.Current.MainPage.DisplayAlert("Done", "Please enter additional information to finish the order", "Ok");
 
             }
             else
@@ -245,7 +235,7 @@ namespace ToDoMobile.ViewModel
                 StartingDate = order.StartingDate,
                 CustomersID = order.CustomersID,
                 OrderDescription = order.OrderDescription,
-                OrderStatusesID = 1,
+                OrderStatusesID = 4,
                 Commentary = CommentaryText,
                 HoursSpent = HoursSpentText,
                 ExtraCosts = ExtraCostText,

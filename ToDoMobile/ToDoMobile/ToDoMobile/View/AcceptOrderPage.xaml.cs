@@ -27,16 +27,34 @@ namespace ToDoMobile.View
             BindingContext = _viewModel;
             _viewModel.SelectedOrder = order;
             _viewModel.Navigation = Navigation;
-            
-        
+
+            if (AcceptOrderButton.Text == "Accept")
+            {
+                DeclineOrderButton.IsVisible = true;
+                UndoAcceptedOrderButton.IsVisible = false;
+            }
+            else
+            {
+                DeclineOrderButton.IsVisible = false;
+                UndoAcceptedOrderButton.IsVisible = true;
+
+            }
         }
 
   
 
         private void AcceptOrderButton_Clicked(object sender, EventArgs e)
         {
-                AdditionalInformation.IsVisible = true;
-            
+            if (AcceptOrderButton.Text == "Done")
+            {
+                OrderInfoStackLayout.IsVisible = false;
+                RegisterAdditionalInformation.IsVisible = true;
+            }
+            else
+            {
+                OrderInfoStackLayout.IsVisible = true;
+                RegisterAdditionalInformation.IsVisible = false;
+            }
         }
 
         private void DeclineOrderButton_Clicked(object sender, EventArgs e)
