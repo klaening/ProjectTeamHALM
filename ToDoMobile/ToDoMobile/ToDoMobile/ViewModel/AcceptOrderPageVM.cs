@@ -137,7 +137,6 @@ namespace ToDoMobile.ViewModel
             //    Application.Current.MainPage.DisplayAlert("Accepted","Order status have been updated!","Ok");
             //}
         }
-
         public void DeclinePressedCommand()
         {
             var order = GetOrderFromID();
@@ -145,7 +144,6 @@ namespace ToDoMobile.ViewModel
             Application.Current.MainPage.DisplayAlert("Declined", "Order status has been updated!", "ok");
             Navigation.PushAsync(new OrderPage());
         }
-
         public void UndoOrderPressedCommand()
         {
             var order = GetOrderFromID();
