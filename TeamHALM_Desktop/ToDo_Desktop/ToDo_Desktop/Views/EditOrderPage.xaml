@@ -50,6 +50,7 @@
                       DisplayMemberPath="CustomerName"
                       SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"/>
 
+            <Button Content="Cancel" Click="Cancel_Click"/>
             <Button Content="Save changes" Command="{Binding SaveCommand}"/>
             <!--<Button x:Name="Cancel_Btn" Content="Cancel" Click="Cancel_Btn_Click"/>-->
 

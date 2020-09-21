@@ -125,22 +125,22 @@ namespace ToDo_Desktop.ViewModels
 
         private async void SaveChanges()
         {
-            var workOrder = new WorkOrders
-            {
-                ID = SelectedOrder.ID,
-                OrderDescription = SelectedOrder.OrderDescription,
-                StartingDate = SelectedDate.UtcDateTime,
-                Commentary = SelectedOrder.Commentary,
-                HoursSpent = SelectedOrder.HoursSpent,
-                TravelTime = SelectedOrder.TravelTime,
-                ExtraCosts = SelectedOrder.ExtraCosts,
-                StaffID = SelectedStaff.ID,
-                OrderStatusesID = SelectedStatus.ID,
-                CustomersID = SelectedCustomer.ID
-            };
-
             try
             {
+                var workOrder = new WorkOrders
+                {
+                    ID = SelectedOrder.ID,
+                    OrderDescription = SelectedOrder.OrderDescription,
+                    StartingDate = SelectedDate.UtcDateTime,
+                    Commentary = SelectedOrder.Commentary,
+                    HoursSpent = SelectedOrder.HoursSpent,
+                    TravelTime = SelectedOrder.TravelTime,
+                    ExtraCosts = SelectedOrder.ExtraCosts,
+                    StaffID = SelectedStaff.ID,
+                    OrderStatusesID = SelectedStatus.ID,
+                    CustomersID = SelectedCustomer.ID
+                };
+
                 var response = await Requests.PutRequestAsync(Paths.WorkOrders, workOrder);
                 var statusCode = response.StatusCode;
 

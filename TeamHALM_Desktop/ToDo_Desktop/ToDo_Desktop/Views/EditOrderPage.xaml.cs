@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Views;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -41,6 +42,11 @@ namespace ToDo_Desktop.Views
             _viewModel.SelectedStaff = _viewModel.StaffList.FirstOrDefault(x => x.ID == _viewModel.SelectedOrder.StaffID);
             _viewModel.SelectedStatus = _viewModel.StatusList.FirstOrDefault(x => x.ID == _viewModel.SelectedOrder.OrderStatusesID);
             _viewModel.SelectedDate = _viewModel.SelectedOrder.StartingDate;
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
         }
 
         //private OrderInfo CopyOrder(OrderInfo orderInfo)
