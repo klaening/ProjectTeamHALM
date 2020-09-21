@@ -38,10 +38,23 @@ namespace ToDo_Desktop.ViewModels
             { 
                 SetProperty(ref _selectedOrderInfo, value);
                 if (value != null)
+                {
                     IsVisible = Visibility.Visible;
+                    OrderSelected = Visibility.Visible;
+                }
+                else
+                {
+                    OrderSelected = Visibility.Collapsed;
+                }
             }
         }
 
+        private Visibility _orderSelected = Visibility.Collapsed;
+        public Visibility OrderSelected 
+        {
+            get => _orderSelected;
+            set => SetProperty(ref _orderSelected, value);
+        }
 
         public Visibility IsVisible
         {
@@ -52,12 +65,9 @@ namespace ToDo_Desktop.ViewModels
             set
             {
                 if (SelectedOrderInfo.StatusName == "Review")
-                {
-                    
-                    SetProperty(ref isVisible, value);
-
-                }
-
+                    SetProperty(ref isVisible, Visibility.Visible);
+                else
+                    SetProperty(ref isVisible, Visibility.Collapsed);
             }
         }
 
