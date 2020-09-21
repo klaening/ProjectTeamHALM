@@ -5,10 +5,15 @@
     xmlns:local="using:ToDo_Desktop.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c="using:ToDo_Desktop.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     Width="400"
     Height="800">
+
+    <Page.Resources>
+        <c:StringToDecimalConverter x:Key="StringToDecimalConverterKey"/>
+    </Page.Resources>
 
     <Grid>
 
@@ -24,9 +29,9 @@
             <TextBox Header="Work description" Text="{Binding OrderDescription, Mode=TwoWay}"/>
             <DatePicker Header="Starting date" Date="{x:Bind _viewModel.SelectedDate, Mode=TwoWay}"/>
             <TextBox Header="Commentary" Text="{Binding Commentary, Mode=TwoWay}"/>
-            <TextBox Header="Hours spent" Text="{Binding HoursSpent, Mode=TwoWay}"/>
-            <TextBox Header="Travel time" Text="{Binding TravelTime, Mode=TwoWay}"/>
-            <TextBox Header="Extra costs" Text="{Binding ExtraCosts, Mode=TwoWay}"/>
+            <TextBox Header="Hours spent" Text="{Binding HoursSpent, Mode=TwoWay, Converter={StaticResource StringToDecimalConverterKey}}"/>
+            <TextBox Header="Travel time" Text="{Binding TravelTime, Mode=TwoWay, Converter={StaticResource StringToDecimalConverterKey}}"/>
+            <TextBox Header="Extra costs" Text="{Binding ExtraCosts, Mode=TwoWay, Converter={StaticResource StringToDecimalConverterKey}}"/>
 
         </StackPanel>
         <StackPanel Grid.Row="1">
