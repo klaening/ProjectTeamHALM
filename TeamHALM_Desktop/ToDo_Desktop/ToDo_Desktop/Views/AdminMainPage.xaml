@@ -8,37 +8,45 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Style="{StaticResource MasterGrid}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0">
-            <ListView Header="List of Orders" FontSize="40" 
+        <StackPanel Name="List" Grid.Column="0" Grid.Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <ListView Grid.Row="0" Header="List of Orders" 
                       ItemsSource="{Binding OrderInfo}"
                       SelectedItem="{Binding SelectedOrderInfo, Mode=TwoWay}" 
-                      MinHeight="500" HorizontalAlignment="Left">
-                
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding ID}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                      HorizontalAlignment="Left">
 
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ID}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-            <StackPanel Orientation="Horizontal">
-                <Button x:Name="GoBack_Btn" Content="Go Back" 
-                        Click="GoBack_Btn_Click" />
-                <Button x:Name="CreateOrder" Content="New Order"
-                        Click="CreateOrder_Click"/>
-            </StackPanel>
+                <StackPanel Name="ListButtons" Grid.Row="1" 
+                    Orientation="Horizontal">
+                    <Button x:Name="GoBack_Btn" Content="Go Back" 
+                    Click="GoBack_Btn_Click"/>
+                    <Button x:Name="CreateOrder" Content="New Order"
+                    Click="CreateOrder_Click"/>
+                </StackPanel>
+            </Grid>
         </StackPanel>
 
         <StackPanel Grid.Column="1" 
                     Visibility="{Binding OrderSelected, Mode=TwoWay}">
-            <Grid DataContext="{Binding SelectedOrderInfo, Mode=TwoWay}">
+            <Grid Name="PrimaryInformation" Style="{StaticResource StandardGrid}"
+                        DataContext="{Binding SelectedOrderInfo, Mode=TwoWay}">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -56,72 +64,74 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Text="Order ID" FontSize="40"/>
-                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="40" Text="{Binding ID}"/>
-                
-                <TextBlock Grid.Row="1" Text="Adress:" FontSize="20"/>
+                <TextBlock Grid.Row="0" Style="{StaticResource TitleText}" Text="Order ID"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource TitleText}" Text="{Binding ID}"/>
+
+                <TextBlock Grid.Row="1" Text="Adress:"/>
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CustomerAddress}"/>
-                
-                <TextBlock Grid.Row="2" Text="Operatör:" FontSize="20"/>
+
+                <TextBlock Grid.Row="2" Text="Operatör:"/>
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CustomerName}"/>
-                
-                <TextBlock Grid.Row="3" Text="Tid:" FontSize="20"/>
+
+                <TextBlock Grid.Row="3" Text="Tid:"/>
                 <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding StartingDate}"/>
-                
-                <TextBlock Grid.Row="4" Text="Arbetsuppgift:" FontSize="20"/>
+
+                <TextBlock Grid.Row="4" Text="Arbetsuppgift:"/>
                 <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding OrderDescription}"/>
-                
-                <TextBlock Grid.Row="6" Text="Telefon:" FontSize="20"/>
+
+                <TextBlock Grid.Row="6" Text="Telefon:"/>
                 <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding CustomerPhoneNo}"/>
 
-                <TextBlock Grid.Row="7" Text="Tilldelad Avdelning:" FontSize="20"/>
+                <TextBlock Grid.Row="7" Text="Tilldelad Avdelning:"/>
                 <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding DepartmentName}"/>
 
-                <TextBlock Grid.Row="8" Text="Tilldelad Person:" FontSize="20"/>
+                <TextBlock Grid.Row="8" Text="Tilldelad Person:"/>
                 <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding StaffName}"/>
 
-                <TextBlock Grid.Row="9" Text="Status:" FontSize="20"/>
+                <TextBlock Grid.Row="9" Text="Status:"/>
                 <TextBlock Grid.Row="9" Grid.Column="1" Text="{Binding StatusName}"/>
             </Grid>
-            
-            <StackPanel Visibility="{Binding IsVisible, Mode=TwoWay}">
-                <Grid DataContext="{Binding SelectedOrderInfo, Mode=TwoWay}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Row="0" Text="Arbetade Timmar" FontSize="20"/>
-                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding HoursSpent}"/>
+            <Grid Name="AdditionalInfo" Style="{StaticResource StandardGrid}"
+                  Visibility="{x:Bind _viewModel.IsVisible, Mode=TwoWay}" 
+                  DataContext="{Binding SelectedOrderInfo, Mode=TwoWay}">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Row="1" Text="Restid" FontSize="20"/>
-                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TravelTime}"/>
+                <TextBlock Grid.Row="0" Text="Arbetade Timmar"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding HoursSpent}"/>
 
-                    <TextBlock Grid.Row="2" Text="Extrakostnader" FontSize="20"/>
-                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding ExtraCosts}"/>
+                <TextBlock Grid.Row="1" Text="Restid"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding TravelTime}"/>
 
-                    <TextBlock Grid.Row="3" Text="Kommentar:" FontSize="20"/>
-                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Commentary}"/>
+                <TextBlock Grid.Row="2" Text="Extra kostnader"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding ExtraCosts}"/>
 
-                    <Button Grid.Row="4" Content="Acceptera" Command="{x:Bind _viewModel.AcceptCommand}"/>
-                </Grid>
+                <TextBlock Grid.Row="3" Text="Kommentar:"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Commentary}"/>
 
-            </StackPanel>
+                <Button Grid.Row="4" Content="Acceptera" Command="{x:Bind _viewModel.AcceptCommand}"/>
+            </Grid>
 
-            <Button Content='Edit'
+            <Border Style="{StaticResource SmallBorder}"/>
+
+            <StackPanel Name="Buttons" Orientation="Horizontal">
+                <Button Content='Edit'
                     Click="EditBtn_Click"/>
 
-            <Button Content="Delete"
+                <Button Content="Delete"
                     Command="{Binding DeleteCommand}"/>
+            </StackPanel>
 
         </StackPanel>
-
     </Grid>
 </Page>

@@ -4,4 +4,47 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ToDo_Desktop">
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style x:Key="MasterGrid" TargetType="Grid">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+
+            <Style x:Key="StandardGrid" TargetType="Grid">
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+            
+            <Style x:Key="InfoStack" TargetType="StackPanel">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+            </Style>
+
+            <Style TargetType="ListView">
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="MinHeight" Value="600"/>
+                <Setter Property="MinWidth" Value="300"/>
+            </Style>
+
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Margin" Value="0,7,0,0"/>
+            </Style>
+            
+            <Style x:Key="TitleText" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="Margin" Value="0,0,0,10"/>
+            </Style>
+
+            <Style x:Key="SmallBorder" TargetType="Border">
+                <Setter Property="Height" Value="2"/>
+                <Setter Property="Background" Value="Black"/>
+                <Setter Property="Margin" Value="0,10,0,10"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+
 </Application>
