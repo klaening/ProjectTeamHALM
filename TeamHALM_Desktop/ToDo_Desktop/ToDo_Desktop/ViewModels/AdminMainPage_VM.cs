@@ -146,6 +146,8 @@ namespace ToDo_Desktop.ViewModels
                 {
                     var dialog = new MessageDialog("Work order successfully updated", "Success");
                     await dialog.ShowAsync();
+
+                    UpdateOrderList();
                 }
             }
             catch (Exception)
