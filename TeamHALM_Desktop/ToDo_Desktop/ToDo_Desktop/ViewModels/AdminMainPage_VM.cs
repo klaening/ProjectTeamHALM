@@ -37,7 +37,8 @@ namespace ToDo_Desktop.ViewModels
             set 
             { 
                 SetProperty(ref _selectedOrderInfo, value);
-                IsVisible = Visibility.Visible;
+                if (value != null)
+                    IsVisible = Visibility.Visible;
             }
         }
 
