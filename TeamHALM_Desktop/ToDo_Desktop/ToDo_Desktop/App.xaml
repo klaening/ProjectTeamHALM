@@ -33,6 +33,12 @@
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="Margin" Value="0,7,0,0"/>
             </Style>
+
+            <Style x:Name="PropertyText" TargetType="TextBlock">
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Margin" Value="0,7,0,0"/>
+            </Style>
             
             <Style x:Key="TitleText" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="40"/>
@@ -43,6 +49,14 @@
                 <Setter Property="Height" Value="2"/>
                 <Setter Property="Background" Value="Black"/>
                 <Setter Property="Margin" Value="0,10,0,10"/>
+            </Style>
+
+            <Style TargetType="ComboBox">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+
+            <Style TargetType="DatePicker">
+                <Setter Property="Margin" Value="10"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
