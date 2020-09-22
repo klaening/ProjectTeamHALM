@@ -64,6 +64,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -73,39 +74,44 @@
                 <TextBlock Text="Orderdetaljer" Style="{StaticResource PropertyText}"
                            Grid.Row="0" Grid.ColumnSpan="2"/>
 
+                <TextBlock Text="Ordertitel"
+                           Grid.Row="1"/>
+                <TextBox Text="{Binding SelectedOrderTitle, Mode=TwoWay}" 
+                         Grid.Row="1" Grid.Column="1"/>
+
                 <TextBlock Text="KUNDUPPGIFTER" Style="{StaticResource PropertyText}"
-                           Grid.Row="1" Grid.Column="0"/>
+                           Grid.Row="2"/>
 
                 <TextBlock Text="Företagsnamn" Style="{StaticResource PropertyText}"
-                           Grid.Row="2"/>
-                <TextBlock Text="{Binding SelectedCustomer.CustomerName}"
-                           Grid.Row="2" Grid.Column="1"/>
-
-                <TextBlock Text="Adress" Style="{StaticResource PropertyText}"
                            Grid.Row="3"/>
-                <TextBlock Text="{Binding SelectedCustomer.CustomerAddress}"
+                <TextBlock Text="{Binding SelectedCustomer.CustomerName}"
                            Grid.Row="3" Grid.Column="1"/>
 
-                <TextBlock Text="Kontakt" Style="{StaticResource PropertyText}"
+                <TextBlock Text="Adress" Style="{StaticResource PropertyText}"
                            Grid.Row="4"/>
+                <TextBlock Text="{Binding SelectedCustomer.CustomerAddress}"
+                           Grid.Row="4" Grid.Column="1"/>
+
+                <TextBlock Text="Kontakt" Style="{StaticResource PropertyText}"
+                           Grid.Row="5"/>
                 <TextBlock Text="{Binding SelectedCustomer.CustomerPhoneNo}"
-                         Grid.Row="4" Grid.Column="1"/>
+                         Grid.Row="5" Grid.Column="1"/>
 
-                <TextBlock Grid.Row="5" Text="Operatör" Style="{StaticResource PropertyText}"/>
+                <TextBlock Grid.Row="6" Text="Operatör" Style="{StaticResource PropertyText}"/>
                 <TextBlock Text="{Binding SelectedStaff.StaffName}"
-                           Grid.Row="5" Grid.Column="1"/>
+                           Grid.Row="6" Grid.Column="1"/>
 
-                <TextBlock Grid.Row="6"/>
+                <TextBlock Grid.Row="7"/>
 
-                <TextBlock Grid.Row="7" Text="Arbetsbeskrivning" Style="{StaticResource PropertyText}"/>
+                <TextBlock Grid.Row="8" Text="Arbetsbeskrivning" Style="{StaticResource PropertyText}"/>
                 <TextBox x:Name="OrderDescBox"
                          PlaceholderText="Ex cut trees"
                          Text="{Binding SelectedOrderDescription, Mode=TwoWay}"
-                         Grid.Row="7" Grid.Column="1"/>
-                
+                         Grid.Row="8" Grid.Column="1"/>
+
                 <Button Content="Spara"
                         Command="{Binding SaveCommand}"
-                        Grid.Row="8" Grid.Column="1"
+                        Grid.Row="9" Grid.Column="1"
                         IsEnabled="{Binding MultiCheck}"/>
             </Grid>
         </StackPanel>

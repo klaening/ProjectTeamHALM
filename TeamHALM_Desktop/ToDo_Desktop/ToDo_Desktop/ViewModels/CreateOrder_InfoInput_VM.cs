@@ -96,13 +96,24 @@ namespace ToDo_Desktop.ViewModels
             } 
         }
 
+        private string _selectedOrderTitle;
+        public string SelectedOrderTitle
+        {
+            get => _selectedOrderTitle;
+            set
+            {
+                SetProperty(ref _selectedOrderTitle, value);
+                MultiCheck = true;
+            }
+        }
+
         private bool _multiCheck;
         public bool MultiCheck
         {
             get => _multiCheck;
             set
             {
-                if (_selectedCustomer == null || _selectedStaff == null || _selectedDate == null || string.IsNullOrWhiteSpace(_selectedOrderDescription))
+                if (_selectedCustomer == null || _selectedStaff == null || _selectedDate == null || string.IsNullOrWhiteSpace(_selectedOrderDescription) || string.IsNullOrWhiteSpace(_selectedOrderTitle))
                     SetProperty(ref _multiCheck, false);
                 else
                     SetProperty(ref _multiCheck, value);
@@ -143,7 +154,8 @@ namespace ToDo_Desktop.ViewModels
                 StartingDate = SelectedDate.UtcDateTime,
                 StaffID = SelectedStaff.ID,
                 OrderStatusesID = 1,
-                CustomersID = SelectedCustomer.ID
+                CustomersID = SelectedCustomer.ID,
+                OrderTitle = SelectedOrderTitle
             };
 
             try

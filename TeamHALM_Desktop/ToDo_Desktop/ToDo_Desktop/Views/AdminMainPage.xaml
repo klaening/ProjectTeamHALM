@@ -27,9 +27,12 @@
                           HorizontalAlignment="Left">
 
                     <ListView.ItemTemplate>
-                        <DataTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0,5,0,5">
                             <TextBlock Text="{Binding ID}"/>
-                        </DataTemplate>
+                            <TextBlock Text="{Binding OrderTitle}"/>
+                        </StackPanel>
+                    </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
 
