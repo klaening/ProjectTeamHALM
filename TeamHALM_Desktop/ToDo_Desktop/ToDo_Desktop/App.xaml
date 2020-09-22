@@ -6,15 +6,15 @@
 
     <Application.Resources>
         <ResourceDictionary>
-            <Style x:Key="MasterGrid" TargetType="Grid">
+            <Style TargetType="Grid" x:Key="MasterGrid">
                 <Setter Property="Margin" Value="10"/>
             </Style>
 
-            <Style x:Key="StandardGrid" TargetType="Grid">
+            <Style TargetType="Grid" x:Key="StandardGrid">
                 <Setter Property="Margin" Value="5"/>
             </Style>
-            
-            <Style x:Key="InfoStack" TargetType="StackPanel">
+
+            <Style TargetType="StackPanel" x:Key="InfoStack">
                 <Setter Property="Margin" Value="10"/>
             </Style>
 
@@ -34,18 +34,18 @@
                 <Setter Property="Margin" Value="0,7,0,0"/>
             </Style>
 
-            <Style x:Name="PropertyText" TargetType="TextBlock">
+            <Style TargetType="TextBlock" x:Name="PropertyText">
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="Margin" Value="0,7,0,0"/>
             </Style>
-            
-            <Style x:Key="TitleText" TargetType="TextBlock">
+
+            <Style TargetType="TextBlock" x:Key="TitleText">
                 <Setter Property="FontSize" Value="40"/>
                 <Setter Property="Margin" Value="0,0,0,10"/>
             </Style>
 
-            <Style x:Key="SmallBorder" TargetType="Border">
+            <Style TargetType="Border" x:Key="SmallBorder">
                 <Setter Property="Height" Value="2"/>
                 <Setter Property="Background" Value="Black"/>
                 <Setter Property="Margin" Value="0,10,0,10"/>
@@ -57,6 +57,10 @@
 
             <Style TargetType="DatePicker">
                 <Setter Property="Margin" Value="10"/>
+            </Style>
+
+            <Style TargetType="TextBox" x:Key="DescriptionBox">
+                <Setter Property="Height" Value="100"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

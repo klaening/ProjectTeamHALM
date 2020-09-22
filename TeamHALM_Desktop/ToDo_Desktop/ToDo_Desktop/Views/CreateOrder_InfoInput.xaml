@@ -71,15 +71,15 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Orderdetaljer" Style="{StaticResource PropertyText}"
+                <TextBlock Text="Orderdetaljer" Style="{StaticResource TitleText}"
                            Grid.Row="0" Grid.ColumnSpan="2"/>
 
-                <TextBlock Text="Ordertitel"
+                <TextBlock Text="Ordertitel" Style="{StaticResource PropertyText}"
                            Grid.Row="1"/>
                 <TextBox Text="{Binding SelectedOrderTitle, Mode=TwoWay}" 
                          Grid.Row="1" Grid.Column="1"/>
 
-                <TextBlock Text="KUNDUPPGIFTER" Style="{StaticResource PropertyText}"
+                <TextBlock Text="KUNDUPPGIFTER" Style="{StaticResource PropertyText}" Foreground="SlateGray"
                            Grid.Row="2"/>
 
                 <TextBlock Text="Företagsnamn" Style="{StaticResource PropertyText}"
@@ -104,7 +104,7 @@
                 <TextBlock Grid.Row="7"/>
 
                 <TextBlock Grid.Row="8" Text="Arbetsbeskrivning" Style="{StaticResource PropertyText}"/>
-                <TextBox x:Name="OrderDescBox"
+                <TextBox x:Name="OrderDescBox" Style="{StaticResource DescriptionBox}"
                          PlaceholderText="Ex cut trees"
                          Text="{Binding SelectedOrderDescription, Mode=TwoWay}"
                          Grid.Row="8" Grid.Column="1"/>
