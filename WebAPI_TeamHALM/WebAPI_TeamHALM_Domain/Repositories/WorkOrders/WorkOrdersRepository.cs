@@ -23,10 +23,10 @@ namespace WebAPI_TeamHALM_Domain
             {
                 try
                 {
-                    await c.ExecuteAsync("INSERT INTO WorkOrders( OrderDescription, StartingDate, Commentary, HoursSpent, TravelTime, ExtraCosts, StaffID, OrderStatusesID, CustomersID ) " +
-                        "VALUES (@orderDescription, @startingDate, @commentary, @hoursSpent, @travelTime, @extraCosts, @staffID, @orderStatusesID, @customersID) ",
+                    await c.ExecuteAsync("INSERT INTO WorkOrders( OrderDescription, StartingDate, Commentary, HoursSpent, TravelTime, ExtraCosts, StaffID, OrderStatusesID, CustomersID, OrderTitle ) " +
+                        "VALUES (@orderDescription, @startingDate, @commentary, @hoursSpent, @travelTime, @extraCosts, @staffID, @orderStatusesID, @customersID, @orderTitle) ",
                         new { workOrder.OrderDescription, workOrder.StartingDate, workOrder.Commentary, workOrder.HoursSpent, workOrder.TravelTime, workOrder.ExtraCosts, 
-                            workOrder.StaffID, workOrder.OrderStatusesID, workOrder.CustomersID });
+                            workOrder.StaffID, workOrder.OrderStatusesID, workOrder.CustomersID, workOrder.OrderTitle });
 
                     return true;
                 }
@@ -93,9 +93,9 @@ namespace WebAPI_TeamHALM_Domain
                 {
                     await c.ExecuteAsync("UPDATE WorkOrders SET OrderDescription = @orderDescription, StartingDate = @startingDate, Commentary = @commentary, " +
                         "HoursSpent = @hoursSpent, TravelTime = @travelTime, ExtraCosts = @extraCosts, StaffID = @staffID, OrderStatusesID = @orderStatusesID, " +
-                        "CustomersID = @customersID WHERE ID = @ID", 
+                        "CustomersID = @customersID, OrderTitle = @orderTitle WHERE ID = @ID", 
                         new { workOrder.OrderDescription, workOrder.StartingDate, workOrder.Commentary, workOrder.HoursSpent, workOrder.TravelTime, workOrder.ExtraCosts, 
-                            workOrder.StaffID, workOrder.OrderStatusesID, workOrder.CustomersID, workOrder.ID });
+                            workOrder.StaffID, workOrder.OrderStatusesID, workOrder.CustomersID, workOrder.OrderTitle, workOrder.ID });
 
                     return true;
                 }
