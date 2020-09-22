@@ -50,7 +50,7 @@ namespace ToDoMobile.Droid
 
             var notificationBuilder = new NotificationCompat.Builder(this, MainActivity.CHANNEL_ID);
 
-            notificationBuilder.SetContentTitle("FCM Message")
+            notificationBuilder.SetContentTitle("New order information received!")
                         .SetSmallIcon(Resource.Drawable.ic_launcher)
                         .SetContentText(messageBody)
                         .SetAutoCancel(true)
