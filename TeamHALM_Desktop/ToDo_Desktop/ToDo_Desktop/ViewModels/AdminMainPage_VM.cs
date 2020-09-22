@@ -64,7 +64,7 @@ namespace ToDo_Desktop.ViewModels
             }
             set
             {
-                if (SelectedOrderInfo.StatusName == "Review")
+                if (SelectedOrderInfo.StatusName == Statuses.Review.ToString())
                     SetProperty(ref isVisible, Visibility.Visible);
                 else
                     SetProperty(ref isVisible, Visibility.Collapsed);
@@ -79,7 +79,6 @@ namespace ToDo_Desktop.ViewModels
             UpdateOrderList();
 
             DeleteCommand = new RelayCommand(DeleteWorkOrder, () => true);
-
             AcceptCommand = new RelayCommand(AcceptOrderAsync, () => true);
         }
 
@@ -87,7 +86,9 @@ namespace ToDo_Desktop.ViewModels
         private async void DeleteWorkOrder()
         {
             var dialog = new MessageDialog("Are you sure you want to delete?", "Warning");
-            dialog.Commands.Add(new UICommand("Yes", null));
+
+            var yesCommand = new UICommand("Yes", null);
+            dialog.Commands.Add(yesCommand);
             dialog.Commands.Add(new UICommand("Cancel", null));
 
             dialog.DefaultCommandIndex = 0;
@@ -95,7 +96,7 @@ namespace ToDo_Desktop.ViewModels
 
             var command = await dialog.ShowAsync();
 
-            if (command.Label == "Yes")
+            if (command == yesCommand)
             {
                 try
                 {
@@ -122,7 +123,6 @@ namespace ToDo_Desktop.ViewModels
 
         private async void AcceptOrderAsync()
         {
-
             WorkOrders updatedOrder = new WorkOrders
             {
                 ID = SelectedOrderInfo.ID,
