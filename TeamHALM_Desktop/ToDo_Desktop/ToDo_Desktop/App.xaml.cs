@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Messaging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,6 +9,8 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.PushNotifications;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -31,6 +34,7 @@ namespace ToDo_Desktop
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+           
         }
 
         /// <summary>
@@ -38,8 +42,11 @@ namespace ToDo_Desktop
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
+        
+        
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            InitNotificationsAsync();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -97,5 +104,22 @@ namespace ToDo_Desktop
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        private async void InitNotificationsAsync()
+        {
+            var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+
+            var hub = new NotificationHub("TeamHalmTestNotification", "Endpoint=sb://teamhalmtestnotification.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=WUbMxbw6buzkr1DLf+WCQKB6wzOUY1eY4k+wZlVLLek=");
+            var result = await hub.RegisterNativeAsync(channel.Uri);
+
+            //// Displays the registration ID so you know it was successful
+            //if (result.RegistrationId != null)
+            //{
+            //    var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
+            //    dialog.Commands.Add(new UICommand("OK"));
+            //    await dialog.ShowAsync();
+            //}
+        }
+
     }
 }

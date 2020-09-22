@@ -110,9 +110,13 @@
                          Grid.Row="8" Grid.Column="1"/>
 
                 <Button Content="Spara"
+                        Click="SparaButton_Click"
                         Command="{Binding SaveCommand}"
                         Grid.Row="9" Grid.Column="1"
                         IsEnabled="{Binding MultiCheck}"/>
+                <Button Content="Testa notification"
+                        Click="Button_Click"
+                        Grid.Row="9"/>
             </Grid>
         </StackPanel>
     </Grid>

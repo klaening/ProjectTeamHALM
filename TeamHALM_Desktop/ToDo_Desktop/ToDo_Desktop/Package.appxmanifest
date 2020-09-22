@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="fea34bc6-744b-44d9-bf45-5be0d655f5a5"
-    Publisher="CN=Admin-d158"
+    Name="44345Nicudez.THPushNotifTest"
+    Publisher="CN=C2FD0DB4-5CEB-427B-B5A1-4B6256DC5158"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="fea34bc6-744b-44d9-bf45-5be0d655f5a5" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="85efd840-0fdf-4fa6-ad97-82f530593d47" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>ToDo_Desktop</DisplayName>
-    <PublisherDisplayName>Admin-d158</PublisherDisplayName>
+    <DisplayName>THPushNotifTest</DisplayName>
+    <PublisherDisplayName>Nicudez</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -32,7 +32,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="ToDo_Desktop.App">
       <uap:VisualElements
-        DisplayName="ToDo_Desktop"
+        DisplayName="THPushNotifTest"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="ToDo_Desktop"

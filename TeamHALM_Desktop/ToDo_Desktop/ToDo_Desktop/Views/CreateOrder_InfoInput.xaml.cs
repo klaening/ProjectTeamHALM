@@ -17,6 +17,8 @@ using ToDo_Desktop.Models;
 using ToDo_Desktop.Services;
 using System.Net;
 using Windows.UI.Popups;
+using Microsoft.Azure.NotificationHubs;
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -43,6 +45,38 @@ namespace ToDo_Desktop.Views
         private void Return_Btn_Click(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
+        }
+
+        private void SparaButton_Click(object sender, RoutedEventArgs e)
+        {
+            SendTemplateNotificationAsync();
+        }
+
+        //Sends notifixation to UWP windows
+        //private static async void SendTemplateNotificationAsync()
+        //{
+        //    // Define the notification hub.
+        //    NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("Endpoint=sb://teamhalmtestnotification.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=vj6kMiukDeWJm7DcY+t6GWAoVJI800JecK7pqiaOGeY=", "TeamHalmTestNotification");
+
+
+        //    var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">Order has been changed to</text></binding></visual></toast>";
+        //    await hub.SendWindowsNativeNotificationAsync(toast);
+        //}
+
+
+        private static async void SendTemplateNotificationAsync()
+        {
+            // Define the notification hub.
+            NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("Endpoint=sb://teamhalmtestnotification.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=vj6kMiukDeWJm7DcY+t6GWAoVJI800JecK7pqiaOGeY=", "TeamHalmTestNotification");
+
+            var notification = new Dictionary<string, string> { { "message", "Hello " } };
+
+            await hub.SendTemplateNotificationAsync(notification, "Hej");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SendTemplateNotificationAsync();
         }
     }
 }
