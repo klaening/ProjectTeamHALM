@@ -15,7 +15,7 @@
                         
                         <StackLayout VerticalOptions="FillAndExpand">
                             
-                            <Label Text="{Binding OrderDescription}"/>
+                            <Label Text="{Binding OrderTitle}"/>
                             
                             <Grid>
                                 <Grid.ColumnDefinitions>
