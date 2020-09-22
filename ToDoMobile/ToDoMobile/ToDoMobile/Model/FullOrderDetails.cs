@@ -7,6 +7,7 @@ namespace ToDoMobile.Model
     public class FullOrderDetails
     {
         public int ID { get; set; }
+        public string OrderTitle { get; set; }
         public string OrderDescription { get; set; }
         public DateTime StartingDate { get; set; }
         public string Commentary { get; set; }

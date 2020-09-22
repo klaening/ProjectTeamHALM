@@ -13,11 +13,9 @@ namespace ToDoMobile.Model
         public decimal HoursSpent { get; set; }
         public decimal TravelTime { get; set; }
         public decimal ExtraCosts { get; set; }
-
-        //Foreign keys
         public int StaffID { get; set; }
         public int OrderStatusesID { get; set; }
         public int CustomersID { get; set; }
-
+        public string OrderTitle { get; set; }
     }
 }

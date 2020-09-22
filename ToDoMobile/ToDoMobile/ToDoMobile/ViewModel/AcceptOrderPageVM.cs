@@ -155,7 +155,7 @@ namespace ToDoMobile.ViewModel
         {
             var order = GetOrderFromID();
             CompleteAcceptedOrder(order);
-
+            Navigation.PushAsync(new OrderPage());
         }
 
         public FullOrderDetails GetOrderFromID()
@@ -179,7 +179,8 @@ namespace ToDoMobile.ViewModel
                     StartingDate = order.StartingDate,
                     CustomersID = order.CustomersID,
                     OrderDescription = order.OrderDescription,
-                    OrderStatusesID = 2
+                    OrderStatusesID = 2,
+                    OrderTitle = order.OrderTitle
 
                 };
                 await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
@@ -204,8 +205,10 @@ namespace ToDoMobile.ViewModel
                 StartingDate = order.StartingDate,
                 CustomersID = order.CustomersID,
                 OrderDescription = order.OrderDescription,
-                OrderStatusesID = 3
-
+                OrderStatusesID = 3,
+                OrderTitle = order.OrderTitle
+                
+                
             };
             await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
         }
@@ -218,7 +221,8 @@ namespace ToDoMobile.ViewModel
                 StartingDate = order.StartingDate,
                 CustomersID = order.CustomersID,
                 OrderDescription = order.OrderDescription,
-                OrderStatusesID = 1
+                OrderStatusesID = 1,
+                OrderTitle = order.OrderTitle
 
             };
             await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
@@ -234,6 +238,7 @@ namespace ToDoMobile.ViewModel
                 CustomersID = order.CustomersID,
                 OrderDescription = order.OrderDescription,
                 OrderStatusesID = 4,
+                OrderTitle = order.OrderTitle,
                 Commentary = CommentaryText,
                 HoursSpent = HoursSpentText,
                 ExtraCosts = ExtraCostText,
