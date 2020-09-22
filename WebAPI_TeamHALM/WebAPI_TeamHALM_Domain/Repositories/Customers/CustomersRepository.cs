@@ -23,8 +23,8 @@ namespace WebAPI_TeamHALM_Domain
             {
                 try
                 {
-                    await c.ExecuteAsync("INSERT INTO Customers (Name, Address, PhoneNo) VALUES (@Name, @Address, @PhoneNo)", 
-                        new { customer.Name, customer.Address, customer.PhoneNo});
+                    await c.ExecuteAsync("INSERT INTO Customers (CustomerName, CustomerAddress, CustomerPhoneNo) VALUES (@customerName, @customerAddress, @customerPhoneNo)", 
+                        new { customer.CustomerName, customer.CustomerAddress, customer.CustomerPhoneNo});
 
                     return true;
                 }
@@ -72,8 +72,8 @@ namespace WebAPI_TeamHALM_Domain
             {
                 try
                 {
-                    await c.ExecuteAsync("UPDATE Customers SET Name = @name, Address = @address, PhoneNo = @phoneNo WHERE ID = @id", 
-                        new { customer.Name, customer.Address, customer.PhoneNo, customer.ID});
+                    await c.ExecuteAsync("UPDATE Customers SET CustomerName = @customerName, CustomerAddress = @customerAddress, CustomerPhoneNo = @customerPhoneNo WHERE ID = @id", 
+                        new { customer.CustomerName, customer.CustomerAddress, customer.CustomerPhoneNo, customer.ID});
 
                     return true;
                 }

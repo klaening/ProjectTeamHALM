@@ -43,6 +43,12 @@ namespace WebAPI_TeamHALM.Controllers
             return Ok(await _workOrdersService.UpdateWorkOrder(workOrder));
         }
 
+        [HttpPut("status={statusId}")]
+        public async Task<IActionResult> Update([FromBody] FullOrderDetails order, int statusId)
+        {
+            return Ok(await _workOrdersService.UpdateWorkOrder(order, statusId));
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

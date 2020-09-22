@@ -4,31 +4,30 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI_TeamHALM_Domain;
-using WebAPI_TeamHALM_Domain.Models;
 
 namespace WebAPI_TeamHALM.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OrderHistoryController : Controller
+    public class FullOrderDetailsController : Controller
     {
-        private readonly IOrderHistoryService _orderHistoryService;
+        private readonly IFullOrderDetailsService _fullOrderDetailsService;
 
-        public OrderHistoryController(IOrderHistoryService orderHistoryService)
+        public FullOrderDetailsController(IFullOrderDetailsService fullOrderDetailsService)
         {
-            _orderHistoryService = orderHistoryService;
+            _fullOrderDetailsService = fullOrderDetailsService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _orderHistoryService.GetOrderHistory());
+            return Ok(await _fullOrderDetailsService.GetFullOrderDetails());
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            return Ok(await _orderHistoryService.GetOrderHistory(id));
+            return Ok(await _fullOrderDetailsService.GetFullOrderDetails(id));
         }
     }
 }

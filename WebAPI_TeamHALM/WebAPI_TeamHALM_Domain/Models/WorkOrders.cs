@@ -8,7 +8,7 @@ namespace WebAPI_TeamHALM_Domain.Models
     public class WorkOrders
     {
         public int ID { get; set; }
-        public string Description { get; set; }
+        public string OrderDescription { get; set; }
         public DateTime StartingDate { get; set; }
         public string Commentary { get; set; }
         public decimal HoursSpent { get; set; }
@@ -17,5 +17,6 @@ namespace WebAPI_TeamHALM_Domain.Models
         public int StaffID { get; set; }
         public int OrderStatusesID { get; set; }
         public int CustomersID { get; set; }
+        public string OrderTitle { get; set; }
     }
 }

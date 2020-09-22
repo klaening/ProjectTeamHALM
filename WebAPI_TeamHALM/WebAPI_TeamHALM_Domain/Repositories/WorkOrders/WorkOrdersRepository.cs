@@ -23,8 +23,10 @@ namespace WebAPI_TeamHALM_Domain
             {
                 try
                 {
-                    await c.ExecuteAsync("INSERT INTO WorkOrders( Description, StartingDate, Commentary, HoursSpent, TravelTime, ExtraCosts, StaffID, OrderStatusesID, CustomersID ) VALUES (@id, @description, @startingDate, @commentary, @hoursSpent, @travelTime, @extraCosts, @staffID, @orderStatusesID, @customersID) ",
-                        new { workOrder.Description, workOrder.StartingDate, workOrder.Commentary, workOrder.HoursSpent, workOrder.TravelTime, workOrder.ExtraCosts, workOrder.StaffID, workOrder.OrderStatusesID, workOrder.CustomersID });
+                    await c.ExecuteAsync("INSERT INTO WorkOrders( OrderDescription, StartingDate, Commentary, HoursSpent, TravelTime, ExtraCosts, StaffID, OrderStatusesID, CustomersID, OrderTitle ) " +
+                        "VALUES (@orderDescription, @startingDate, @commentary, @hoursSpent, @travelTime, @extraCosts, @staffID, @orderStatusesID, @customersID, @orderTitle) ",
+                        new { workOrder.OrderDescription, workOrder.StartingDate, workOrder.Commentary, workOrder.HoursSpent, workOrder.TravelTime, workOrder.ExtraCosts, 
+                            workOrder.StaffID, workOrder.OrderStatusesID, workOrder.CustomersID, workOrder.OrderTitle });
 
                     return true;
                 }
@@ -85,12 +87,32 @@ namespace WebAPI_TeamHALM_Domain
 
         public async Task<bool> UpdateWorkOrder(WorkOrders workOrder)
         {
-            using (var c = new SqlConnection())
+            using (var c = new SqlConnection(_connectionString))
             {
                 try
                 {
-                    await c.ExecuteAsync("UPDATE WorkOrders SET Description = @description, StartingDate = @startingDate, Commentary = @commentary, HoursSpent = @hoursSpent, TravelTime = @travelTime, ExtraCosts = @extraCosts, StaffID = @staffID, OrderStatusesID = @orderStatusesID, CustomersID = @customersID WHERE ID = @ID", 
-                        new { workOrder.Description, workOrder.StartingDate, workOrder.Commentary, workOrder.HoursSpent, workOrder.TravelTime, workOrder.ExtraCosts, workOrder.StaffID, workOrder.OrderStatusesID, workOrder.CustomersID, workOrder.ID });
+                    await c.ExecuteAsync("UPDATE WorkOrders SET OrderDescription = @orderDescription, StartingDate = @startingDate, Commentary = @commentary, " +
+                        "HoursSpent = @hoursSpent, TravelTime = @travelTime, ExtraCosts = @extraCosts, StaffID = @staffID, OrderStatusesID = @orderStatusesID, " +
+                        "CustomersID = @customersID, OrderTitle = @orderTitle WHERE ID = @ID", 
+                        new { workOrder.OrderDescription, workOrder.StartingDate, workOrder.Commentary, workOrder.HoursSpent, workOrder.TravelTime, workOrder.ExtraCosts, 
+                            workOrder.StaffID, workOrder.OrderStatusesID, workOrder.CustomersID, workOrder.OrderTitle, workOrder.ID });
+
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public async Task<object> UpdateWorkOrder(FullOrderDetails order, int statusId)
+        {
+            using (var c = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    await c.ExecuteAsync("UPDATE WorkOrders SET OrderStatusesID = @statusId WHERE ID = @id", new { statusId, order.ID });
 
                     return true;
                 }

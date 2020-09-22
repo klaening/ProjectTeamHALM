@@ -23,8 +23,10 @@ namespace WebAPI_TeamHALM_Domain
             {
                 try
                 {
-                    await c.ExecuteAsync("INSERT INTO OrderHistory( ID, Description, StartingDate, Commentary, HoursSpent, TravelTime, ExtraCosts, StaffID, OrderStatusesID, CustomersID ) VALUES (@id, @description, @startingDate, @commentary, @hoursSpent, @travelTime, @extraCosts, @staffID, @orderStatusesID, @customersID) ",
-                        new { orderHistory.ID, orderHistory.Description, orderHistory.StartingDate, orderHistory.Commentary, orderHistory.HoursSpent, orderHistory.TravelTime, orderHistory.ExtraCosts, orderHistory.StaffID, orderHistory.OrderStatusesID, orderHistory.CustomersID });
+                    await c.ExecuteAsync("INSERT INTO OrderHistory( ID, OrderDescription, StartingDate, Commentary, HoursSpent, TravelTime, ExtraCosts, StaffID, OrderStatusesID, CustomersID ) " +
+                        "VALUES (@id, @orderDescription, @startingDate, @commentary, @hoursSpent, @travelTime, @extraCosts, @staffID, @orderStatusesID, @customersID) ",
+                        new { orderHistory.ID, orderHistory.OrderDescription, orderHistory.StartingDate, orderHistory.Commentary, orderHistory.HoursSpent, 
+                            orderHistory.TravelTime, orderHistory.ExtraCosts, orderHistory.StaffID, orderHistory.OrderStatusesID, orderHistory.CustomersID });
 
                     return true;
                 }
@@ -89,8 +91,11 @@ namespace WebAPI_TeamHALM_Domain
             {
                 try
                 {
-                    await c.ExecuteAsync("UPDATE OrderHistory SET Description = @description, StartingDate = @startingDate, Commentary = @commentary, HoursSpent = @hoursSpent, TravelTime = @travelTime, ExtraCosts = @extraCosts, StaffID = @staffID, OrderStatusesID = @orderStatusesID, CustomersID = @customersID WHERE ID = @ID",
-                        new { orderHistory.Description, orderHistory.StartingDate, orderHistory.Commentary, orderHistory.HoursSpent, orderHistory.TravelTime, orderHistory.ExtraCosts, orderHistory.StaffID, orderHistory.OrderStatusesID, orderHistory.CustomersID, orderHistory.ID });
+                    await c.ExecuteAsync("UPDATE OrderHistory SET OrderDescription = @orderDescription, StartingDate = @startingDate, Commentary = @commentary, " +
+                        "HoursSpent = @hoursSpent, TravelTime = @travelTime, ExtraCosts = @extraCosts, StaffID = @staffID, OrderStatusesID = @orderStatusesID, " +
+                        "CustomersID = @customersID WHERE ID = @ID",
+                        new { orderHistory.OrderDescription, orderHistory.StartingDate, orderHistory.Commentary, orderHistory.HoursSpent, orderHistory.TravelTime, 
+                            orderHistory.ExtraCosts, orderHistory.StaffID, orderHistory.OrderStatusesID, orderHistory.CustomersID, orderHistory.ID });
 
                     return true;
                 }
