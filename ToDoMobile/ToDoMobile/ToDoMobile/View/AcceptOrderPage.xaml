@@ -47,18 +47,18 @@
                 
                 <StackLayout Padding="60">
                 <Button x:Name="AcceptOrderButton"
-                        BackgroundColor="LawnGreen"
+                        BackgroundColor="DarkSeaGreen"
                         Clicked="AcceptOrderButton_Clicked"
                         Command="{Binding AcceptCommand}"
                         Text="{Binding ButtonText}"/>
                 <Button x:Name="DeclineOrderButton"
                         Clicked="DeclineOrderButton_Clicked"
                         Text="Decline Order"
-                        BackgroundColor="Red"
+                        BackgroundColor="IndianRed"
                         Command="{Binding DeclineCommand}"
                         IsVisible="True"/>
                 <Button x:Name="UndoAcceptedOrderButton"
-                        BackgroundColor="Red"
+                        BackgroundColor="IndianRed"
                         Clicked="UndoAcceptedOrderButton_Clicked"
                         Text="Undo Accepted Order"
                         Command="{Binding UndoCommand}"
@@ -86,7 +86,7 @@
                        Text="{Binding CommentaryText, Mode=TwoWay}"/>
 
                 <Button x:Name="CompleteOrderButton"
-                        BackgroundColor="LawnGreen"
+                        BackgroundColor="DarkSeaGreen"
                         Clicked="CompleteOrderButton_Clicked"
                         Command="{Binding CompleteCommand}"
                         Text="Complete order"/>
