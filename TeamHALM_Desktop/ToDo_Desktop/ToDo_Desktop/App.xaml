@@ -45,9 +45,19 @@
                 <Setter Property="Margin" Value="0,0,0,10"/>
             </Style>
 
+            <Style TargetType="TextBlock" x:Key="OrderTitleText">
+                <Setter Property="FontSize" Value="30"/>
+            </Style>
+
             <Style TargetType="Border" x:Key="SmallBorder">
                 <Setter Property="Height" Value="2"/>
                 <Setter Property="Background" Value="Black"/>
+                <Setter Property="Margin" Value="0,10,0,10"/>
+            </Style>
+
+            <Style TargetType="Border" x:Key="TinyBorder">
+                <Setter Property="Height" Value="1"/>
+                <Setter Property="Background" Value="DarkSlateGray"/>
                 <Setter Property="Margin" Value="0,10,0,10"/>
             </Style>
 

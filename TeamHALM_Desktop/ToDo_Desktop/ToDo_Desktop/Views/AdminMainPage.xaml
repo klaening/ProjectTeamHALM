@@ -21,18 +21,36 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <ListView Grid.Row="0" Header="List of Orders" 
+                <ListView Grid.Row="0" Header="List of Orders"
                           ItemsSource="{Binding OrderInfo}"
                           SelectedItem="{Binding SelectedOrderInfo, Mode=TwoWay}" 
                           HorizontalAlignment="Left">
 
                     <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="0,5,0,5">
-                            <TextBlock Text="{Binding ID}"/>
-                            <TextBlock Text="{Binding OrderTitle}"/>
-                        </StackPanel>
-                    </DataTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,5,0,5" MinWidth="200">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <TextBlock Grid.Row="0" Grid.Column="0" 
+                                           Text="{Binding ID}" FontWeight="Bold"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" 
+                                           Text="{Binding StatusName}" FontStyle="Italic"/>
+
+                                <TextBlock Grid.Row="1" Grid.ColumnSpan="2" 
+                                           Text="{Binding OrderTitle}"/>
+
+                                <Border Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource TinyBorder}"/>
+
+                            </Grid>
+                        </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
 
@@ -61,6 +79,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
@@ -68,19 +87,24 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Row="0" Text="Order ID" Style="{StaticResource TitleText}"/>
-                <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource TitleText}" Text="{Binding ID}"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource TitleText}" 
+                           Text="{Binding ID}"/>
 
-                <TextBlock Grid.Row="1" Text="Adress:" Style="{StaticResource PropertyText}"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CustomerAddress}"/>
+                <TextBlock Grid.Row="1" Text="Order Titel:" Style="{StaticResource OrderTitleText}" FontWeight="Bold"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource OrderTitleText}"
+                           Text="{Binding OrderTitle}"/>
 
-                <TextBlock Grid.Row="2" Text="Operatör:" Style="{StaticResource PropertyText}"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CustomerName}"/>
+                <TextBlock Grid.Row="2" Text="Adress:" Style="{StaticResource PropertyText}"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CustomerAddress}"/>
 
-                <TextBlock Grid.Row="3" Text="Tid:" Style="{StaticResource PropertyText}"/>
-                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding StartingDate}"/>
+                <TextBlock Grid.Row="3" Text="Operatör:" Style="{StaticResource PropertyText}"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CustomerName}"/>
 
-                <TextBlock Grid.Row="4" Text="Arbetsuppgift:" Style="{StaticResource PropertyText}"/>
-                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding OrderDescription}"/>
+                <TextBlock Grid.Row="4" Text="Tid:" Style="{StaticResource PropertyText}"/>
+                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding StartingDate}"/>
+
+                <TextBlock Grid.Row="5" Text="Arbetsuppgift:" Style="{StaticResource PropertyText}"/>
+                <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding OrderDescription}"/>
 
                 <TextBlock Grid.Row="6" Text="Telefon:" Style="{StaticResource PropertyText}"/>
                 <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding CustomerPhoneNo}"/>
