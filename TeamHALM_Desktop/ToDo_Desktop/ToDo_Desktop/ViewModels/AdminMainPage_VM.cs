@@ -134,7 +134,8 @@ namespace ToDo_Desktop.ViewModels
                 ExtraCosts = SelectedOrderInfo.ExtraCosts,
                 StaffID = SelectedOrderInfo.StaffID,
                 OrderStatusesID = SelectedOrderInfo.OrderStatusesID + 1,
-                CustomersID = SelectedOrderInfo.CustomersID
+                CustomersID = SelectedOrderInfo.CustomersID,
+                OrderTitle = SelectedOrderInfo.OrderTitle
             };
 
             try

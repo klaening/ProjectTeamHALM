@@ -138,7 +138,8 @@ namespace ToDo_Desktop.ViewModels
                     ExtraCosts = SelectedOrder.ExtraCosts,
                     StaffID = SelectedStaff.ID,
                     OrderStatusesID = SelectedStatus.ID,
-                    CustomersID = SelectedCustomer.ID
+                    CustomersID = SelectedCustomer.ID,
+                    OrderTitle = SelectedOrder.OrderTitle
                 };
 
                 var response = await Requests.PutRequestAsync(Paths.WorkOrders, workOrder);
