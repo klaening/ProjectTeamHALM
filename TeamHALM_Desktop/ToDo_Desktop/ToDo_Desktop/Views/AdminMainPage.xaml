@@ -16,7 +16,9 @@
 
         <StackPanel Name="List" Grid.Column="0" Grid.Row="0">
             <TextBlock Text="Filter by"/>
-            <ComboBox ItemsSource="{Binding StatusList}"/>
+            <ComboBox ItemsSource="{Binding StatusList}"
+                      DisplayMemberPath="StatusName"
+                      SelectedItem="{Binding SelectedStatus, Mode=TwoWay}"/>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
@@ -24,7 +26,7 @@
                 </Grid.RowDefinitions>
 
                 <ListView Grid.Row="0" Header="List of Orders"
-                          ItemsSource="{Binding OrderInfo}"
+                          ItemsSource="{Binding DisplayOrderList}"
                           SelectedItem="{Binding SelectedOrderInfo, Mode=TwoWay}">
 
                     <ListView.ItemTemplate>

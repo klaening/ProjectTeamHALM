@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ToDo_Desktop.ExtensionMethods;
 using ToDo_Desktop.Models;
 using ToDo_Desktop.Services;
 using Windows.UI.Popups;
@@ -30,6 +31,32 @@ namespace ToDo_Desktop.ViewModels
         {
             get => _statusList;
             set => SetProperty(ref _statusList, value);
+        }
+
+        private OrderStatuses _selectedStatus;
+        public OrderStatuses SelectedStatus
+        {
+            get => _selectedStatus;
+            set 
+            { 
+                SetProperty(ref _selectedStatus, value);
+                DisplayOrderList = FilterList();
+            }
+        }
+
+        private ObservableCollection<OrderInfo> _displayOrderList;
+        public ObservableCollection<OrderInfo> DisplayOrderList
+        {
+            get => _displayOrderList;
+            set => SetProperty(ref _displayOrderList, value);
+        }
+
+        public ObservableCollection<OrderInfo> FilterList()
+        {
+            if (SelectedStatus.ID != 0)
+                return OrderInfo.Where(x => x.OrderStatusesID == SelectedStatus.ID).MakeObservable();
+            else
+                return OrderInfo;
         }
 
         public ObservableCollection<OrderInfo> OrderInfo
@@ -85,12 +112,24 @@ namespace ToDo_Desktop.ViewModels
 
             UpdateOrderList();
 
+            //TestOrderList = OrderInfo;
+
             var result = Requests.GetRequest(Paths.OrderStatuses);
             StatusList = JsonConvert.DeserializeObject<ObservableCollection<OrderStatuses>>(result);
+            StatusList.RemoveAt(4);
+
+            OrderStatuses status = new OrderStatuses
+            {
+                StatusName = "All"
+            };
+
+            StatusList.Add(status);
 
             DeleteCommand = new RelayCommand(DeleteWorkOrder, () => true);
 
             AcceptCommand = new RelayCommand(AcceptOrderAsync, () => true);
+
+            SelectedStatus = StatusList.FirstOrDefault(x => x.StatusName == "All");
         }
 
         public ICommand DeleteCommand { get; set; }
