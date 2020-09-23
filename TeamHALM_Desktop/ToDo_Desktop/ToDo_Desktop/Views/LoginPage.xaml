@@ -10,18 +10,30 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/BackgroundTools.jpg" Stretch="UniformToFill" Opacity=".4"/>
+            <ImageBrush ImageSource="/Assets/BackgroundLogin.png"/>
         </Grid.Background>
-        <StackPanel Background="WhiteSmoke" VerticalAlignment="Center" HorizontalAlignment="Center"
-                    Padding="30">
-            <TextBlock Text="Login" Margin="0,0,0,50" HorizontalAlignment="Center"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Padding="30" Background="Transparent">
+            <TextBlock Foreground="WhiteSmoke" Text="Login" Margin="0,0,0,50" HorizontalAlignment="Center"/>
 
-            <StackPanel MinWidth="200">
-                <TextBox Header="User name"/>
-                <TextBox Header="Password"/>
+            <StackPanel MinWidth="200" Background="Transparent">
+                <TextBox Foreground="WhiteSmoke">
+                    <TextBox.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="User name" Foreground="WhiteSmoke"/>
+                        </DataTemplate>
+                    </TextBox.HeaderTemplate>
+                </TextBox>
+                <TextBox Foreground="WhiteSmoke">
+                    <TextBox.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Password" Foreground="WhiteSmoke"/>
+                        </DataTemplate>
+                    </TextBox.HeaderTemplate>
+                </TextBox>
 
-                <Button x:Name="LoginBtn" Content="Log in" HorizontalAlignment="Center"
-                    Click="LoginBtn_Clicked"/>
+                <Button x:Name="LoginBtn" Style="{StaticResource CustomButtonStyle}" Background="LightPink" Content="Log in" HorizontalAlignment="Center"
+                        Click="LoginBtn_Clicked"/>
             </StackPanel>
         </StackPanel>
     </Grid>

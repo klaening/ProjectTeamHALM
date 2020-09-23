@@ -8,7 +8,12 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Style="{StaticResource MasterGrid}">
+    <Grid>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/BackgroundDesktop.png"/>
+        </Grid.Background>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="*"/>

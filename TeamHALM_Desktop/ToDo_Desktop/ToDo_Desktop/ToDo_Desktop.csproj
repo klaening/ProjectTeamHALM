@@ -165,8 +165,10 @@
     <EmbeddedResource Include="Assets\BackgroundTools.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="Assets\BackgroundDesktop.png" />
+    <Content Include="Assets\BackgroundLogin.png" />
+    <Content Include="Assets\SplashScreen3.png" />
     <Content Include="Assets\SplashScreen.png" />
-    <Content Include="Assets\SplashScreen2.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
