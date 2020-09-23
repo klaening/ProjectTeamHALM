@@ -8,6 +8,7 @@ namespace ToDo_Desktop.Services
 {
     public enum Statuses
     {
+        All,
         Pending = 1,
         Accepted,
         Denied,

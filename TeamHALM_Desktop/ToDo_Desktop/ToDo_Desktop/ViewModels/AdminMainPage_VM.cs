@@ -20,25 +20,23 @@ namespace ToDo_Desktop.ViewModels
     public class AdminMainPage_VM : BindableBase
     {
         private Visibility isVisible = Visibility.Collapsed;
-        
 
-        private NavigationService navigationService;
         private ObservableCollection<OrderInfo> _orderInfo = new ObservableCollection<OrderInfo>();
         private OrderInfo _selectedOrderInfo;
 
-        private ObservableCollection<OrderStatuses> _statusList;
-        public ObservableCollection<OrderStatuses> StatusList
+        private ObservableCollection<Statuses> _statusList;
+        public ObservableCollection<Statuses> StatusList
         {
             get => _statusList;
             set => SetProperty(ref _statusList, value);
         }
 
-        private OrderStatuses _selectedStatus;
-        public OrderStatuses SelectedStatus
+        private Statuses _selectedStatus;
+        public Statuses SelectedStatus
         {
             get => _selectedStatus;
-            set 
-            { 
+            set
+            {
                 SetProperty(ref _selectedStatus, value);
                 DisplayOrderList = FilterList();
             }
@@ -49,14 +47,6 @@ namespace ToDo_Desktop.ViewModels
         {
             get => _displayOrderList;
             set => SetProperty(ref _displayOrderList, value);
-        }
-
-        public ObservableCollection<OrderInfo> FilterList()
-        {
-            if (SelectedStatus.ID != 0)
-                return OrderInfo.Where(x => x.OrderStatusesID == SelectedStatus.ID).MakeObservable();
-            else
-                return OrderInfo;
         }
 
         public ObservableCollection<OrderInfo> OrderInfo
@@ -108,28 +98,18 @@ namespace ToDo_Desktop.ViewModels
 
         public AdminMainPage_VM()
         {
-            navigationService = new NavigationService();
-
             UpdateOrderList();
 
-            //TestOrderList = OrderInfo;
-
             var result = Requests.GetRequest(Paths.OrderStatuses);
-            StatusList = JsonConvert.DeserializeObject<ObservableCollection<OrderStatuses>>(result);
-            StatusList.RemoveAt(4);
 
-            OrderStatuses status = new OrderStatuses
-            {
-                StatusName = "All"
-            };
-
-            StatusList.Add(status);
+            StatusList = Enum.GetValues(typeof(Statuses)).Cast<Statuses>().ToList().MakeObservable();
+            StatusList.RemoveAt(5);
 
             DeleteCommand = new RelayCommand(DeleteWorkOrder, () => true);
 
             AcceptCommand = new RelayCommand(AcceptOrderAsync, () => true);
 
-            SelectedStatus = StatusList.FirstOrDefault(x => x.StatusName == "All");
+            SelectedStatus = StatusList.FirstOrDefault(x => x == Statuses.All);
         }
 
         public ICommand DeleteCommand { get; set; }
@@ -171,7 +151,6 @@ namespace ToDo_Desktop.ViewModels
 
         private async void AcceptOrderAsync()
         {
-
             WorkOrders updatedOrder = new WorkOrders
             {
                 ID = SelectedOrderInfo.ID,
@@ -211,6 +190,14 @@ namespace ToDo_Desktop.ViewModels
         {
             var result = Requests.GetRequest(Paths.FullOrderDetails);
             OrderInfo = JsonConvert.DeserializeObject<ObservableCollection<OrderInfo>>(result);
+        }
+
+        public ObservableCollection<OrderInfo> FilterList()
+        {
+            if (SelectedStatus == Statuses.All)
+                return OrderInfo;
+            else
+                return OrderInfo.Where(x => x.OrderStatusesID == (int)SelectedStatus).MakeObservable();
         }
     }
 }
