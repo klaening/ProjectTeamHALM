@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "889009774253",
+    "firebase_url": "https://thandroidnotification.firebaseio.com",
+    "project_id": "thandroidnotification",
+    "storage_bucket": "thandroidnotification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889009774253:android:f9c09d58f1b84b5f56f024",
+        "android_client_info": {
+          "package_name": "com.thnotification.xamarin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889009774253-2kgeesntgo2aelocv7ipup2ejb3qr04d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmngy8XgePbJoCksW4zq1uV4Qg6rkuTOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889009774253-2kgeesntgo2aelocv7ipup2ejb3qr04d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

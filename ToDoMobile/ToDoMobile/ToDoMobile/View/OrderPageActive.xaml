@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoMobile.View.OrderPageActive"
+             Title="Active Orders">
+    <ContentPage.Content>
+        <ListView x:Name="ActivePage"
+                    ItemsSource="{Binding ActiveList}"
+                    ItemSelected ="ActivePage_ItemSelected"
+                    SelectionMode="Single"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        
+                        <StackLayout VerticalOptions="FillAndExpand">
+                            
+                            <Label Text="{Binding OrderTitle}"/>
+                            
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding CustomerName}"
+                                   Grid.Column="0"/>
+                                <Label Text="{Binding StartingDate}" 
+                                   Grid.Column="2"/>
+                   
+                            </Grid>
+                            
+                        </StackLayout>
+                        
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
