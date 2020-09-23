@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ToDoMobile.ViewModel;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ToDoMobile.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OrderPage : TabbedPage
+    public partial class SplashLoginPage : ContentPage
     {
-        public OrderPage()
+        public SplashLoginPage()
         {
             InitializeComponent();
-            BindingContext = new OrderPageVM();
+            NavigationPage.SetHasNavigationBar(this, false);
+        }
 
-            var c = Color.FromHex("#1e1e23");
-            this.BarBackgroundColor = c;
-            
+        private void LogInButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new OrderPage());
         }
     }
 }

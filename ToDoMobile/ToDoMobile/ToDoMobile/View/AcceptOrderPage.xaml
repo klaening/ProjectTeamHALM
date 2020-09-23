@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ToDoMobile.View.AcceptOrderPage">
+             x:Class="ToDoMobile.View.AcceptOrderPage" 
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="LoginBackground2.png">
     <ScrollView>
-        <StackLayout>
+        <StackLayout BackgroundColor="LightGray" Margin="10">
             <!--HEADER-->
             <StackLayout Padding="5" Margin="5">
                 <Grid>
@@ -15,34 +17,36 @@
                 </Grid>
             </StackLayout>
             <!--ORDER INFORMATION -->
-            <StackLayout x:Name="OrderInfoStackLayout" Spacing="10" Margin="5,5,5,0" IsVisible="true">
+            <StackLayout x:Name="OrderInfoStackLayout" Spacing="10" Margin="5,5,5,0" IsVisible="True">
                 <Grid BindingContext="{Binding SelectedOrder}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="15"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="10"/>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="40"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="35"/>
+                        
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="1" Grid.Column="0" Text="Operatör:" FontSize="Medium"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding StaffName}" FontSize="Medium"/>
+                    
+                    <Label Grid.Row="1" Grid.Column="0" Text="Operatör:" FontSize="Medium" TextColor="Black"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding StaffName}" FontSize="Medium" TextColor="Black"/>
 
-                    <Label Grid.Row="3" Grid.Column="0" Text="När:" FontSize="Medium"/>
-                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding StartingDate}" FontSize="Medium"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="När:" FontSize="Medium" TextColor="Black"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding StartingDate}" FontSize="Medium" TextColor="Black"/>
 
-                    <Label Grid.Row="4" Grid.Column="0" Text="Arbetsuppgift:" FontSize="Medium"/>
-                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding OrderDescription}" FontSize="Medium"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Arbetsuppgift:" FontSize="Medium" TextColor="Black"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding OrderDescription}" FontSize="Medium" TextColor="Black"/>
 
-                    <Label Grid.Row="5" Grid.Column="0" Text="Kund:" FontSize="Medium"/>
-                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding CustomerName}" FontSize="Medium"/>
+                    <Label Grid.Row="5" Grid.Column="0" Text="Kund:" FontSize="Medium" TextColor="Black"/>
+                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding CustomerName}" FontSize="Medium" TextColor="Black" />
 
-                    <Label Grid.Row="6" Grid.Column="0" Text="KundAdress:" FontSize="Medium"/>
-                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding CustomerAddress}" FontSize="Medium"/>
+                    <Label Grid.Row="6" Grid.Column="0" Text="KundAdress:" FontSize="Medium" TextColor="Black"/>
+                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding CustomerAddress}" FontSize="Medium" TextColor="Black"/>
 
-                    <Label Grid.Row="7" Grid.Column="0" Text="KundTelefon:" FontSize="Medium"/>
-                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding CustomerPhoneNo}" FontSize="Medium"/>
+                    <Label Grid.Row="7" Grid.Column="0" Text="KundTelefon:" FontSize="Medium" TextColor="Black"/>
+                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding CustomerPhoneNo}" FontSize="Medium" TextColor="Black"/>
                 </Grid>
                 
                 <StackLayout Padding="60">
@@ -68,20 +72,20 @@
             </StackLayout>
 
             <StackLayout x:Name="RegisterAdditionalInformation" Spacing="10" Padding="20" Margin="5,50,5,0" IsVisible="false">
-                <Label Text="Extra kostnader:" FontSize="Medium"/>
+                <Label Text="Extra kostnader:" FontSize="Medium" TextColor="Black"/>
                 <Entry x:Name="ExtraCostEntry" 
                        Keyboard="Numeric"
                        Placeholder="0"
                        Text="{Binding ExtraCostText, Mode=TwoWay}"/>
-                <Label Text="Restid:" />
+                <Label Text="Restid:" TextColor="Black" />
                 <Entry x:Name="TravelTimeEntry"
                        Keyboard="Numeric"
                        Text="{Binding TravelTimeText, Mode=TwoWay}"/>
-                <Label Text="Arbetstid:"/>
+                <Label Text="Arbetstid:" TextColor="Black"/>
                 <Entry x:Name="WorkHoursEntry"
                        Keyboard="Numeric"
                        Text="{Binding HoursSpentText, Mode=TwoWay}"/>
-                <Label Text="Kommentar:" />
+                <Label Text="Kommentar:"  TextColor="Black"/>
                 <Entry x:Name="CommentsEntry"
                        Text="{Binding CommentaryText, Mode=TwoWay}"/>
 

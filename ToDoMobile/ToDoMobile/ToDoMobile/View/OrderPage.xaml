@@ -7,6 +7,6 @@
 
     <!--Pages can be added as references or inline-->
 
-    <local:OrderPagePending></local:OrderPagePending>
-    <local:OrderPageActive></local:OrderPageActive>
+        <local:OrderPagePending BackgroundImageSource="LoginBackground2.png"></local:OrderPagePending>
+    <local:OrderPageActive BackgroundImageSource="LoginBackground2.png"></local:OrderPageActive>
 </TabbedPage>

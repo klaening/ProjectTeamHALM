@@ -12,10 +12,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        
-                        <StackLayout VerticalOptions="FillAndExpand">
-                            
-                            <Label Text="{Binding OrderTitle}"/>
+
+                        <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="White" Opacity=".9" Margin="0,2.5,0,2.5">
+
+                            <Label Text="{Binding OrderTitle}"  FontAttributes="Bold" TextColor="Black"/>
                             
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -24,8 +24,10 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding CustomerName}"
+                                       TextColor="Black"
                                    Grid.Column="0"/>
                                 <Label Text="{Binding StartingDate}" 
+                                       TextColor="Black"
                                    Grid.Column="2"/>
                    
                             </Grid>

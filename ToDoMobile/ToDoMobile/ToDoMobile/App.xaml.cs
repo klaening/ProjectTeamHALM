@@ -13,7 +13,8 @@ namespace ToDoMobile
         {
             InitializeComponent();
             //APIServices.GetRequest(ApiPaths.FullOrderDetails);
-            MainPage = new NavigationPage(new OrderPage());
+            MainPage = new NavigationPage(new SplashLoginPage());
+
         }
 
         protected override void OnStart()

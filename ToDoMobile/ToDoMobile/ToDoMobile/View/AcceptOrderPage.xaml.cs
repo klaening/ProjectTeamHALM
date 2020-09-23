@@ -24,6 +24,8 @@ namespace ToDoMobile.View
         public AcceptOrderPage(FullOrderDetails order)
         {
             InitializeComponent();
+
+
             _viewModel = new AcceptOrderPageVM();
 
             BindingContext = _viewModel;

@@ -103,13 +103,16 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable\LoginBackground.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToDoMobile\ToDoMobile.csproj">
       <Project>{658CA0B8-5439-45BD-8726-3F002B680F0D}</Project>
       <Name>ToDoMobile</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\LoginBackground2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
