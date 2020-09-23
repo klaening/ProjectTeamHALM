@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using ToDoMobile.Services;
 using ToDoMobile.View;
 using System.Net;
+using Microsoft.Azure.NotificationHubs;
 
 namespace ToDoMobile.ViewModel
 {
@@ -141,7 +142,7 @@ namespace ToDoMobile.ViewModel
         {
             var order = GetOrderFromID();
             DeclineOrder(order);
-            Application.Current.MainPage.DisplayAlert("Declined", "Order status has been updated!", "ok");
+            Application.Current.MainPage.DisplayAlert("Declined", "You have declined the order"+order.OrderTitle, "ok");
             Navigation.PushAsync(new OrderPage());
         }
         public void UndoOrderPressedCommand()
@@ -184,6 +185,7 @@ namespace ToDoMobile.ViewModel
 
                 };
                 await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
+                SendTemplateNotificationAsync(workOrders, "  New status:  Accepted");
             }
 
             else if (order.OrderStatusesID == 2)
@@ -211,6 +213,7 @@ namespace ToDoMobile.ViewModel
                 
             };
             await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
+            SendTemplateNotificationAsync(workOrders, "  New status :  Declined");
         }
         public async void UndoAcceptedOrder(FullOrderDetails order)
         {
@@ -226,6 +229,7 @@ namespace ToDoMobile.ViewModel
 
             };
             await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
+            SendTemplateNotificationAsync(workOrders, "  New status:  Pending");
 
         }
         public async void CompleteAcceptedOrder(FullOrderDetails order)
@@ -246,6 +250,20 @@ namespace ToDoMobile.ViewModel
                
             };
             await APIServices.PutRequestAsync(ApiPaths.WorkOrders, workOrders);
+
+            SendTemplateNotificationAsync(workOrders, "  New status :  Completed");
+        }
+
+        private static async void SendTemplateNotificationAsync(WorkOrders work, string status)
+        {
+            // Define the notification hub.
+            NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("Endpoint=sb://teamhalmtestnotification.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=vj6kMiukDeWJm7DcY+t6GWAoVJI800JecK7pqiaOGeY=", "TeamHalmTestNotification");
+
+            string toastStart = @"<toast><visual><binding template=""ToastText01""><text id=""1"">";
+            string toastMiddle = work.OrderTitle + status;
+            string toastEnd = "</text></binding></visual></toast>";
+            string toastbuilder = toastStart + toastMiddle + toastEnd;
+            await hub.SendWindowsNativeNotificationAsync(toastbuilder);
         }
     }
 }

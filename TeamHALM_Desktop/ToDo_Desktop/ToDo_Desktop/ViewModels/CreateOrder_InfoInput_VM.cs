@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using Microsoft.Azure.NotificationHubs;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -144,8 +145,16 @@ namespace ToDo_Desktop.ViewModels
             DepartmentList = departments;
 
             SaveCommand = new RelayCommand(SaveWorkOrder, () => true);
-        }
 
+        }
+        private async void SendTemplateNotificationAsync(WorkOrders work)
+        {
+            // Define the notification hub.
+            NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("Endpoint=sb://teamhalmtestnotification.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=vj6kMiukDeWJm7DcY+t6GWAoVJI800JecK7pqiaOGeY=", "TeamHalmTestNotification");
+
+            var gcm = "{\"data\":{\"message\":\"The message\", \"title\": \"" + work.OrderTitle + "\"}}";
+            await hub.SendFcmNativeNotificationAsync(gcm);
+        }
         private async void SaveWorkOrder()
         {
             WorkOrders workOrder = new WorkOrders
@@ -157,7 +166,7 @@ namespace ToDo_Desktop.ViewModels
                 CustomersID = SelectedCustomer.ID,
                 OrderTitle = SelectedOrderTitle
             };
-
+            SendTemplateNotificationAsync(workOrder);
             try
             {
                 var response = await Requests.PostRequestAsync(Paths.WorkOrders, workOrder);
