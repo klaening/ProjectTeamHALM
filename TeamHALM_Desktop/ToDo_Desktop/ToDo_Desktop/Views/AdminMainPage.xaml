@@ -61,11 +61,9 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <StackPanel Name="ListButtons" Grid.Row="1" 
+                <StackPanel Name="ListButtons" Grid.Row="1"
                             Orientation="Horizontal">
-                    <Button x:Name="GoBack_Btn" Content="Go Back" 
-                            Click="GoBack_Btn_Click"/>
-                    <Button x:Name="CreateOrder" Content="New Order"
+                    <Button x:Name="CreateOrder" Content="New Order" 
                             Click="CreateOrder_Click"/>
                 </StackPanel>
             </Grid>

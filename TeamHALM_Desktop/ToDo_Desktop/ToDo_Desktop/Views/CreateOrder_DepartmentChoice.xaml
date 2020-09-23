@@ -9,6 +9,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/BackgroundDesktop.png"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -23,19 +26,22 @@
         <Button x:Name="Snickare_Btn" Content="Snickeri"
                 Tag="1"
                 Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
-                 Width="400" Height="200" FontSize="40" Click="Navigation_Btn_Click"/>
+                Style="{StaticResource BigAssButton}"
+                Click="Navigation_Btn_Click"/>
         
         <Button x:Name="Elektriker_Btn" Content="Elektronik"
                 Tag="2"
                 Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"
-                 Width="400" Height="200" FontSize="40" Click="Navigation_Btn_Click"/>
+                Style="{StaticResource BigAssButton}"
+                Click="Navigation_Btn_Click"/>
         
         <Button x:Name="Mekaniker_Btn" Content="Mekanik" 
                 Tag="3"
                 Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"
-                 Width="400" Height="200" FontSize="40" Click="Navigation_Btn_Click"/>
+                Style="{StaticResource BigAssButton}"
+                Click="Navigation_Btn_Click"/>
         
-        <Button x:Name="Return_Btn" Content="Return" Grid.Row="0" Grid.Column="0"
-                Width="100" Height="50" VerticalAlignment="Top" Click="Return_Btn_Click"/>
+        <Button Content="Go Back" Grid.Row="2" Grid.Column="0"
+                Width="100" Height="50" VerticalAlignment="Bottom" Click="Return_Btn_Click"/>
     </Grid>
 </Page>

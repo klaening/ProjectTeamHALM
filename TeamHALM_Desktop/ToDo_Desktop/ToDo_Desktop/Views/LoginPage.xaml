@@ -20,20 +20,20 @@
                 <TextBox Foreground="WhiteSmoke">
                     <TextBox.HeaderTemplate>
                         <DataTemplate>
-                            <TextBlock Text="User name" Foreground="WhiteSmoke"/>
+                            <TextBlock Text="Username" Foreground="WhiteSmoke" HorizontalAlignment="Center"/>
                         </DataTemplate>
                     </TextBox.HeaderTemplate>
                 </TextBox>
                 <TextBox Foreground="WhiteSmoke">
                     <TextBox.HeaderTemplate>
                         <DataTemplate>
-                            <TextBlock Text="Password" Foreground="WhiteSmoke"/>
+                            <TextBlock Text="Password" Foreground="WhiteSmoke" HorizontalAlignment="Center"/>
                         </DataTemplate>
                     </TextBox.HeaderTemplate>
                 </TextBox>
 
                 <Button x:Name="LoginBtn" Style="{StaticResource CustomButtonStyle}" Background="LightPink" Content="Log in" HorizontalAlignment="Center"
-                        Click="LoginBtn_Clicked"/>
+                        Click="LoginBtn_Clicked" Margin="0,10,0,0"/>
             </StackPanel>
         </StackPanel>
     </Grid>

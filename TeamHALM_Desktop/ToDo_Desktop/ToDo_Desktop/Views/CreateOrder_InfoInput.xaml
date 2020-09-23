@@ -10,7 +10,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Style="{StaticResource MasterGrid}">
-     
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/BackgroundDesktop.png"/>
+        </Grid.Background>
+        
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
@@ -50,7 +54,7 @@
         </StackPanel>
 
         <Button x:Name="Return_Btn" Content="Go Back" VerticalAlignment="Bottom" 
-                Click="Return_Btn_Click" Grid.Row="5"/>
+                Click="Return_Btn_Click" Grid.Row="5" Width="100" Height="50"/>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="4">
             <Grid>
