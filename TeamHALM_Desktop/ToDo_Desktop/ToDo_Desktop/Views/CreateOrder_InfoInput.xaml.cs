@@ -69,9 +69,8 @@ namespace ToDo_Desktop.Views
             // Define the notification hub.
             NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("Endpoint=sb://teamhalmtestnotification.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=vj6kMiukDeWJm7DcY+t6GWAoVJI800JecK7pqiaOGeY=", "TeamHalmTestNotification");
 
-            var notification = new Dictionary<string, string> { { "message", "Hello " } };
-
-            await hub.SendTemplateNotificationAsync(notification, "Hej");
+            var gcm = "{\"data\":{\"message\":\"The message\", \"title\": \"New Order Received!\"}}";
+            await hub.SendFcmNativeNotificationAsync(gcm);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

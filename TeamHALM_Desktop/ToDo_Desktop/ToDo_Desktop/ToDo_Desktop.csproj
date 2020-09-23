@@ -18,7 +18,8 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <PackageCertificateThumbprint>548C7D055455CA77119EE6279593D6DBA08A99A6</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>33AE899FD74C1B2269FF949BE958C3692836AED6</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -168,6 +169,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <None Include="ToDo_Desktop_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
