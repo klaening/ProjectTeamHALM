@@ -168,7 +168,6 @@
     <Content Include="Assets\BackgroundDesktop.png" />
     <Content Include="Assets\BackgroundLogin.png" />
     <Content Include="Assets\SmallTile.png" />
-    <Content Include="Assets\SplashScreen1.png" />
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\WorkOrderIcon.png" />
     <Content Include="Properties\Default.rd.xml" />
