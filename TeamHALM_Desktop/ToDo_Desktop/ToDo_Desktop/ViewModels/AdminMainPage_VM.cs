@@ -25,6 +25,13 @@ namespace ToDo_Desktop.ViewModels
         private ObservableCollection<OrderInfo> _orderInfo = new ObservableCollection<OrderInfo>();
         private OrderInfo _selectedOrderInfo;
 
+        private ObservableCollection<OrderStatuses> _statusList;
+        public ObservableCollection<OrderStatuses> StatusList
+        {
+            get => _statusList;
+            set => SetProperty(ref _statusList, value);
+        }
+
         public ObservableCollection<OrderInfo> OrderInfo
         {
             get => _orderInfo;
@@ -77,6 +84,9 @@ namespace ToDo_Desktop.ViewModels
             navigationService = new NavigationService();
 
             UpdateOrderList();
+
+            var result = Requests.GetRequest(Paths.OrderStatuses);
+            StatusList = JsonConvert.DeserializeObject<ObservableCollection<OrderStatuses>>(result);
 
             DeleteCommand = new RelayCommand(DeleteWorkOrder, () => true);
 

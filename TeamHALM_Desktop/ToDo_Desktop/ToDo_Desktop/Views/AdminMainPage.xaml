@@ -15,6 +15,8 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Name="List" Grid.Column="0" Grid.Row="0">
+            <TextBlock Text="Filter by"/>
+            <ComboBox ItemsSource="{Binding StatusList}"/>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
