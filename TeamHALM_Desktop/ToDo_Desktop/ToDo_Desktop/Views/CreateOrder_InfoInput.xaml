@@ -76,7 +76,7 @@
 
                 <TextBlock Text="Ordertitel" Style="{StaticResource PropertyText}"
                            Grid.Row="1"/>
-                <TextBox Text="{Binding SelectedOrderTitle, Mode=TwoWay}" 
+                <TextBox x:Name="OrderTitle" Text="{Binding SelectedOrderTitle, Mode=TwoWay}" 
                          Grid.Row="1" Grid.Column="1"/>
 
                 <TextBlock Text="KUNDUPPGIFTER" Style="{StaticResource PropertyText}" Foreground="SlateGray"
@@ -116,7 +116,7 @@
                         IsEnabled="{Binding MultiCheck}"/>
                 <Button Content="Testa notification"
                         Click="Button_Click"
-                        Grid.Row="9"/>
+                        Grid.Row="9" Visibility="Collapsed"/>
             </Grid>
         </StackPanel>
     </Grid>

@@ -8,10 +8,10 @@
 
   <Identity
     Name="44345Nicudez.THPushNotifTest"
-    Publisher="CN=Huyie"
+    Publisher="CN=C2FD0DB4-5CEB-427B-B5A1-4B6256DC5158"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="85efd840-0fdf-4fa6-ad97-82f530593d47" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="8cd261e0-adf6-47fe-9102-9684f9e1f633" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>THPushNotifTest</DisplayName>

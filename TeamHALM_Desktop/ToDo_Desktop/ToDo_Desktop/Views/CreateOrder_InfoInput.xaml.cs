@@ -51,31 +51,32 @@ namespace ToDo_Desktop.Views
         {
             SendTemplateNotificationAsync();
         }
-
-        //Sends notifixation to UWP windows
-        //private static async void SendTemplateNotificationAsync()
-        //{
-        //    // Define the notification hub.
-        //    NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("Endpoint=sb://teamhalmtestnotification.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=vj6kMiukDeWJm7DcY+t6GWAoVJI800JecK7pqiaOGeY=", "TeamHalmTestNotification");
-
-
-        //    var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">Order has been changed to</text></binding></visual></toast>";
-        //    await hub.SendWindowsNativeNotificationAsync(toast);
-        //}
+  
 
 
         private static async void SendTemplateNotificationAsync()
         {
+    
+
             // Define the notification hub.
             NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("Endpoint=sb://teamhalmtestnotification.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=vj6kMiukDeWJm7DcY+t6GWAoVJI800JecK7pqiaOGeY=", "TeamHalmTestNotification");
 
-            var gcm = "{\"data\":{\"message\":\"The message\", \"title\": \"New Order Received!\"}}";
+            var gcm = "{\"data\":{\"message\":\"The message\", \"title\": \"New order: \"}}";
             await hub.SendFcmNativeNotificationAsync(gcm);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SendTemplateNotificationAsync();
+            SendTemplateNotificationAsyncUWP();
+        }
+        private static async void SendTemplateNotificationAsyncUWP()
+        {
+            // Define the notification hub.
+            NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("Endpoint=sb://teamhalmtestnotification.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=vj6kMiukDeWJm7DcY+t6GWAoVJI800JecK7pqiaOGeY=", "TeamHalmTestNotification");
+
+
+            var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">Order has been changed to</text></binding></visual></toast>";
+            await hub.SendWindowsNativeNotificationAsync(toast);
         }
     }
 }
