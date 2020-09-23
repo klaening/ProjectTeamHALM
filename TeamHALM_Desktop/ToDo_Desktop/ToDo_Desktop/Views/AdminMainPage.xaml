@@ -23,8 +23,7 @@
 
                 <ListView Grid.Row="0" Header="List of Orders"
                           ItemsSource="{Binding OrderInfo}"
-                          SelectedItem="{Binding SelectedOrderInfo, Mode=TwoWay}" 
-                          HorizontalAlignment="Left">
+                          SelectedItem="{Binding SelectedOrderInfo, Mode=TwoWay}">
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -156,6 +155,7 @@
                         Click="EditBtn_Click"/>
 
                 <Button Content="Delete"
+                        Background="IndianRed"
                         Command="{Binding DeleteCommand}"/>
             </StackPanel>
 

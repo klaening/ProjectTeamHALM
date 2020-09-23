@@ -67,7 +67,8 @@ namespace ToDo_Desktop.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SendTemplateNotificationAsyncUWP();
+            SendTemplateNotificationAsync();
+            //SendTemplateNotificationAsyncUWP();
         }
         private static async void SendTemplateNotificationAsyncUWP()
         {

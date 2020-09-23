@@ -26,7 +26,9 @@
             <Style TargetType="ListView">
                 <Setter Property="FontSize" Value="40"/>
                 <Setter Property="MinHeight" Value="600"/>
+                <Setter Property="MaxHeight" Value="600"/>
                 <Setter Property="MinWidth" Value="300"/>
+                <Setter Property="ScrollViewer.VerticalScrollMode" Value="Enabled"/>
             </Style>
 
             <Style TargetType="TextBlock">
