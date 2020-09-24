@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoMobile.View.SplashLoginPage"
+             BackgroundImageSource="LoginBackground.png">
+
+    <StackLayout VerticalOptions="Center" Padding="10">
+        <Entry Placeholder="Username" HorizontalOptions="Center" PlaceholderColor="White" FontSize="15"  HeightRequest="40" WidthRequest="80"/>
+        <Entry Placeholder="Password" HorizontalOptions="Center" IsPassword="True" PlaceholderColor="White" HeightRequest="40" FontSize="15" WidthRequest="80"/>
+        <Button x:Name="LogInButton" Clicked="LogInButton_Clicked" Text="Log In" WidthRequest="100" HeightRequest="35" HorizontalOptions="Center" BackgroundColor="LightPink" />
+    </StackLayout>
+        
+</ContentPage>

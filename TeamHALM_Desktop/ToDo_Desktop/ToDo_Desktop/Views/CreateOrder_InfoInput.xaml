@@ -1,0 +1,123 @@
+﻿<Page
+    x:Class="ToDo_Desktop.Views.CreateOrder_InfoInput"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ToDo_Desktop.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ToDo_Desktop.ViewModels"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Style="{StaticResource MasterGrid}">
+     
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="4">
+            <TextBlock Text="Ny Order" FontSize="50"/>
+            <TextBlock Text="{Binding SelectedDepartment.DepartmentName, Mode=TwoWay}" FontSize="45"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
+           <!--<AutoSuggestBox x:Name="asb" QueryIcon="Find" SuggestionChosen="AutoSuggestBox_SuggestionChosen"
+                            ItemsSource="{Binding CustomerList}"
+                            DisplayMemberPath="CustomerName"
+                            TextMemberPath="CustomerName"
+                        Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"
+                        MinWidth="300" MinHeight="50"/>-->
+
+            <ComboBox ItemsSource="{Binding CustomerList}"
+                      DisplayMemberPath="CustomerName"
+                      PlaceholderText="Välj kund"
+                      SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"/>
+
+            <ComboBox ItemsSource="{Binding StaffList, Mode=TwoWay}"
+                      DisplayMemberPath="StaffName"
+                      PlaceholderText="Välj operatör"
+                      SelectedItem="{Binding SelectedStaff, Mode=TwoWay}"/>
+
+            <DatePicker SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Grid.Column="0" Grid.Row="4"/>
+
+        </StackPanel>
+
+        <Button x:Name="Return_Btn" Content="Go Back" VerticalAlignment="Bottom" 
+                Click="Return_Btn_Click" Grid.Row="5"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Orderdetaljer" Style="{StaticResource TitleText}"
+                           Grid.Row="0" Grid.ColumnSpan="2"/>
+
+                <TextBlock Text="Ordertitel" Style="{StaticResource PropertyText}"
+                           Grid.Row="1"/>
+                <TextBox x:Name="OrderTitle" Text="{Binding SelectedOrderTitle, Mode=TwoWay}" 
+                         Grid.Row="1" Grid.Column="1"/>
+
+                <TextBlock Text="KUNDUPPGIFTER" Style="{StaticResource PropertyText}" Foreground="SlateGray"
+                           Grid.Row="2"/>
+
+                <TextBlock Text="Företagsnamn" Style="{StaticResource PropertyText}"
+                           Grid.Row="3"/>
+                <TextBlock Text="{Binding SelectedCustomer.CustomerName}"
+                           Grid.Row="3" Grid.Column="1"/>
+
+                <TextBlock Text="Adress" Style="{StaticResource PropertyText}"
+                           Grid.Row="4"/>
+                <TextBlock Text="{Binding SelectedCustomer.CustomerAddress}"
+                           Grid.Row="4" Grid.Column="1"/>
+
+                <TextBlock Text="Kontakt" Style="{StaticResource PropertyText}"
+                           Grid.Row="5"/>
+                <TextBlock Text="{Binding SelectedCustomer.CustomerPhoneNo}"
+                         Grid.Row="5" Grid.Column="1"/>
+
+                <TextBlock Grid.Row="6" Text="Operatör" Style="{StaticResource PropertyText}"/>
+                <TextBlock Text="{Binding SelectedStaff.StaffName}"
+                           Grid.Row="6" Grid.Column="1"/>
+
+                <TextBlock Grid.Row="7"/>
+
+                <TextBlock Grid.Row="8" Text="Arbetsbeskrivning" Style="{StaticResource PropertyText}"/>
+                <TextBox x:Name="OrderDescBox" Style="{StaticResource DescriptionBox}"
+                         PlaceholderText="Ex cut trees"
+                         Text="{Binding SelectedOrderDescription, Mode=TwoWay}"
+                         Grid.Row="8" Grid.Column="1"/>
+
+                <Button Content="Spara"
+                        Click="SparaButton_Click"
+                        Command="{Binding SaveCommand}"
+                        Grid.Row="9" Grid.Column="1"
+                        IsEnabled="{Binding MultiCheck}"/>
+                <Button Content="Testa notification"
+                        Click="Button_Click"
+                        Grid.Row="9" Visibility="Collapsed"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

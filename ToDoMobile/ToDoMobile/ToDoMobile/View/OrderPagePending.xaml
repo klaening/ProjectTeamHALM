@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ToDoMobile.ViewModel"
+             x:Class="ToDoMobile.View.OrderPagePending"
+             Title="Pending Orders">
+    <ContentPage.Content>
+
+        <ListView x:Name="PendingPage"
+                    ItemsSource="{Binding PendingList}"
+                    ItemSelected="PendingPage_ItemSelected"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="White" Opacity=".9" Margin="0,2.5,0,2.5">
+
+                            <Label Text="{Binding OrderTitle}"  FontAttributes="Bold" TextColor="Black"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding CustomerName}"
+                                   Grid.Column="0" TextColor="Black"/>
+                                <Label Text="{Binding StartingDate}" 
+                                   Grid.Column="2"
+                                       TextColor="Black"/>
+
+                            </Grid>
+
+                        </StackLayout>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
